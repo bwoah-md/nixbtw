@@ -4,7 +4,7 @@
   programs.noctalia-greeter = {
     enable = true;
     package = pkgs.noctalia-greeter;
-    greeter-args = "--session niri --user icy";
+    greeter-args = "--session umbriel --user icy";
     settings = {
       cursor = {
         theme = "Bibata-Modern-Ice";

@@ -5,7 +5,6 @@
     ./greeter.nix
     ./theming.nix
   ];
-  programs.niri.enable = true;
   programs.umbriel = {
     enable = true;
     package = pkgs.umbriel;
@@ -30,12 +29,6 @@
         default = [ "gtk" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "umbriel" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "umbriel" ];
-      };
-      # Niri
-      niri = lib.mkForce {
-        default = [ "gtk" ];
-        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
-        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
       };
     };
   };
