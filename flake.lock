@@ -90,11 +90,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1788614874,
-        "narHash": "sha256-7QYjT2vHLuX9Z1pdxHXDKCbh1CR3D/2rywB9Tx0MPRg=",
+        "lastModified": 1788752844,
+        "narHash": "sha256-VaWGJ6+cIYN2erfSecbRV+4ljI185Ty2wUrXyvQbgOw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c043004d1c6985732bcc1cbc5a9c9aecbbb4e0f0",
+        "rev": "dc5d91f840324650bac8c379428c7037a416959a",
         "type": "github"
       },
       "original": {
@@ -154,11 +154,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1788726832,
-        "narHash": "sha256-JpjEfaqfyieyDS2KYxJ/IRamc/hx4eRWvxtZzI2Ej4k=",
+        "lastModified": 1788799422,
+        "narHash": "sha256-qvTkohG0uhssGyvjh9OrR/R2jAQzLJdeh9/ogMj6Y/A=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "830ce58c9da58853166ffd8a6a1497c5d4b47a6b",
+        "rev": "44371790dd669d648ff959175e9e55d6e603175f",
         "type": "github"
       },
       "original": {
@@ -243,11 +243,11 @@
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
-        "lastModified": 1788753019,
-        "narHash": "sha256-QdQG3D2qpxb0F47dU7KsrJCVpdArtuEXFafbOlPWivg=",
+        "lastModified": 1788800171,
+        "narHash": "sha256-RJ+dQN4Kn9H/j5mBorXw3rA8JexLC4jbiFvo6RFQn0M=",
         "ref": "refs/heads/main",
-        "rev": "91b9569b685a44837dac894d1aef976c6425b780",
-        "revCount": 844,
+        "rev": "80bfe57460db1ec88b9a741b604fba87635afeea",
+        "revCount": 853,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/noctalia-dev/umbriel.git"
@@ -289,11 +289,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788532681,
-        "narHash": "sha256-xVLPCVS5RElZQirnx90DB+4OEvUGGqklMsNW+eP6EbE=",
+        "lastModified": 1788800127,
+        "narHash": "sha256-x2D1TiCn0rTwbA8darNxthxOWOCoZLwefptsUM7587I=",
         "owner": "noctalia-dev",
         "repo": "xdg-desktop-portal-umbriel",
-        "rev": "5e7efc50ce5013b4799f60c9de8b830026f236a4",
+        "rev": "d7a1bc386c2a6dfaecaa953165f9f373735c9ee0",
         "type": "github"
       },
       "original": {
@@ -309,11 +309,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788741399,
-        "narHash": "sha256-98h6h/71TZYFzrPP9i1WBxOtTgiwtAeshapHgQrwZ7E=",
+        "lastModified": 1788800127,
+        "narHash": "sha256-x2D1TiCn0rTwbA8darNxthxOWOCoZLwefptsUM7587I=",
         "ref": "refs/heads/main",
-        "rev": "b5206970652dd618bc8df1105a39fa628ecd635a",
-        "revCount": 34,
+        "rev": "d7a1bc386c2a6dfaecaa953165f9f373735c9ee0",
+        "revCount": 36,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/noctalia-dev/xdg-desktop-portal-umbriel.git"
