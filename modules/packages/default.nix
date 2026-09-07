@@ -121,7 +121,7 @@ in
     # ─────────────────────────────────────────────────
     # Communication
     # ─────────────────────────────────────────────────
-    vesktop
+    equibop
     signal-desktop
     telegram-desktop
 
