@@ -3,6 +3,7 @@
 {
   programs.noctalia-greeter = {
     enable = true;
+    package = pkgs.noctalia-greeter;
     greeter-args = "--session niri --user icy";
     settings = {
       cursor = {

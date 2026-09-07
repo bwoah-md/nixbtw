@@ -2,6 +2,7 @@
   description = "NixOS Flake Configuration for icy@nix";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     noctalia-greeter = {
@@ -35,6 +36,11 @@
       config.allowUnfree = true;
     };
 
+    pkgsStable = import inputs.nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
     customPackages = import ./modules/packages/custom.nix {
       inherit pkgs;
       lib = pkgs.lib;
@@ -43,7 +49,7 @@
     {
       nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; pkgsStable = pkgsStable; };
         modules = [
           ./hosts/nix
           inputs.noctalia.nixosModules.default
