@@ -49,7 +49,6 @@ in
     zed-editor
     helix
     fresh-editor
-    micro
     nixd
     nil
     nixfmt
