@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.umbriel.nixosModules.default
+    inputs.mango.nixosModules.mango
     ./greeter.nix
     ./theming.nix
   ];
@@ -9,6 +10,9 @@
     enable = true;
     # package = pkgs.umbriel;
     # portalPackage = pkgs.xdg-desktop-portal-umbriel;
+  };
+  programs.mango = {
+    enable = true;
   };
 
   # Noctalia shell and desktop environment integration
