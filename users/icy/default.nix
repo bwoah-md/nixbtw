@@ -42,6 +42,7 @@
     ];
 
     shellAliases = {
+      # General
       btop = "btop --force-utf";
       sudo = "sudo ";
       # v = "nvim";
@@ -53,14 +54,15 @@
       nixpush    = "git -C ~/.config/nixos push origin main";
       nixpull    = "git -C ~/.config/nixos pull origin main";
       nixstatus  = "git -C ~/.config/nixos status";
+
       nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
 
       nixupdate  = "cd ~/.config/nixos && nix-update swash --flake --build && nix-update superseedr --flake --build && nix-update ghosttime --flake --build";
 
       nixclean   = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+
       nixflake   = "nix flake update --flake ~/.config/nixos";
 
-      # Full NixOS update workflow
       nixfrost   = "nixupdate && rm -f result && nixflake && nixadd && nixrebuild && nixcommit \"ran nixfrost at \\$(date '+%-d %b, %Y at %H:%M')\" && nixpush && nixclean";
 
       # Docker
