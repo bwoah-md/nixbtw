@@ -7,15 +7,15 @@
   ];
   programs.umbriel = {
     enable = true;
-    package = pkgs.umbriel;
-    portalPackage = pkgs.xdg-desktop-portal-umbriel;
+    # package = pkgs.umbriel;
+    # portalPackage = pkgs.xdg-desktop-portal-umbriel;
   };
 
   # Noctalia shell and desktop environment integration
   programs.noctalia = {
     enable = true;
     recommendedServices.enable = true;
-    package = pkgs.noctalia;
+    # package = pkgs.noctalia;
   };
 
   # Desktop Portals configuration

@@ -3,7 +3,7 @@
 {
   programs.noctalia-greeter = {
     enable = true;
-    package = pkgs.noctalia-greeter;
+    # package = pkgs.noctalia-greeter;
     greeter-args = "--session umbriel --user icy";
     settings = {
       cursor = {
