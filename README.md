@@ -63,6 +63,9 @@ All repository and system maintenance operations are managed using dedicated she
   * Updates `swash`
   * Updates `superseedr`
   * Updates `ghosttime`
+
+* **Remove the Nix `result` symlink:** `rm result`
+
 * **Update flake inputs:** `nixflake`
 
 ### System Maintenance
@@ -72,17 +75,25 @@ All repository and system maintenance operations are managed using dedicated she
 
 ### Complete One-Shot Sync (`nixfrost`)
 
-Runs the complete maintenance workflow:
+Runs the complete maintenance workflow in sequence:
 
-1. Updates flake inputs
-2. Stages configuration changes
-3. Rebuilds and switches the NixOS system
-4. Removes old Nix generations
-5. Commits the changes automatically
-6. Pushes the commit to GitHub
+1. Updates custom packages with `nixupdate`
+2. Removes the `result` symlink
+3. Updates all flake inputs with `nixflake`
+4. Stages configuration changes with `nixadd`
+5. Rebuilds and switches the NixOS system with `nixrebuild`
+6. Commits the changes with an automatic timestamped message
+7. Pushes the commit to GitHub with `nixpush`
+8. Cleans old Nix generations with `nixclean`
 
 ```bash
 nixfrost
+```
+
+The generated commit message follows this format:
+
+```text
+ran nixfrost at 9 Sep, 2026 at 15:30
 ```
 
 ---
@@ -122,6 +133,9 @@ nixstatus
 
 # Update custom packages
 nixupdate
+
+# Remove the result symlink
+rm result
 
 # Update flake inputs
 nixflake
