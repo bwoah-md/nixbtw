@@ -38,6 +38,7 @@ in
     ncdu
     concord-tui
     cliamp
+    lazygit
 
     # Terminal Toys
     cbonsai
