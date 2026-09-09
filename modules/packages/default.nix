@@ -32,7 +32,6 @@ in
     foot
     btop
     fastfetch
-    fetch
     yazi
     ripgrep
     tree
