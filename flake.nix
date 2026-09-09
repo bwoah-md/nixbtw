@@ -30,11 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mango = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     xdg-desktop-portal-umbriel = {
       url = "git+https://github.com/noctalia-dev/xdg-desktop-portal-umbriel.git?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
