@@ -63,7 +63,16 @@
 
       nixflake   = "nix flake update --flake ~/.config/nixos";
 
-      nixfrost   = "nixupdate && rm -f result && nixflake && nixadd && nixrebuild && nixcommit \"ran nixfrost at \\$(date '+%-d %b, %Y at %H:%M')\" && nixpush && nixclean";
+      nixfrost = ''
+        nixupdate &&
+        rm -f result &&
+        nixflake &&
+        nixadd &&
+        nixrebuild &&
+        nixcommit "ran nixfrost at $(date '+%-d %b, %Y at %H:%M')" &&
+        nixpush &&
+        nixclean
+      '';
 
       # Docker
       docker-start = "sudo systemctl start docker";
