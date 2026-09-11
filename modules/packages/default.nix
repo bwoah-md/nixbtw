@@ -19,7 +19,6 @@ in
     # ─────────────────────────────────────────────────
     # Custom Packages
     # ─────────────────────────────────────────────────
-    customPackages.swash
     customPackages.superseedr
     customPackages.ghosttime
 

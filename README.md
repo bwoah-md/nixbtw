@@ -60,7 +60,6 @@ All repository and system maintenance operations are managed using dedicated she
 
 * **Update custom packages:** `nixupdate`
 
-  * Updates `swash`
   * Updates `superseedr`
   * Updates `ghosttime`
 
@@ -116,7 +115,6 @@ Individual package definitions remain in:
 
 ```text
 modules/packages/custom/
-├── swash.nix
 ├── superseedr.nix
 └── ghosttime.nix
 ```

@@ -57,7 +57,7 @@
 
       nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
 
-      nixupdate  = "cd ~/.config/nixos && nix-update swash --flake --build && nix-update superseedr --flake --build && nix-update ghosttime --flake --build";
+      nixupdate  = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build";
 
       nixclean   = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
 
@@ -95,11 +95,6 @@
 
       [[ -f ~/.config/fzf/themes/noctalia.sh ]] && \
         source ~/.config/fzf/themes/noctalia.sh
-
-      # Launch Zed completely detached, always opening a new window
-      zed() {
-        ${pkgs.zed-editor}/libexec/zed-editor -n "$@" >/dev/null 2>&1 &!
-      }
     '';
 
     ohMyZsh = {
