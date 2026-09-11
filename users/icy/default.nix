@@ -8,6 +8,7 @@
     isNormalUser = true;
     description = "icy";
     shell = pkgs.zsh;
+
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -27,6 +28,7 @@
 
   programs.zsh = {
     enable = true;
+
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -45,8 +47,17 @@
       # General
       btop = "btop --force-utf";
       sudo = "sudo ";
-      # v = "nvim";
       ff = "fastfetch";
+
+      # bat
+      cat = "bat --paging=never";
+      bathelp = "bat --plain --language=help";
+
+      # eza
+      ls = "eza";
+      ll = "eza -lah";
+      la = "eza -a";
+      lt = "eza --tree";
 
       # NixOS
       nixadd     = "git -C ~/.config/nixos add -A";
@@ -57,11 +68,11 @@
 
       nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
 
-      nixupdate  = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
+      nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
 
-      nixclean   = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+      nixclean = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
 
-      nixflake   = "nix flake update --flake ~/.config/nixos";
+      nixflake = "nix flake update --flake ~/.config/nixos";
 
       nixfrost = ''
         nixupdate &&
@@ -96,8 +107,26 @@
         source ~/.config/fzf/themes/noctalia.sh
     '';
 
+    interactiveShellInit = ''
+      # bat
+      help() {
+        "$@" --help 2>&1 | bat --plain --language=help
+      }
+
+      # zoxide
+      eval "$(zoxide init zsh)"
+
+      # carapace
+      export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+      source <(carapace _carapace)
+
+      # atuin
+      eval "$(atuin init zsh)"
+    '';
+
     ohMyZsh = {
       enable = true;
+
       plugins = [
         "git"
         "sudo"
@@ -108,6 +137,13 @@
     promptInit = ''
       source ${pkgs.fzf}/share/fzf/key-bindings.zsh
       source ${pkgs.fzf}/share/fzf/completion.zsh
+
+      # Custom keybindings
+      # Ctrl+R → Atuin
+      bindkey '^R' atuin-search
+
+      # Alt+T → fzf directory search
+      bindkey '^[t' fzf-cd-widget
     '';
   };
 }
