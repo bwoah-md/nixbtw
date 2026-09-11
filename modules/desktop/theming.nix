@@ -12,7 +12,6 @@
 
   environment.systemPackages = with pkgs; [
     # GTK / Desktop Integration & Theming
-    nautilus
     adw-gtk3
     nwg-look
     papirus-icon-theme
