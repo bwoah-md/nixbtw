@@ -90,11 +90,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1789006805,
-        "narHash": "sha256-xB8mKMOx1IA9vTDNLmJZ6n4wCMq/cuWBBOzGCRnqxrU=",
+        "lastModified": 1789149629,
+        "narHash": "sha256-H6GwaZzZf+4npqv0tph94w9tZddSjFjmQrVsW0z78uk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8ce4ef6cb6f871616146b9fe26d2a5ae594e94fe",
+        "rev": "eaad089433ca2bb662274377d33df3d0e51ef28b",
         "type": "github"
       },
       "original": {
@@ -198,8 +198,7 @@
         "umbriel": "umbriel",
         "winapps": "winapps",
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel_2",
-        "zen-browser": "zen-browser",
-        "zsh-helix-mode": "zsh-helix-mode"
+        "zen-browser": "zen-browser"
       }
     },
     "surge": {
@@ -341,27 +340,6 @@
       "original": {
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "type": "github"
-      }
-    },
-    "zsh-helix-mode": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774203535,
-        "narHash": "sha256-YggmEZ5hRySwXR+VZFKKZ+HzH5Cvz0661QeiAjlE30E=",
-        "owner": "multirious",
-        "repo": "zsh-helix-mode",
-        "rev": "e8d4940588f9809ab5658aa7c9c664921d547879",
-        "type": "github"
-      },
-      "original": {
-        "owner": "multirious",
-        "ref": "main",
-        "repo": "zsh-helix-mode",
         "type": "github"
       }
     }
