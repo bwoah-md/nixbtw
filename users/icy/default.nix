@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./git.nix
@@ -122,24 +122,36 @@
 
       # atuin
       eval "$(atuin init zsh)"
+
+      # Helix mode
+      source ${inputs.zsh-helix-mode}/share/zsh-helix-mode/zsh-helix-mode.plugin.zsh
+
+      # zsh-autosuggestions compatibility
+      ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(
+        zhm_history_prev
+        zhm_history_next
+        zhm_prompt_accept
+        zhm_accept
+        zhm_accept_or_insert_newline
+      )
+
+      ZSH_AUTOSUGGEST_ACCEPT_WIDGETS+=(
+        zhm_move_right
+        zhm_clear_selection_move_right
+      )
+
+      ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(
+        zhm_move_next_word_start
+        zhm_move_next_word_end
+      )
     '';
 
-    ohMyZsh = {
-      enable = true;
-
-      plugins = [
-        "git"
-        "sudo"
-        "copypath"
-      ];
-    };
-
     promptInit = ''
+      # fzf
       source ${pkgs.fzf}/share/fzf/key-bindings.zsh
       source ${pkgs.fzf}/share/fzf/completion.zsh
 
-      # Custom keybindings
-      # Ctrl+R → Atuin
+      # Ctrl+R → Atuin history search
       bindkey '^R' atuin-search
 
       # Alt+T → fzf directory search
