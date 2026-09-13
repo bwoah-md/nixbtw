@@ -51,8 +51,8 @@
       noto-fonts-color-emoji
       font-awesome
       undefined-medium
-      terminus_font_ttf
       annotation-mono
+      nerd-fonts.terminess-ttf
     ];
     fontconfig = {
       defaultFonts = {
