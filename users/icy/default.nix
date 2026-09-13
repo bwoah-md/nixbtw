@@ -119,6 +119,15 @@
     '';
 
     interactiveShellInit = ''
+      # Terminal title
+      precmd() {
+        print -Pn "\e]0;%~\a"
+      }
+
+      preexec() {
+        print -Pn "\e]0;$1\a"
+      }
+
       # bat
       help() {
         "$@" --help 2>&1 | bat --plain --language=help
@@ -149,6 +158,9 @@
     '';
 
     promptInit = ''
+      # Starship
+      eval "$(starship init zsh)"
+
       # fzf
       source ${pkgs.fzf}/share/fzf/key-bindings.zsh
       source ${pkgs.fzf}/share/fzf/completion.zsh
