@@ -5,12 +5,12 @@
     ./hardware-configuration.nix
 
     ../../modules/core
-    ../../modules/desktop
+    ../../modules/desktop/desktop.nix
     ../../modules/hardware/intel.nix
     ../../modules/services
-    ../../modules/packages
+    ../../modules/packages/packages.nix
 
-    ../../users/icy
+    ../../users/icy/shell.nix
   ];
 
   system.stateVersion = "26.05";

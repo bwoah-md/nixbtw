@@ -60,7 +60,7 @@
         };
 
         modules = [
-          ./hosts/nix
+          ./hosts/nix/imports.nix
           inputs.noctalia.nixosModules.default
           inputs.noctalia-greeter.nixosModules.default
           inputs.helium-flake.nixosModules.default
