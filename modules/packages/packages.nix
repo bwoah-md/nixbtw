@@ -18,6 +18,7 @@ in
 
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
+    BROWSER = "zen-twilight";
   };
 
   # Disable NixOS's default Nano package
