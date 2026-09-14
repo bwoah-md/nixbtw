@@ -170,6 +170,10 @@
       # Alt+Backspace → delete one path component
       WORDCHARS=''${WORDCHARS//\/}
       bindkey '^[^?' backward-kill-word
+
+      # Alt+Left/Right → jump one word
+      bindkey '\e[1;3D' backward-word
+      bindkey '\e[1;3C' forward-word
     '';
 
     promptInit = ''
