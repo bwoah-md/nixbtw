@@ -20,7 +20,7 @@
   };
 
   programs.fzf = {
-    fuzzyCompletion = true;
+    fuzzyCompletion = false;
     keybindings = true;
   };
 
@@ -36,10 +36,12 @@
     histFile = "$HOME/.zsh_history";
 
     setOptions = [
-      "INC_APPEND_HISTORY"
       "SHARE_HISTORY"
+      "HIST_IGNORE_SPACE"
+      "HIST_IGNORE_DUPS"
       "HIST_IGNORE_ALL_DUPS"
       "HIST_SAVE_NO_DUPS"
+      "HIST_FIND_NO_DUPS"
       "HIST_REDUCE_BLANKS"
     ];
 
@@ -128,6 +130,12 @@
         print -Pn "\e]0;$1\a"
       }
 
+      # Case-insensitive ZSH completion
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={a-zA-Z}'
+
+      # Completion colors
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+
       # bat
       help() {
         "$@" --help 2>&1 | bat --plain --language=help
@@ -137,7 +145,7 @@
       eval "$(zoxide init zsh)"
 
       # carapace
-      export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+      export CARAPACE_BRIDGES='zsh'
       source <(carapace _carapace)
 
       # atuin
