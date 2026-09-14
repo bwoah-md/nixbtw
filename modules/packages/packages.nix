@@ -8,6 +8,14 @@ in
 {
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      qutebrowser = prev.qutebrowser.override {
+        enableWideVine = true;
+      };
+    })
+  ];
+
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
   };

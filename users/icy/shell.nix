@@ -167,13 +167,20 @@
 
       zle -N fzf-cd-widget
 
+      # --------------------------
+      # --- Custom Keybindings ---
+      # --------------------------
+
       # Alt+Backspace → delete one path component
       WORDCHARS=''${WORDCHARS//\/}
       bindkey '^[^?' backward-kill-word
 
-      # Alt+Left/Right → jump one word
-      bindkey '\e[1;3D' backward-word
-      bindkey '\e[1;3C' forward-word
+      # Ctrl+Left/Right → jump one word
+      bindkey '\e[1;5D' backward-word
+      bindkey '\e[1;5C' forward-word
+
+      # Ctrl+Delete → delete next word
+      bindkey '\e[3;5~' kill-word
     '';
 
     promptInit = ''
