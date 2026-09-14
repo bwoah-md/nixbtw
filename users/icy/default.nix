@@ -50,6 +50,7 @@
       btop = "btop --force-utf";
       sudo = "sudo ";
       ff = "fastfetch";
+      c = "clear";
 
       # bat
       cat = "bat --paging=never";
@@ -163,6 +164,10 @@
       }
 
       zle -N fzf-cd-widget
+
+      # Alt+Backspace → delete one path component
+      WORDCHARS=''${WORDCHARS//\/}
+      bindkey '^[^?' backward-kill-word
     '';
 
     promptInit = ''
