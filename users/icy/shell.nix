@@ -20,7 +20,7 @@
   };
 
   programs.fzf = {
-    fuzzyCompletion = false;
+    fuzzyCompletion = true;
     keybindings = true;
   };
 
@@ -29,6 +29,8 @@
   programs.zsh = {
     enable = true;
 
+    enableCompletion = true;
+    enableLsColors = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
