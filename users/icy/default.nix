@@ -115,6 +115,8 @@
 
     shellInit = ''
       export PATH="$HOME/.local/bin:$PATH"
+      export EDITOR="${pkgs.helix}/bin/hx"
+      export VISUAL="${pkgs.helix}/bin/hx"
       export FZF_BASE="${pkgs.fzf}/share/fzf"
 
       [[ -f ~/.config/fzf/themes/noctalia.sh ]] && \
