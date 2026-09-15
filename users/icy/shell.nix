@@ -93,6 +93,15 @@
         nixclean
       '';
 
+      # Dotfiles
+      dot = "cd ~/.dotfiles";
+      dot-status = "git -C ~/.dotfiles status";
+      dot-diff = "git -C ~/.dotfiles diff";
+      dot-add = "git -C ~/.dotfiles add -A";
+      dot-push = "git -C ~/.dotfiles push";
+      dot-log = "git -C ~/.dotfiles log --oneline --decorate --graph";
+      dot-remote = "git -C ~/.dotfiles remote -v";
+
       # Docker
       docker-start = "sudo systemctl start docker";
       docker-stop = "sudo systemctl stop docker";
