@@ -155,6 +155,38 @@
         "$@" --help 2>&1 | bat --plain --language=help
       }
 
+      # Dotfiles
+      # Stage, review, and locally commit changes already copied into ~/.dotfiles.
+      # Does NOT copy files from ~/.config or push to GitHub.
+      dotfrost() {
+        local repo="$HOME/.dotfiles"
+        local message
+
+        echo "==> Staging dotfiles..."
+        git -C "$repo" add -A
+
+        echo
+        echo "==> Changes staged:"
+        git -C "$repo" status --short
+
+        echo
+        echo "==> Staged diff:"
+        git -C "$repo" diff --cached
+
+        echo
+        read "message?Commit message: "
+
+        if [[ -z "$message" ]]; then
+          echo "No commit message supplied. Aborting."
+          git -C "$repo" reset
+          return 1
+        fi
+
+        echo
+        echo "==> Creating commit..."
+        git -C "$repo" commit -m "$message"
+      }
+
       # zoxide
       eval "$(zoxide init zsh)"
 
