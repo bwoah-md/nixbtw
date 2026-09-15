@@ -95,12 +95,13 @@
 
       # Dotfiles (currently managed by .zshrc)
       # dot = "cd ~/.dotfiles";
-      # dot-status = "git -C ~/.dotfiles status";
-      # dot-diff = "git -C ~/.dotfiles diff";
-      # dot-add = "git -C ~/.dotfiles add -A";
-      # dot-push = "git -C ~/.dotfiles push";
-      # dot-log = "git -C ~/.dotfiles log --oneline --decorate --graph";
-      # dot-remote = "git -C ~/.dotfiles remote -v";
+      # dotstatus = "git -C ~/.dotfiles status";
+      # dotdiff = "git -C ~/.dotfiles diff";
+      # dotadd = "git -C ~/.dotfiles add -A";
+      # dotpush = "git -C ~/.dotfiles push";
+      # dotlog = "git -C ~/.dotfiles log --oneline --decorate --graph";
+      # dotremote = "git -C ~/.dotfiles remote -v";
+      # dotrestore = "cp -r ~/.dotfiles/* ~/.config/ && cp ~/.dotfiles/.zshrc ~/.zshrc";
 
       # Docker
       docker-start = "sudo systemctl start docker";
