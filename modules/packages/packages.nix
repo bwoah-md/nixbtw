@@ -152,5 +152,7 @@ in
     # ─────────────────────────────────────────────────
     obsidian
     nautilus
+    klassy
+    pcmanfm-qt
   ];
 }
