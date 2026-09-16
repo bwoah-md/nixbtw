@@ -23,5 +23,6 @@
     kdePackages.qt6ct
     kdePackages.kcolorscheme
     kdePackages.qtsvg
+    darkly
   ];
 }

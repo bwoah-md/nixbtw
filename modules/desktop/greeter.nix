@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.noctalia-greeter = {
+  services.displayManager.noctalia-greeter = {
     enable = true;
     # package = pkgs.noctalia-greeter;
     greeter-args = "--session umbriel --user icy";
