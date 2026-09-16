@@ -35,7 +35,6 @@ in
     # Shell & Terminal
     # ─────────────────────────────────────────────────
     zellij
-    ghostty
     kitty
     foot
     btop
