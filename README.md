@@ -147,3 +147,43 @@ nixclean
 # Full maintenance workflow
 nixfrost
 ```
+
+---
+
+## Icon Themes
+
+### Papirus
+
+```bash
+nix-shell -p git curl unzip glib gtk3 --run 'bash <(curl -fsSL https://raw.githubusercontent.com/ezequielgk/noctalia-dynamic-icons/main/papirus.sh)'
+```
+
+### Colloid ([Ezequiel](https://github.com/ezequielgk/noctalia-dynamic-icons) flags this as "under maintenance, use with caution")
+
+```bash
+nix-shell -p git curl unzip glib gtk3 --run 'bash <(curl -fsSL https://raw.githubusercontent.com/ezequielgk/noctalia-dynamic-icons/main/colloid.sh)'
+```
+
+### Flat-Remix
+
+```bash
+nix-shell -p git curl unzip glib gtk3 --run 'bash <(curl -fsSL https://raw.githubusercontent.com/ezequielgk/noctalia-dynamic-icons/main/flat-remix.sh)'
+```
+
+### Tela
+
+```bash
+nix-shell -p git curl unzip glib gtk3 --run 'bash <(curl -fsSL https://raw.githubusercontent.com/ezequielgk/noctalia-dynamic-icons/main/tela.sh)'
+```
+
+### Reversal
+
+```bash
+nix-shell -p git curl unzip glib gtk3 --run 'bash <(curl -fsSL https://raw.githubusercontent.com/ezequielgk/noctalia-dynamic-icons/main/reversal.sh)'
+```
+
+### Zafiro
+
+```bash
+nix-shell -p git curl unzip glib gtk3 --run 'bash <(curl -fsSL https://raw.githubusercontent.com/ezequielgk/noctalia-dynamic-icons/main/zafiro.sh)'
+```
