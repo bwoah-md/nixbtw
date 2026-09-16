@@ -151,7 +151,7 @@ in
     # Applications
     # ─────────────────────────────────────────────────
     obsidian
-    nautilus
+    # nautilus
     klassy
     pcmanfm-qt
   ];
