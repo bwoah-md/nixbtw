@@ -94,8 +94,6 @@ in
     bat                   # replacement to cat
     carapace              # multi-shell completion library
     eza
-    zoxide
-    atuin
 
     # Archives
     _7zz
