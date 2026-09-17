@@ -11,6 +11,8 @@
     # portalPackage = pkgs.xdg-desktop-portal-umbriel;
   };
 
+  programs.labwc.enable = true;
+
   # Noctalia shell and desktop environment integration
   programs.noctalia = {
     enable = true;
