@@ -2,7 +2,6 @@
 {
   imports = [
     ./git.nix
-    ./fish.nix
   ];
 
   users.users.icy = {
