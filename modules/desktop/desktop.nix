@@ -23,15 +23,23 @@
   # Desktop Portals configuration
   xdg.portal = {
     enable = true;
+
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
+
     config = {
       umbriel = {
         default = [ "gtk" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "umbriel" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "umbriel" ];
+      };
+
+      labwc = {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
       };
     };
   };
