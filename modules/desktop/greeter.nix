@@ -3,8 +3,11 @@
 {
   services.displayManager.noctalia-greeter = {
     enable = true;
+    passwordless-sync-users = [ "icy" ];
+
     # package = pkgs.noctalia-greeter;
     greeter-args = "--session umbriel --user icy";
+
     settings = {
       cursor = {
         theme = "Bibata-Modern-Classic";
