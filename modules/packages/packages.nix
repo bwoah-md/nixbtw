@@ -156,6 +156,7 @@ in
     # Applications
     # ─────────────────────────────────────────────────
     obsidian
+    readest
     # nautilus
     klassy
     pcmanfm-qt
