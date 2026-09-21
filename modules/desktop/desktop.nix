@@ -1,4 +1,11 @@
 { inputs, pkgs, lib, ... }:
+
+let
+  customPackages = import ../packages/custom.nix {
+    inherit pkgs lib;
+  };
+in
+
 {
   imports = [
     inputs.umbriel.nixosModules.default
@@ -62,16 +69,17 @@
     enableDefaultPackages = true;
 
     packages = with pkgs; [
+      # UI/UX
+      ibm-plex
+      customPackages.google-sans-flex
+
       # Primary Monospace / Coding Font
       maple-mono.NF-CN
 
       # Fallback & Icon Fonts
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
-      noto-fonts
-      noto-fonts-cjk-sans
       noto-fonts-color-emoji
-      font-awesome
       undefined-medium
       annotation-mono
       nerd-fonts.terminess-ttf
@@ -83,15 +91,12 @@
           "Annotation Mono"
           "Maple Mono NF CN"
           "JetBrainsMono Nerd Font"
-          "Noto Sans Mono"
         ];
         sansSerif = [
-          "Noto Sans"
-          "Noto Sans CJK SC"
+          "IBM Plex Sans"
         ];
         serif = [
-          "Noto Serif"
-          "Noto Serif CJK SC"
+          "IBM Plex Serif"
         ];
         emoji = [
           "Noto Color Emoji"
