@@ -75,7 +75,7 @@
         "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
 
         nixupdate =
-          "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && nix-update google-sans-flex --flake --build && rm -f result";
+        "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
 
       nixclean =
         "sudo nix-collect-garbage -d && nix-collect-garbage -d";
