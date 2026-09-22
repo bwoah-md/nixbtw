@@ -34,6 +34,10 @@
       url = "git+https://github.com/noctalia-dev/xdg-desktop-portal-umbriel.git?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zapfast = {
+      url = "github:crmne/zapfast";
+    };
   };
 
   outputs =

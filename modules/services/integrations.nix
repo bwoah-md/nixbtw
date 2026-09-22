@@ -37,6 +37,9 @@ in
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
 
+  # Secret Service / OS keyring
+  services.gnome.gnome-keyring.enable = true;
+
   programs.helium = {
     enable = true;
     flags = [

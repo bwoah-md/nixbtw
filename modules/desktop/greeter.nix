@@ -16,4 +16,7 @@
       };
     };
   };
+
+  # Automatically unlock the GNOME Keyring using the login password
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }

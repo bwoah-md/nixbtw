@@ -160,5 +160,6 @@ in
     # nautilus
     klassy
     pcmanfm-qt
+    inputs.zapfast.packages.${pkgs.system}.default
   ];
 }
