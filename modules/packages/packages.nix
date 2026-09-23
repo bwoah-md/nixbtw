@@ -65,6 +65,7 @@ in
     python3
     jq
     sshfs
+    rclone
 
     # ─────────────────────────────────────────────────
     # Neovim Tools
