@@ -60,6 +60,11 @@ in
     };
   };
 
+  # Set PCManFM as the default file manager
+  xdg.mime.defaultApplications = {
+    "inode/directory" = "pcmanfm-qt.desktop";
+  };
+
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
