@@ -37,6 +37,9 @@ in
     zellij
     kitty
     foot
+    # ghostty
+
+    # CLI
     btop
     fastfetch
     yazi
@@ -50,13 +53,19 @@ in
     # Terminal Toys
     cbonsai
     unimatrix
+    cava
 
     # ─────────────────────────────────────────────────
-    # Development
+    # Editors
     # ─────────────────────────────────────────────────
     zed-editor
     helix
     fresh-editor
+    # neovim
+
+    # ─────────────────────────────────────────────────
+    # Development
+    # ─────────────────────────────────────────────────
     nixd
     nil
     nixfmt
@@ -65,13 +74,11 @@ in
     python3
     jq
     sshfs
-    rclone
 
     # ─────────────────────────────────────────────────
     # Neovim Tools
     # ─────────────────────────────────────────────────
     # gcc
-    # neovim
     # fd
     # lazygit
     # tree-sitter
@@ -91,6 +98,7 @@ in
     wget
     curl
     rsync
+    rclone                # cloud storage
 
     bat                   # replacement to cat
     carapace              # multi-shell completion library
@@ -123,14 +131,12 @@ in
     # ─────────────────────────────────────────────────
     # Media
     # ─────────────────────────────────────────────────
-    mpv
+    mpv                          # video player
     ffmpeg
     yt-dlp
-    obs-studio
-    qview
-    sioyek
-    cava
-    scrcpy
+    obs-studio                  # screen recorder
+    qview                       # image viewer
+    scrcpy                      # android screen
 
     # ─────────────────────────────────────────────────
     # Communication
@@ -158,6 +164,7 @@ in
     # ─────────────────────────────────────────────────
     obsidian
     readest
+    sioyek
     # nautilus
     klassy
     pcmanfm-qt
