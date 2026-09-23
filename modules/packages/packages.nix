@@ -45,7 +45,7 @@ in
     yazi
     ripgrep
     tree
-    ncdu
+    diskbloom               # ncdu replacement
     concord-tui
     cliamp
     lazygit
