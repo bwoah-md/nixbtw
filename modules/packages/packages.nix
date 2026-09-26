@@ -18,7 +18,7 @@ in
 
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
-    BROWSER = "zen-twilight";
+    BROWSER = "firefox-beta";
   };
 
   # Disable NixOS's default Nano package
@@ -87,10 +87,10 @@ in
     # ─────────────────────────────────────────────────
     # Browsers
     # ─────────────────────────────────────────────────
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
     tor-browser
     mullvad-browser
     qutebrowser
+    firefox-beta
 
     # ─────────────────────────────────────────────────
     # CLI / File Utilities

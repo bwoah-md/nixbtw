@@ -2,15 +2,15 @@
 
 {
   systemd.user.services.arkenfox-autoupdate = {
-    description = "Weekly Arkenfox user.js updater for Zen Twilight";
+    description = "Weekly Arkenfox user.js updater for Firefox Beta";
     path = with pkgs; [ bash curl git gnutar gzip coreutils ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "update-arkenfox" ''
-        ZEN_DIR="$HOME/.config/zen/zt273bds.Default (twilight)"
+        FF_DIR="$HOME/.config/mozilla/firefox/okskq1om.betabtw"
 
-        if [ -d "$ZEN_DIR" ]; then
-          cd "$ZEN_DIR"
+        if [ -d "$FF_DIR" ]; then
+          cd "$FF_DIR"
           if [ ! -f "updater.sh" ]; then
             ${pkgs.curl}/bin/curl -s -O https://raw.githubusercontent.com/arkenfox/user.js/master/updater.sh
           fi
