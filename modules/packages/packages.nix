@@ -110,6 +110,9 @@ in
     _7zz
     unzip
     unrar
+    p7zip
+    zip
+    rar
 
     # ─────────────────────────────────────────────────
     # Hardware & System Diagnostics
