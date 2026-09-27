@@ -69,7 +69,7 @@
       dotpush = "git -C ~/.dotfiles push";
       dotlog = "git -C ~/.dotfiles log --oneline --decorate --graph";
       dotremote = "git -C ~/.dotfiles remote -v";
-      dotrestore = "cp -r ~/.dotfiles/* ~/.config/ && cp ~/.dotfiles/.zshrc ~/.zshrc";
+      dotrestore = "cp -r ~/.dotfiles/* ~/.config/";
 
       # Docker
       docker-start = "sudo systemctl start docker";
