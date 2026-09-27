@@ -118,8 +118,6 @@ modules/packages/custom/
 └── ghosttime.nix
 ```
 
-`cliamp` is provided directly by nixpkgs and therefore does not belong in the custom package definitions.
-
 ---
 
 ## Useful Commands
