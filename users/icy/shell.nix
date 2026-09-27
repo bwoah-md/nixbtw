@@ -1,64 +1,50 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./git.nix
-  ];
+  imports = [ ./git.nix ];
 
   users.users.icy = {
     isNormalUser = true;
     description = "icy";
-    shell = pkgs.zsh;
-
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "audio"
-      "docker"
-      "kvm"
-    ];
+    shell = pkgs.bash;
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "kvm" ];
   };
 
-  programs.fzf = {
-    fuzzyCompletion = true;
-    keybindings = true;
+  environment.systemPackages = [ pkgs.fd ];
+
+  programs.television = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      auto_sync = false;
+      search_mode = "fuzzy";
+      style = "compact";
+    };
   };
 
   programs.starship.enable = true;
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
 
-    enableCompletion = true;
-    enableLsColors = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    histSize = 10000;
-    histFile = "$HOME/.zsh_history";
-
-    setOptions = [
-      "SHARE_HISTORY"
-      "HIST_IGNORE_SPACE"
-      "HIST_IGNORE_DUPS"
-      "HIST_IGNORE_ALL_DUPS"
-      "HIST_SAVE_NO_DUPS"
-      "HIST_FIND_NO_DUPS"
-      "HIST_REDUCE_BLANKS"
-    ];
-
-    shellAliases = {
+    shellAbbrs = {
       # General
       btop = "btop --force-utf";
-      sudo = "sudo ";
       ff = "fastfetch";
       c = "clear";
 
-      # bat
+      # bat / eza
       cat = "bat --paging=never";
       bathelp = "bat --plain --language=help";
-
-      # eza
       ls = "eza";
       ll = "eza -lah";
       la = "eza -a";
@@ -70,176 +56,109 @@
       nixpush = "git -C ~/.config/nixos push origin main";
       nixpull = "git -C ~/.config/nixos pull origin main";
       nixstatus = "git -C ~/.config/nixos status";
+      nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
+      nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
+      nixclean = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+      nixflake = "nix flake update --flake ~/.config/nixos";
 
-      nixrebuild =
-        "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
-
-        nixupdate =
-        "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
-
-      nixclean =
-        "sudo nix-collect-garbage -d && nix-collect-garbage -d";
-
-      nixflake =
-        "nix flake update --flake ~/.config/nixos";
-
-      nixfrost = ''
-        nixupdate &&
-        nixflake &&
-        nixadd &&
-        nixrebuild &&
-        nixcommit "ran nixfrost at $(date '+%-d %b, %Y at %H:%M')" &&
-        nixpush &&
-        nixclean
-      '';
-
-      # Dotfiles (currently managed by .zshrc)
-      # dot = "cd ~/.dotfiles";
-      # dotstatus = "git -C ~/.dotfiles status";
-      # dotdiff = "git -C ~/.dotfiles diff";
-      # dotadd = "git -C ~/.dotfiles add -A";
-      # dotpush = "git -C ~/.dotfiles push";
-      # dotlog = "git -C ~/.dotfiles log --oneline --decorate --graph";
-      # dotremote = "git -C ~/.dotfiles remote -v";
-      # dotrestore = "cp -r ~/.dotfiles/* ~/.config/ && cp ~/.dotfiles/.zshrc ~/.zshrc";
+      # Dotfiles
+      dot = "cd ~/.dotfiles";
+      dotstatus = "git -C ~/.dotfiles status";
+      dotdiff = "git -C ~/.dotfiles diff";
+      dotadd = "git -C ~/.dotfiles add -A";
+      dotpush = "git -C ~/.dotfiles push";
+      dotlog = "git -C ~/.dotfiles log --oneline --decorate --graph";
+      dotremote = "git -C ~/.dotfiles remote -v";
+      dotrestore = "cp -r ~/.dotfiles/* ~/.config/ && cp ~/.dotfiles/.zshrc ~/.zshrc";
 
       # Docker
       docker-start = "sudo systemctl start docker";
       docker-stop = "sudo systemctl stop docker";
 
       # Windows VM
-      win =
-        "sdl-freerdp /u:\"icy\" /p:\"1771\" /v:127.0.0.1:3389 /cert:ignore /dynamic-resolution +clipboard /sound /microphone +home-drive";
-
-      win-start =
-        "sudo systemctl start docker && docker start windows";
-
-      win-stop =
-        "docker stop windows && sudo systemctl stop docker";
+      win = "sdl-freerdp /u:\"icy\" /p:\"1771\" /v:127.0.0.1:3389 /cert:ignore /dynamic-resolution +clipboard /sound /microphone +home-drive";
+      win-start = "sudo systemctl start docker && docker start windows";
+      win-stop = "docker stop windows && sudo systemctl stop docker";
 
       # Phone
-      mount-phone =
-        "mkdir -p ~/LineageOS && sshfs LineageOS:/storage/emulated/0 ~/LineageOS";
-
-      umount-phone =
-        "fusermount -u ~/LineageOS";
+      mount-phone = "mkdir -p ~/LineageOS && sshfs LineageOS:/storage/emulated/0 ~/LineageOS";
+      umount-phone = "fusermount -u ~/LineageOS";
     };
 
     shellInit = ''
-      export PATH="$HOME/.local/bin:$PATH"
-      export EDITOR="${pkgs.helix}/bin/hx"
-      export VISUAL="${pkgs.helix}/bin/hx"
-      export FZF_BASE="${pkgs.fzf}/share/fzf"
-
-      [[ -f ~/.config/fzf/themes/noctalia.sh ]] && \
-        source ~/.config/fzf/themes/noctalia.sh
+      set -gx PATH $HOME/.local/bin $PATH
+      set -gx EDITOR ${pkgs.helix}/bin/hx
+      set -gx VISUAL ${pkgs.helix}/bin/hx
     '';
 
     interactiveShellInit = ''
-      # Terminal title
-      precmd() {
-        print -Pn "\e]0;%~\a"
-      }
+      set fish_greeting
 
-      preexec() {
-        print -Pn "\e]0;$1\a"
-      }
+      function fish_title
+        set -l cmd (status current-command)
+        if test -z "$cmd"; or test "$cmd" = fish
+          echo fish
+        else
+          echo $cmd
+        end
+      end
 
-      # Case-insensitive ZSH completion
-      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={a-zA-Z}'
+      function tv-cd
+        set -l dir (tv dirs)
+        if test -n "$dir"
+          cd -- "$dir"
+        end
+        commandline -f repaint
+      end
+      bind \et tv-cd
 
-      # Completion colors
-      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      function help
+        $argv --help 2>&1 | bat --plain --language=help
+      end
 
-      # bat
-      help() {
-        "$@" --help 2>&1 | bat --plain --language=help
-      }
-
-      # Dotfiles
-      # Stage, review, and locally commit changes already copied into ~/.dotfiles.
-      # Does NOT copy files from ~/.config or push to GitHub.
-      dotfrost() {
-        local repo="$HOME/.dotfiles"
-        local message
-
-        echo "==> Staging dotfiles..."
-        git -C "$repo" add -A
-
-        echo
-        echo "==> Changes staged:"
+      function dotfrost
+        set -l repo "$HOME/.dotfiles"
+        git -C "$repo" add -A; or return 1
         git -C "$repo" status --short
-
-        echo
-        echo "==> Staged diff:"
         git -C "$repo" diff --cached
-
-        echo
-        read "message?Commit message: "
-
-        if [[ -z "$message" ]]; then
-          echo "No commit message supplied. Aborting."
+        read -l -P "Commit message: " message
+        if test -z "$message"
           git -C "$repo" reset
           return 1
-        fi
-
-        echo
-        echo "==> Creating commit..."
+        end
         git -C "$repo" commit -m "$message"
-      }
+      end
 
-      # zoxide
-      eval "$(zoxide init zsh)"
+      function nixfrost
+        set -l repo "$HOME/.config/nixos"
+        set -l timestamp (date '+%-d %b, %Y at %H:%M')
 
-      # carapace
-      export CARAPACE_BRIDGES='zsh'
-      source <(carapace _carapace)
+        sudo -v; or return 1
+        command sh -c 'while :; do sleep 60; sudo -n -v || exit; done' </dev/null >/dev/null 2>&1 &
+        set -l keepalive_pid $last_pid
 
-      # atuin
-      eval "$(atuin init zsh)"
+        begin
+          cd "$repo"
+          and nix-update superseedr --flake --build
+          and nix-update ghosttime --flake --build
+          and rm -f result
+          and nix flake update --flake "$repo"
+          and git -C "$repo" add -A
+          and sudo nixos-rebuild switch --flake "$repo#nix"
+          and git -C "$repo" commit -m "ran nixfrost at $timestamp"
+          and git -C "$repo" push origin main
+          and sudo nix-collect-garbage -d
+          and nix-collect-garbage -d
+        end
+        set -l result_code $status
 
-      # Alt+T → fzf directory search
-      fzf-cd-widget() {
-        local dir
-        dir=$(find . -type d 2>/dev/null | fzf)
-
-        if [[ -n "$dir" ]]; then
-          BUFFER="cd ''${(q)dir}"
-          zle accept-line
-        fi
-      }
-
-      zle -N fzf-cd-widget
-
-      # --------------------------
-      # --- Custom Keybindings ---
-      # --------------------------
-
-      # Alt+Backspace → delete one path component
-      WORDCHARS=''${WORDCHARS//\/}
-      bindkey '^[^?' backward-kill-word
-
-      # Ctrl+Left/Right → jump one word
-      bindkey '\e[1;5D' backward-word
-      bindkey '\e[1;5C' forward-word
-
-      # Ctrl+Delete → delete next word
-      bindkey '\e[3;5~' kill-word
+        command kill $keepalive_pid 2>/dev/null
+        return $result_code
+      end
     '';
 
     promptInit = ''
-      # Starship
-      eval "$(starship init zsh)"
-
-      # fzf
-      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
-      source ${pkgs.fzf}/share/fzf/completion.zsh
-
-      # Ctrl+R → Atuin
-      bindkey '^R' atuin-search
-
-      # Alt+T → fzf directory search
-      bindkey '^[t' fzf-cd-widget
+      starship init fish | source
     '';
   };
 }
