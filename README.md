@@ -101,7 +101,6 @@ ran nixfrost at 9 Sep, 2026 at 15:30
 
 The configuration maintains a small set of packages that are not being consumed directly from nixpkgs:
 
-* **Swash** — built from its upstream GitHub repository
 * **Superseedr** — built from its upstream Rust source using Nix's `buildRustPackage`
 * **Ghosttime** — packaged from its upstream npm release
 
@@ -151,6 +150,8 @@ nixfrost
 ---
 
 ## Icon Themes
+
+Use in bash shell...
 
 ### Papirus
 
