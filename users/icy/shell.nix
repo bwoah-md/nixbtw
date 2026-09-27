@@ -69,7 +69,7 @@
       dotpush = "git -C ~/.dotfiles push";
       dotlog = "git -C ~/.dotfiles log --oneline --decorate --graph";
       dotremote = "git -C ~/.dotfiles remote -v";
-      dotrestore = "cp -r ~/.dotfiles/* ~/.config/";
+      dotrestore = "cp -r ~/.dotfiles/* ~/.config/*";
 
       # Docker
       docker-start = "sudo systemctl start docker";
@@ -116,7 +116,7 @@
         $argv --help 2>&1 | bat --plain --language=help
       end
 
-      function dotfrost
+      function dotcommit
         set -l repo "$HOME/.dotfiles"
         git -C "$repo" add -A; or return 1
         git -C "$repo" status --short
