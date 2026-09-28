@@ -89,6 +89,8 @@
       set -gx PATH $HOME/.local/bin $PATH
       set -gx EDITOR ${pkgs.helix}/bin/hx
       set -gx VISUAL ${pkgs.helix}/bin/hx
+      set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
+      set -gx MANROFFOPT "-c"
     '';
 
     interactiveShellInit = ''
