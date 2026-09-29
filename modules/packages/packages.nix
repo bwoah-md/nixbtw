@@ -117,6 +117,7 @@ in
     # Cursors
     # ─────────────────────────────────────────────────
     capitaine-cursors
+    phinger-cursors
 
     # ─────────────────────────────────────────────────
     # Hardware & System Diagnostics
