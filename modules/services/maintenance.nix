@@ -2,7 +2,7 @@
 
 {
   systemd.user.services.arkenfox-autoupdate = {
-    description = "Weekly Arkenfox user.js updater for Firefox Beta";
+    description = "Weekly Arkenfox user.js updater for Firefox";
     path = with pkgs; [ bash curl git gnutar gzip coreutils ];
     serviceConfig = {
       Type = "oneshot";

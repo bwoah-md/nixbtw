@@ -18,7 +18,7 @@ in
 
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
-    BROWSER = "firefox-beta";
+    BROWSER = "firefox";
   };
 
   # Disable NixOS's default Nano package
@@ -90,7 +90,7 @@ in
     tor-browser
     mullvad-browser
     qutebrowser
-    firefox-beta
+    firefox-bin
 
     # ─────────────────────────────────────────────────
     # CLI / File Utilities
