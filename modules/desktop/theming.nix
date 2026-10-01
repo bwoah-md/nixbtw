@@ -16,7 +16,6 @@
     nwg-look
     papirus-icon-theme
     adwaita-icon-theme
-    bibata-cursors
 
     # Qt Theming
     libsForQt5.qt5ct

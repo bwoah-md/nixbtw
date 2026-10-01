@@ -10,9 +10,9 @@
 
     settings = {
       cursor = {
-        theme = "Bibata-Modern-Classic";
+        theme = "Adwaita";
         size = 24;
-        path = "${pkgs.bibata-cursors}/share/icons";
+        path = "${pkgs.adwaita-icon-theme}/share/icons";
       };
     };
   };
