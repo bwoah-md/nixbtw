@@ -21,6 +21,8 @@
 
     surge.url = "github:SurgeDM/Surge/08d09d11199acf6082a89c4da0d19a04749de997";
 
+    cpak.url = "github:Containerpak/cpak/v2";
+
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,6 +72,7 @@
           inputs.noctalia.nixosModules.default
           inputs.noctalia-greeter.nixosModules.default
           inputs.helium-flake.nixosModules.default
+          inputs.cpak.nixosModules.default
         ];
       };
 
