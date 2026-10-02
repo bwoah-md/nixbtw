@@ -176,7 +176,7 @@ in
     # nautilus
     klassy
     pcmanfm-qt
-    inputs.zapfast.packages.${pkgs.system}.default
+    inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
     lxqt.lxqt-archiver
   ];
 }
