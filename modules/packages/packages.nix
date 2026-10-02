@@ -117,7 +117,6 @@ in
     # Cursors
     # ─────────────────────────────────────────────────
     capitaine-cursors
-    bibata-cursors-translucent
 
     # ─────────────────────────────────────────────────
     # Hardware & System Diagnostics
