@@ -175,6 +175,7 @@ in
     sioyek
     # nautilus
     klassy
+    bottles
     pcmanfm-qt
     inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
     lxqt.lxqt-archiver
