@@ -61,6 +61,7 @@ in
     zed-editor
     helix
     fresh-editor
+    tuios
     # neovim
 
     # ─────────────────────────────────────────────────
