@@ -60,7 +60,7 @@ in
     # ─────────────────────────────────────────────────
     zed-editor
     helix
-    fresh-editor
+    # fresh-editor
     tuios
     # neovim
 
