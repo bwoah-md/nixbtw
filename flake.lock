@@ -106,11 +106,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790967847,
-        "narHash": "sha256-zjTq+MSL+B7GpRx/gEpj3y+OqonsdZBuA1OGrBQdlXw=",
+        "lastModified": 1791048152,
+        "narHash": "sha256-R+cq28uDVDRY//7BjWXh/oKGv+yIrDsuFJJX9H41yEo=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "63685992f8cfef008de338ff769c8f44df3bcdaa",
+        "rev": "e639a87e811ad3268c73f6d5e77669c94184ba15",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790518002,
-        "narHash": "sha256-agpHRmhsUL4ZNFseCNilGSiC/cc0S2tC1ZvC5rXmgtY=",
+        "lastModified": 1791048167,
+        "narHash": "sha256-yiE/la9jccbQavds701a3OXvyzoWrOV34d7PG4ieewg=",
         "owner": "noctalia-dev",
         "repo": "noctalia-greeter",
-        "rev": "44337ecba043749c29de6f3d563315b91987a908",
+        "rev": "6127c31e64624edea725c134e8c19a1dd25447e1",
         "type": "github"
       },
       "original": {
@@ -216,11 +216,11 @@
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
-        "lastModified": 1790996288,
-        "narHash": "sha256-Xf0ntJsGdw/OX+gJXlpJ/iR6pJz5skDU1ol6mOuGWec=",
+        "lastModified": 1791048127,
+        "narHash": "sha256-zmIIFsv4rhd5Wej8/HP2GSpq6cCcoI7qlLQgIU76eF8=",
         "ref": "refs/heads/main",
-        "rev": "f1d99f8f96e5d809ec87645f4780a4bfaaf08f13",
-        "revCount": 1153,
+        "rev": "eed6c60ba450206a8c4048299f3cfd62ff3d69d6",
+        "revCount": 1158,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/noctalia-dev/umbriel.git"
@@ -305,11 +305,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1790988311,
-        "narHash": "sha256-hkH+Coh6fu7vUJN9nYaLctL2UPsb243IFv3lob7HkGA=",
+        "lastModified": 1791053550,
+        "narHash": "sha256-2MIXo2xEpj5Fd73cC1CXpooOfc01TVoAZ9icYf7FXNg=",
         "owner": "crmne",
         "repo": "zapfast",
-        "rev": "a0842d9484ee8c52043f6a9ce61c51701640c8a1",
+        "rev": "0b869a60bb13ff00da2c060857a697508a557fb0",
         "type": "github"
       },
       "original": {
