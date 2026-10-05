@@ -1,6 +1,6 @@
 {
   imports = [
-    ./bluetooth.nix
+    # ./bluetooth.nix
     ./docker.nix
     ./integrations.nix
     ./maintenance.nix

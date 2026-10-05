@@ -18,7 +18,7 @@ in
 
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
-    BROWSER = "firefox";
+    BROWSER = "librewolf";
   };
 
   # Disable NixOS's default Nano package
@@ -91,7 +91,7 @@ in
     tor-browser
     mullvad-browser
     qutebrowser
-    firefox-bin
+    librewolf-bin
 
     # ─────────────────────────────────────────────────
     # CLI / File Utilities
