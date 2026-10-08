@@ -93,12 +93,10 @@ in
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "Annotation Mono"
-          "Maple Mono NF CN"
           "JetBrainsMono Nerd Font"
         ];
         sansSerif = [
-          "IBM Plex Sans"
+          "Google Sans Flex"
         ];
         serif = [
           "IBM Plex Serif"
