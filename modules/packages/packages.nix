@@ -146,10 +146,6 @@ in
     qview                       # image viewer
     scrcpy                      # android screen
 
-    # MPV Scripts
-    mpvScripts.mpris
-    mpvScripts.mpv-discord
-
     # ─────────────────────────────────────────────────
     # Communication
     # ─────────────────────────────────────────────────
