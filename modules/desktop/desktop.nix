@@ -88,7 +88,6 @@ in
       undefined-medium
       annotation-mono
       nerd-fonts.terminess-ttf
-      nerd-fonts.go-mono
     ];
 
     fontconfig = {
