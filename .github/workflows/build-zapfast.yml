@@ -25,7 +25,7 @@ jobs:
           name: icyatnix
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build ZapFast and Serein
+      - name: Build and explicitly push ZapFast and Serein
         shell: bash
         run: |
           set -euo pipefail
@@ -46,13 +46,22 @@ jobs:
 
           echo "$packages" | jq .
 
-          count=$(echo "$packages" | jq 'length')
-          if [ "$count" -ne 2 ]; then
-            echo "Expected exactly two packages, found $count"
-            exit 1
-          fi
+          test "$(echo "$packages" | jq 'length')" -eq 2
 
           while IFS= read -r drv; do
-            nix build --no-link "$drv"
+            echo "Building $drv"
+
+            build_json=$(nix build --json --no-link "$drv")
+
+            echo "$build_json" | jq .
+
+            while IFS= read -r out; do
+              echo "Pushing output and its closure: $out"
+              mapfile -t closure < <(nix-store -qR "$out")
+              cachix push icyatnix "${closure[@]}"
+            done < <(
+              echo "$build_json" |
+                jq -r '.[].outputs[] | if type == "object" then .path else . end'
+            )
           done < <(echo "$packages" | jq -r '.[].drvPath')
 
