@@ -176,7 +176,12 @@ in
     # nautilus
     klassy
     pcmanfm-qt
-    inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
     lxqt.lxqt-archiver
+
+    # ─────────────────────────────────────────────────
+    # Apps from Flakes
+    # ─────────────────────────────────────────────────
+    inputs.serein.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
