@@ -1,4 +1,3 @@
-
 name: Build Rust Apps
 
 on:
@@ -13,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -25,7 +25,7 @@ jobs:
           name: icyatnix
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build and explicitly push ZapFast and Serein
+      - name: Build and push ZapFast and Serein
         shell: bash
         run: |
           set -euo pipefail
@@ -51,17 +51,14 @@ jobs:
           while IFS= read -r drv; do
             echo "Building $drv"
 
-            build_json=$(nix build --json --no-link "$drv")
+            mapfile -t outputs < <(nix-store --realise "$drv")
 
-            echo "$build_json" | jq .
+            for out in "${outputs[@]}"; do
+              echo "Built output: $out"
 
-            while IFS= read -r out; do
-              echo "Pushing output and its closure: $out"
               mapfile -t closure < <(nix-store -qR "$out")
-              cachix push icyatnix "${closure[@]}"
-            done < <(
-              echo "$build_json" |
-                jq -r '.[].outputs[] | if type == "object" then .path else . end'
-            )
-          done < <(echo "$packages" | jq -r '.[].drvPath')
 
+              echo "Pushing output and runtime dependencies to Cachix"
+              cachix push icyatnix "${closure[@]}"
+            done
+          done < <(echo "$packages" | jq -r '.[].drvPath')
