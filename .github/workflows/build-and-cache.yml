@@ -34,18 +34,34 @@ jobs:
           set -euo pipefail
 
           for package in zapfast serein; do
-            echo "Building $package"
+            echo "::group::Build and cache $package"
 
             drv=$(nix eval --raw \
-              ".#nixosConfigurations.nix.pkgs.${package}.drvPath" 2>/dev/null) || {
-                echo "Could not resolve $package through pkgs; use the flake package output instead."
-                exit 1
-              }
+              ".#nixosConfigurations.nix.config.environment.systemPackages" \
+              --apply "
+                xs:
+                  let
+                    matches = builtins.filter
+                      (x:
+                        let name = x.name or \"\";
+                        in builtins.match \"${package}-.*\" name != null
+                      )
+                      xs;
+                  in
+                    if builtins.length matches == 1
+                    then (builtins.head matches).drvPath
+                    else throw \"Expected exactly one ${package} package\"
+              ")
+
+            echo "Derivation: $drv"
 
             mapfile -t outputs < <(nix-store --realise "$drv")
 
             for out in "${outputs[@]}"; do
+              echo "Output: $out"
               mapfile -t closure < <(nix-store -qR "$out")
               cachix push icyatnix "${closure[@]}"
             done
+
+            echo "::endgroup::"
           done
