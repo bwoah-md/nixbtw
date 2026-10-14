@@ -72,6 +72,7 @@
 
         modules = [
           ./hosts/nix/imports.nix
+          ./modules/packages/cachix.nix
           inputs.noctalia.nixosModules.default
           inputs.noctalia-greeter.nixosModules.default
           inputs.helium-flake.nixosModules.default

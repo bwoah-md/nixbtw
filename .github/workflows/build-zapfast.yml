@@ -1,4 +1,4 @@
-name: Build Rust Apps
+name: Build and Cache Packages
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
       - "flake.nix"
       - "flake.lock"
       - "modules/packages/**"
-      - ".github/workflows/build-zapfast.yml"
+      - ".github/workflows/build-and-cache.yml"
 
 jobs:
   build:
@@ -25,10 +25,12 @@ jobs:
           name: icyatnix
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build and push ZapFast and Serein
+      - name: Build and cache selected packages
         shell: bash
         run: |
           set -euo pipefail
+
+          mapfile -t wanted < <(jq -r '.[]' modules/packages/remote-builds.json)
 
           packages=$(nix eval --json \
             '.#nixosConfigurations.nix.config.environment.systemPackages' \
@@ -44,21 +46,19 @@ jobs:
                     xs)
             ')
 
-          echo "$packages" | jq .
+          for name in "${wanted[@]}"; do
+            drv=$(echo "$packages" | jq -er \
+              --arg name "$name" \
+              '.[] | select(.name == $name) | .drvPath') || {
+                echo "ERROR: Package '$name' was not found in systemPackages."
+                exit 1
+              }
 
-          test "$(echo "$packages" | jq 'length')" -eq 2
-
-          while IFS= read -r drv; do
-            echo "Building $drv"
-
+            echo "Building or substituting $name ($drv)"
             mapfile -t outputs < <(nix-store --realise "$drv")
 
             for out in "${outputs[@]}"; do
-              echo "Built output: $out"
-
               mapfile -t closure < <(nix-store -qR "$out")
-
-              echo "Pushing output and runtime dependencies to Cachix"
               cachix push icyatnix "${closure[@]}"
             done
-          done < <(echo "$packages" | jq -r '.[].drvPath')
+          done
