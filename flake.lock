@@ -127,11 +127,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791942860,
-        "narHash": "sha256-kHlo7IkhPivjLmHlxVZeTMBarNLPfkqQ2nlS2SQ2zfQ=",
+        "lastModified": 1791964679,
+        "narHash": "sha256-/Uuhh7uZvcNQYeZmuFjErs9GmDXvsspgIRZacSC+ywk=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "fc2af27c0e616006bf858cad3b7c9711a028e501",
+        "rev": "488660a7994b51069b6542f070d5c433c66b5629",
         "type": "github"
       },
       "original": {
@@ -204,11 +204,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791970407,
-        "narHash": "sha256-7ekFv8lFr/ih/O82AfHwc79q4xW6l+p5UMm90aHqUYo=",
+        "lastModified": 1791974126,
+        "narHash": "sha256-MJE/XMtVfCuFjpHhr8Q52Rtsh98+3vXWet0FNlBeVHE=",
         "owner": "ViceVerse-cz",
         "repo": "Serein",
-        "rev": "b6f96c7a99be969bec3f292f2a113b9129bdcb0a",
+        "rev": "c84b5998d8f148db6604c2b74c036271e6a2886c",
         "type": "github"
       },
       "original": {
@@ -348,11 +348,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1791933593,
-        "narHash": "sha256-jT2JGLqYuJC4V+lmXfscE05mNJ0xGArERn6Pnk9o/6A=",
+        "lastModified": 1791976324,
+        "narHash": "sha256-+KWqHi4EdNv0KaZFgf7TVb/Rvd1Pd7B3sxCsnFQNf/k=",
         "owner": "crmne",
         "repo": "zapfast",
-        "rev": "25a916a6a8d025d3bd182818e4af585ba82b8c56",
+        "rev": "e71bdd7a8bac9b86bbcaebd37a1f708d59bc26a2",
         "type": "github"
       },
       "original": {
