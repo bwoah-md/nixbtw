@@ -1,0 +1,51 @@
+name: Build and Cache Rust Apps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "flake.nix"
+      - "flake.lock"
+      - "modules/packages/packages.nix"
+      - ".github/workflows/build-and-cache.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: cachix/cachix-action@v16
+        with:
+          name: icyatnix
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Build and cache ZapFast and Serein
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for package in zapfast serein; do
+            echo "Building $package"
+
+            drv=$(nix eval --raw \
+              ".#nixosConfigurations.nix.pkgs.${package}.drvPath" 2>/dev/null) || {
+                echo "Could not resolve $package through pkgs; use the flake package output instead."
+                exit 1
+              }
+
+            mapfile -t outputs < <(nix-store --realise "$drv")
+
+            for out in "${outputs[@]}"; do
+              mapfile -t closure < <(nix-store -qR "$out")
+              cachix push icyatnix "${closure[@]}"
+            done
+          done
