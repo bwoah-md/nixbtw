@@ -3,10 +3,10 @@
 {
   services.displayManager.noctalia-greeter = {
     enable = true;
-    passwordless-sync-users = [ "icy" ];
+    passwordlessSyncUsers = [ "icy" ];
 
-    # package = pkgs.noctalia-greeter;
-    greeter-args = "--session umbriel --user icy";
+    package = pkgs.noctalia-greeter;
+    extraArgs = [ "--session" "umbriel" "--user" "icy" ];
 
     settings = {
       cursor = {

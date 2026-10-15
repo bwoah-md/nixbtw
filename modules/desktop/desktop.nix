@@ -8,7 +8,6 @@ in
 
 {
   imports = [
-    inputs.umbriel.nixosModules.default
     ./greeter.nix
     ./theming.nix
   ];

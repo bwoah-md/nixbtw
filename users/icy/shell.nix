@@ -59,7 +59,7 @@
       nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
       nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
       nixclean = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
-      nixflake = "nix flake update nixpkgs noctalia noctalia-greeter helium-flake surge winapps umbriel xdg-desktop-portal-umbriel --flake ~/.config/nixos";
+      nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel --flake ~/.config/nixos";
       nixcachix = "cd ~/.config/nixos && nix flake update zapfast serein --flake .";
 
       # Dotfiles

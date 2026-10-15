@@ -4,15 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/cachix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia-greeter = {
-      url = "github:noctalia-dev/noctalia-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     helium-flake = {
       url = "github:oxcl/nix-flake-helium-browser";
@@ -26,15 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    umbriel = {
-      url = "git+https://github.com/noctalia-dev/umbriel.git?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    xdg-desktop-portal-umbriel = {
-      url = "git+https://github.com/noctalia-dev/xdg-desktop-portal-umbriel.git?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
 
     zapfast = {
       url = "github:crmne/zapfast";
@@ -74,7 +58,7 @@
           ./hosts/nix/imports.nix
           ./modules/packages/cachix.nix
           inputs.noctalia.nixosModules.default
-          inputs.noctalia-greeter.nixosModules.default
+          inputs.umbriel.nixosModules.default
           inputs.helium-flake.nixosModules.default
         ];
       };
