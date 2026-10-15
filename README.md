@@ -84,6 +84,7 @@ Runs the complete maintenance workflow in sequence:
 6. Commits the changes with an automatic timestamped message
 7. Pushes the commit to GitHub with `nixpush`
 8. Cleans old Nix generations with `nixclean`
+9. `nixcachix` updates the packages pulled from Cachix library.
 
 ```bash
 nixfrost
