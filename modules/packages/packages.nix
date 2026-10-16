@@ -92,7 +92,6 @@ in
     mullvad-browser
     qutebrowser
     librewolf
-    thunderbird-bin
 
     # ─────────────────────────────────────────────────
     # CLI / File Utilities
