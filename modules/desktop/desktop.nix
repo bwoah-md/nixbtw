@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   customPackages = import ../packages/custom.nix {
