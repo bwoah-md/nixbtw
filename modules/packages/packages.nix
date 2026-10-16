@@ -91,7 +91,7 @@ in
     tor-browser
     mullvad-browser
     qutebrowser
-    librewolf-bin
+    librewolf
 
     # ─────────────────────────────────────────────────
     # CLI / File Utilities
