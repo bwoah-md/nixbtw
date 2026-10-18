@@ -59,8 +59,7 @@
       nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
       nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
       nixclean = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
-      nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel --flake ~/.config/nixos";
-      nixcachix = "cd ~/.config/nixos && nix flake update zapfast serein --flake .";
+      nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel zapfast --flake ~/.config/nixos";
 
       # Dotfiles
       dot = "cd ~/.dotfiles";
@@ -145,7 +144,7 @@
           and nix-update superseedr --flake --build
           and nix-update ghosttime --flake --build
           and rm -f result
-          and nix flake update nixpkgs noctalia noctalia-greeter helium-flake surge winapps umbriel xdg-desktop-portal-umbriel --flake "$repo"
+          and nix flake update nixpkgs noctalia helium-flake surge winapps umbriel --flake "$repo"
           and git -C "$repo" add -A
           and sudo nixos-rebuild switch --flake "$repo#nix"
           and git -C "$repo" commit -m "ran nixfrost at $timestamp"

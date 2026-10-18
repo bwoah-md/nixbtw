@@ -14,27 +14,6 @@
         "url": "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz"
       }
     },
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "serein",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788450739,
-        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -170,7 +149,6 @@
         "helium-flake": "helium-flake",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
-        "serein": "serein",
         "surge": "surge",
         "umbriel": "umbriel",
         "winapps": "winapps",
@@ -195,27 +173,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "serein": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1792113715,
-        "narHash": "sha256-6hOIdBirXj0yCHwo0ZHI/GNPbg1jZYbV50bdQ/2l6KU=",
-        "owner": "ViceVerse-cz",
-        "repo": "Serein",
-        "rev": "19c6b3a7a226b323f884ca76d1af1ec43e0cbbfa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ViceVerse-cz",
-        "repo": "Serein",
         "type": "github"
       }
     },

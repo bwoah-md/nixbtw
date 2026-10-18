@@ -1,4 +1,5 @@
-name: Build and Cache Rust Apps
+
+name: Build and Cache Packages
 
 on:
   workflow_dispatch:
@@ -7,7 +8,7 @@ on:
       - "flake.nix"
       - "flake.lock"
       - "modules/packages/packages.nix"
-      - ".github/workflows/build-and-cache.yml"
+      - ".github/workflows/build-zapfast.yml"
 
 permissions:
   contents: read
@@ -28,40 +29,38 @@ jobs:
           name: icyatnix
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build and cache ZapFast and Serein
+      - name: Build and cache ZapFast
         shell: bash
         run: |
           set -euo pipefail
 
-          for package in zapfast serein; do
-            echo "::group::Build and cache $package"
+          echo "::group::Build and cache ZapFast"
 
-            drv=$(nix eval --raw \
-              ".#nixosConfigurations.nix.config.environment.systemPackages" \
-              --apply "
-                xs:
-                  let
-                    matches = builtins.filter
-                      (x:
-                        let name = x.name or \"\";
-                        in builtins.match \"${package}-.*\" name != null
-                      )
-                      xs;
-                  in
-                    if builtins.length matches == 1
-                    then (builtins.head matches).drvPath
-                    else throw \"Expected exactly one ${package} package\"
-              ")
+          drv=$(nix eval --raw \
+            ".#nixosConfigurations.nix.config.environment.systemPackages" \
+            --apply '
+              xs:
+                let
+                  matches = builtins.filter
+                    (x:
+                      let name = x.name or "";
+                      in builtins.match "zapfast-.*" name != null
+                    )
+                    xs;
+                in
+                  if builtins.length matches == 1
+                  then (builtins.head matches).drvPath
+                  else throw "Expected exactly one zapfast package"
+            ')
 
-            echo "Derivation: $drv"
+          echo "Derivation: $drv"
 
-            mapfile -t outputs < <(nix-store --realise "$drv")
+          mapfile -t outputs < <(nix-store --realise "$drv")
 
-            for out in "${outputs[@]}"; do
-              echo "Output: $out"
-              mapfile -t closure < <(nix-store -qR "$out")
-              cachix push icyatnix "${closure[@]}"
-            done
-
-            echo "::endgroup::"
+          for out in "${outputs[@]}"; do
+            echo "Output: $out"
+            mapfile -t closure < <(nix-store -qR "$out")
+            cachix push icyatnix "${closure[@]}"
           done
+
+          echo "::endgroup::"

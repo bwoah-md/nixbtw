@@ -46,7 +46,6 @@ in
     ripgrep
     tree
     diskbloom               # ncdu replacement
-    concord-tui
     cliamp
     lazygit
 
@@ -179,9 +178,8 @@ in
     lxqt.lxqt-archiver
 
     # ─────────────────────────────────────────────────
-    # Apps from Flakes
+    # Apps from Cachix
     # ─────────────────────────────────────────────────
-    inputs.serein.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
