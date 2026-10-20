@@ -17,7 +17,6 @@ in
   # OBS Studio (the v4l2loopback kernel module itself lives in core/boot.nix)
   programs.obs-studio = {
     enable = true;
-    enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
       obs-vaapi
