@@ -13,9 +13,15 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Virtual camera kernel support for OBS.
+
   boot.extraModulePackages = [
-    config.boot.kernelPackages.v4l2loopback
+    (config.boot.kernelPackages.v4l2loopback.overrideAttrs (old: {
+      postInstall = (old.postInstall or "") + ''
+        rm -f "$out/lib/modules/${config.boot.kernelPackages.kernel.modDirVersion}"/modules.*
+      '';
+    }))
   ];
+
 
   boot.kernelModules = [ "v4l2loopback" ];
 
