@@ -35,7 +35,7 @@ in
     # Shell & Terminal
     # ─────────────────────────────────────────────────
     zellij
-    kitty
+    # kitty
     foot
     # ghostty
 
