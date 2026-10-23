@@ -39,7 +39,8 @@
     shellAbbrs = {
       # General
       btop = "btop --force-utf";
-      ff = "fastfetch";
+      ff = "clear && fastfetch -c micro";
+      nf = "clear && fastfetch -c small";
       c = "clear";
 
       # bat / eza
