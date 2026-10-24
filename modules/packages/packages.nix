@@ -181,5 +181,6 @@ in
     # Apps from Cachix
     # ─────────────────────────────────────────────────
     inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-bin
   ];
 }
