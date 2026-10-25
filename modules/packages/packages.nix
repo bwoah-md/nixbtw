@@ -46,7 +46,7 @@ in
     ripgrep
     tree
     diskbloom               # ncdu replacement
-    cliamp
+    # cliamp
     lazygit
 
     # Terminal Toys
