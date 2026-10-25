@@ -149,7 +149,7 @@ in
     # Communication
     # ─────────────────────────────────────────────────
     equibop
-    signal-desktop
+    # signal-desktop
     telegram-desktop
 
     # ─────────────────────────────────────────────────
