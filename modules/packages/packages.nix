@@ -141,7 +141,6 @@ in
     mpv                          # video player
     ffmpeg
     yt-dlp
-    obs-studio                  # screen recorder
     qview                       # image viewer
     scrcpy                      # android screen
 
