@@ -58,9 +58,9 @@
       nixpush = "git -C ~/.config/nixos push origin main";
       nixpull = "git -C ~/.config/nixos pull origin main";
       nixstatus = "git -C ~/.config/nixos status";
-      nixrebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#nix";
+      nixrebuild = "doas nixos-rebuild switch --flake ~/.config/nixos#nix";
       nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
-      nixclean = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+      nixclean = "doas nix-collect-garbage -d && nix-collect-garbage -d";
       nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel sonora zapfast --flake ~/.config/nixos";
 
       # Dotfiles
@@ -74,13 +74,13 @@
       dotrestore = "cp -r ~/.dotfiles/* ~/.config/*";
 
       # Docker
-      docker-start = "sudo systemctl start docker";
-      docker-stop = "sudo systemctl stop docker";
+      docker-start = "doas systemctl start docker";
+      docker-stop = "doas systemctl stop docker";
 
       # Windows VM
       win = "sdl-freerdp /u:\"icy\" /p:\"1771\" /v:127.0.0.1:3389 /cert:ignore /dynamic-resolution +clipboard /sound /microphone +home-drive";
-      win-start = "sudo systemctl start docker && docker start windows";
-      win-stop = "docker stop windows && sudo systemctl stop docker";
+      win-start = "doas systemctl start docker && docker start windows";
+      win-stop = "docker stop windows && doas systemctl stop docker";
 
       # Phone
       mount-phone = "mkdir -p ~/LineageOS && sshfs LineageOS:/storage/emulated/0 ~/LineageOS";
@@ -137,10 +137,6 @@
         set -l repo "$HOME/.config/nixos"
         set -l timestamp (date '+%-d %b, %Y at %H:%M')
 
-        sudo -v; or return 1
-        command sh -c 'while :; do sleep 60; sudo -n -v || exit; done' </dev/null >/dev/null 2>&1 &
-        set -l keepalive_pid $last_pid
-
         begin
           cd "$repo"
           and nix-update superseedr --flake --build
@@ -148,16 +144,14 @@
           and rm -f result
           and nix flake update nixpkgs noctalia helium-flake surge winapps sonora umbriel zapfast --flake "$repo"
           and git -C "$repo" add -A
-          and sudo nixos-rebuild switch --flake "$repo#nix"
+          and doas nixos-rebuild switch --flake "$repo#nix"
           and git -C "$repo" commit -m "ran nixfrost at $timestamp"
           and git -C "$repo" push origin main
-          and sudo nix-collect-garbage -d
+          and doas nix-collect-garbage -d
           and nix-collect-garbage -d
         end
-        set -l result_code $status
 
-        command kill $keepalive_pid 2>/dev/null
-        return $result_code
+        return $status
       end
     '';
 
