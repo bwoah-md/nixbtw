@@ -39,8 +39,8 @@
     shellAbbrs = {
       # General
       btop = "btop --force-utf";
-      ff = "clear && fastfetch -c micro";
-      nf = "clear && fastfetch -c small";
+      mf = "clear && fastfetch -c micro";
+      sf = "clear && fastfetch -c small";
       tf = "clear && fastfetch -c tiny";
       c = "clear";
 
