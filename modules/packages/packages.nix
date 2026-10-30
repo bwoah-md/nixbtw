@@ -80,7 +80,6 @@ in
     # ─────────────────────────────────────────────────
     # gcc
     # fd
-    # lazygit
     # tree-sitter
     # imagemagick
 
