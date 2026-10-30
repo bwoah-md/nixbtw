@@ -21,29 +21,6 @@
     meta.mainProgram = "superseedr";
   };
 
-  ghosttime = pkgs.stdenv.mkDerivation (finalAttrs: {
-    pname = "ghosttime";
-    version = "1.3.0";
-
-    src = pkgs.fetchurl {
-      url = "https://registry.npmjs.org/ghosttime/-/ghosttime-${finalAttrs.version}.tgz";
-      hash = "sha256-QKR1OO+ZlCZm3tHXpGse2R0hH7G2xKwDm2H7/6tT5lU=";
-    };
-
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out/lib/node_modules/ghosttime $out/bin
-      cp -r . $out/lib/node_modules/ghosttime
-      makeWrapper ${pkgs.nodejs}/bin/node $out/bin/ghosttime \
-        --add-flags "$out/lib/node_modules/ghosttime/dist/cli.js"
-      runHook postInstall
-    '';
-
-    meta.mainProgram = "ghosttime";
-  });
-
   google-sans-flex = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "google-sans-flex";
     version = "4.007";
@@ -74,6 +51,90 @@
       description = "Google Sans Flex variable typeface";
       license = lib.licenses.ofl;
       platforms = lib.platforms.all;
+    };
+  });
+
+  strata = pkgs.stdenv.mkDerivation (finalAttrs: {
+    pname = "strata";
+    version = "1.1.1";
+
+    src = pkgs.fetchurl {
+      url = "https://github.com/lgse/strata/releases/download/v${finalAttrs.version}/strata-${finalAttrs.version}-x86_64-unknown-linux-gnu.tar.gz";
+      hash = "sha256-4FUuB3L83tE6gohHR7KPCzIiCjKTHNpuVfg1dbvlBzQ=";
+    };
+
+    nativeBuildInputs = with pkgs; [
+      autoPatchelfHook
+      makeWrapper
+      wrapGAppsHook4
+    ];
+
+    buildInputs = with pkgs; [
+      bubblewrap
+      ffmpeg
+      ffmpegthumbnailer
+      fontconfig
+      gdk-pixbuf
+      webp-pixbuf-loader
+      glib
+      gtk4
+      gtksourceview5
+      poppler
+      gvfs
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-base
+      gst_all_1.gst-plugins-good
+      gst_all_1.gst-libav
+    ];
+
+    dontBuild = true;
+
+    installPhase = ''
+      runHook preInstall
+
+      install -Dm755 strata \
+        $out/libexec/strata-unwrapped
+
+      mkdir -p $out/bin
+
+      makeWrapper $out/libexec/strata-unwrapped $out/bin/strata \
+        --prefix PATH : ${lib.makeBinPath [
+          pkgs.bubblewrap
+          pkgs.ffmpeg
+          pkgs.ffmpegthumbnailer
+          pkgs.gvfs
+        ]} \
+        --set STRATA_SANDBOX_ROOT "/nix/store" \
+        --set STRATA_SANDBOX_PATH "${lib.makeBinPath [
+          pkgs.ffmpeg
+          pkgs.ffmpegthumbnailer
+        ]}" \
+        --set STRATA_SANDBOX_PRLIMIT "${pkgs.util-linux}/bin/prlimit" \
+        --set STRATA_SANDBOX_GDK_PIXBUF_MODULE_FILE \
+          "${pkgs.webp-pixbuf-loader}/${pkgs.gdk-pixbuf.binaryDir}/webp-loaders.cache"
+
+      install -Dm644 io.github.lgse.Strata.desktop \
+        $out/share/applications/io.github.lgse.Strata.desktop
+
+      sed -i \
+        "s|^Exec=strata|Exec=$out/bin/strata|" \
+        $out/share/applications/io.github.lgse.Strata.desktop
+
+      install -Dm644 io.github.lgse.Strata.svg \
+        $out/share/icons/hicolor/scalable/apps/io.github.lgse.Strata.svg
+
+      install -Dm644 io.github.lgse.Strata.FileManager1.service \
+        $out/share/strata/io.github.lgse.Strata.FileManager1.service
+
+      runHook postInstall
+    '';
+
+    meta = {
+      description = "Fast, keyboard-first Linux file manager";
+      homepage = "https://github.com/lgse/strata";
+      license = lib.licenses.mit;
+      platforms = [ "x86_64-linux" ];
+      mainProgram = "strata";
     };
   });
 }

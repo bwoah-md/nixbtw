@@ -29,7 +29,7 @@ in
     # Custom Packages
     # ─────────────────────────────────────────────────
     customPackages.superseedr
-    customPackages.ghosttime
+    customPackages.strata
 
     # ─────────────────────────────────────────────────
     # Shell & Terminal
@@ -71,9 +71,12 @@ in
     nixfmt
     nix-update
     nodejs
-    python3
     jq
     sshfs
+    bubblewrap
+    (python3.withPackages (ps: [
+      ps.pygobject3
+    ]))
 
     # ─────────────────────────────────────────────────
     # Neovim Tools

@@ -59,7 +59,7 @@
       nixpull = "git -C ~/.config/nixos pull origin main";
       nixstatus = "git -C ~/.config/nixos status";
       nixrebuild = "doas nixos-rebuild switch --flake ~/.config/nixos#nix";
-      nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update ghosttime --flake --build && rm -f result";
+      nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update strata --flake --build && rm -f result";
       nixclean = "doas nix-collect-garbage -d && nix-collect-garbage -d";
       nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel sonora zapfast --flake ~/.config/nixos";
 
