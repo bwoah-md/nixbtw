@@ -27,11 +27,11 @@ git clone https://github.com/bwoah-md/nixbtw.git ~/.config/nixos
 
 ```bash
 # Generate hardware configuration for the target machine
-sudo nixos-generate-config --show-hardware-config \
+doas nixos-generate-config --show-hardware-config \
   > ~/.config/nixos/hosts/nix/hardware-configuration.nix
 
 # Switch to the new system configuration
-sudo nixos-rebuild switch --flake ~/.config/nixos#nix
+doas nixos-rebuild switch --flake ~/.config/nixos#nix
 ```
 
 ### 3. Reboot / Re-log in
