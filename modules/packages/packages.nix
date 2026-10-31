@@ -152,6 +152,7 @@ in
     equibop
     # signal-desktop
     telegram-desktop
+    zoom-us
 
     # ─────────────────────────────────────────────────
     # Windows / Remote Desktop
@@ -175,8 +176,8 @@ in
     sioyek
     # nautilus
     klassy
-    pcmanfm-qt
-    lxqt.lxqt-archiver
+    # pcmanfm-qt
+    # lxqt.lxqt-archiver
 
     # ─────────────────────────────────────────────────
     # Apps from Cachix
