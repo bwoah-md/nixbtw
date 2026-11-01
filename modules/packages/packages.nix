@@ -44,8 +44,8 @@ in
     fastfetch
     yazi
     ripgrep
-    tree
-    diskbloom               # ncdu replacement
+    # tree
+    # diskbloom               # ncdu replacement
     # cliamp
     lazygit
 
@@ -66,13 +66,15 @@ in
     # ─────────────────────────────────────────────────
     # Development
     # ─────────────────────────────────────────────────
-    nixd
-    nil
-    nixfmt
+    # nil
+    # nixd
+    # nixfmt
     nix-update
-    nodejs
-    jq
-    sshfs
+    nix-output-monitor
+
+    # nodejs
+    # jq
+    # sshfs
     bubblewrap
     (python3.withPackages (ps: [
       ps.pygobject3
@@ -82,6 +84,7 @@ in
     # Neovim Tools
     # ─────────────────────────────────────────────────
     # gcc
+
     # fd
     # tree-sitter
     # imagemagick
@@ -100,7 +103,7 @@ in
     wget
     curl
     rsync
-    rclone                # cloud storage
+    # rclone                # cloud storage
 
     bat                   # replacement to cat
     eza
