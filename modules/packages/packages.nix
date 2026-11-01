@@ -92,7 +92,7 @@ in
     # ─────────────────────────────────────────────────
     # Browsers
     # ─────────────────────────────────────────────────
-    tor-browser
+    # tor-browser
     mullvad-browser
     qutebrowser
     librewolf
