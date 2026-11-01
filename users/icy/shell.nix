@@ -11,16 +11,25 @@
 
   environment.systemPackages = [ pkgs.fd ];
 
+  # NixOS Helper
+  programs.nh = {
+    enable = true;
+    flake = "/home/icy/.config/nixos";
+  };
+
+  # Television
   programs.television = {
     enable = true;
     enableFishIntegration = true;
   };
 
+  # Zoxide
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
   };
 
+  # Atuin
   programs.atuin = {
     enable = true;
     enableFishIntegration = true;
@@ -31,8 +40,10 @@
     };
   };
 
+  # Starship
   programs.starship.enable = true;
 
+  # Fish
   programs.fish = {
     enable = true;
 
@@ -58,7 +69,7 @@
       nixpush = "git -C ~/.config/nixos push origin main";
       nixpull = "git -C ~/.config/nixos pull origin main";
       nixstatus = "git -C ~/.config/nixos status";
-      nixrebuild = "doas nixos-rebuild switch --flake ~/.config/nixos#nix";
+      nixrebuild = "nh os switch -H nix";
       nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update strata --flake --build && rm -f result";
       nixclean = "doas nix-collect-garbage -d && nix-collect-garbage -d";
       nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel sonora zapfast --flake ~/.config/nixos";
@@ -144,7 +155,7 @@
           and rm -f result
           and nix flake update nixpkgs noctalia helium-flake surge winapps sonora umbriel zapfast --flake "$repo"
           and git -C "$repo" add -A
-          and doas nixos-rebuild switch --flake "$repo#nix"
+          and nh os switch "$repo" -H nix
           and git -C "$repo" commit -m "ran nixfrost at $timestamp"
           and git -C "$repo" push origin main
           and doas nix-collect-garbage -d
