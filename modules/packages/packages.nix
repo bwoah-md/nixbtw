@@ -42,6 +42,7 @@ in
     # CLI
     btop
     fastfetch
+    # colorpanes
     yazi
     ripgrep
     # tree
