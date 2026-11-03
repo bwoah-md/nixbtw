@@ -11,8 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    surge.url = "github:SurgeDM/Surge/08d09d11199acf6082a89c4da0d19a04749de997";
-
     sonora.url = "github:sonorahq/sonora";
 
     winapps = {
@@ -21,11 +19,6 @@
     };
 
     umbriel.url = "github:noctalia-dev/umbriel/cachix";
-
-    zapfast = {
-      url = "github:crmne/zapfast";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
