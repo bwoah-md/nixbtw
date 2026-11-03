@@ -51,8 +51,5 @@ in
 
   environment.systemPackages = [
     localsend-wrapped
-    (inputs.surge.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-      vendorHash = "sha256-5iS75LoN9FC57XRAbIU+Pia1gcXyeiF7bqF3pndYXwM=";
-    }))
   ];
 }
