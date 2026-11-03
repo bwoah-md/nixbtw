@@ -10,7 +10,7 @@ nixos/
 ├── flake.lock
 ├── hosts/nix/          # Hardware config & system entrypoint
 ├── modules/            # Modular system configurations & custom packages
-└── users/icy/          # User environment, declarative Zsh, aliases & git
+└── users/icy/          # User environment, Fish shell, aliases & git
 ```
 
 ---
@@ -36,7 +36,7 @@ doas nixos-rebuild switch --flake ~/.config/nixos#nix
 
 ### 3. Reboot / Re-log in
 
-Restart your session to ensure all user services, declarative shell configs, and system packages start clean:
+Restart your session to ensure all system services, user configurations and shell integrations start correctly.
 
 ```bash
 reboot
@@ -44,46 +44,162 @@ reboot
 
 ---
 
-## Day-to-Day Workflow
+## Shell Environment
 
-All repository and system maintenance operations are managed using dedicated shell aliases and functions.
+The user environment is declaratively managed through NixOS.
 
-### NixOS Git & Config Workflow
+### Fish Shell
 
-* **Stage changes:** `nixadd`
-* **Commit changes:** `nixcommit "<commit message>"`
-* **Push to GitHub:** `nixpush`
-* **Pull remote changes:** `nixpull`
-* **Status check:** `nixstatus`
+Fish is enabled through `programs.fish`, with the following configuration:
+
+- **Starship** — shell prompt.
+- **Television** — fuzzy finder with Fish integration.
+- **Zoxide** — smarter directory navigation.
+- **Atuin** — shell history with fuzzy search.
+- **Helix** — default editor (`EDITOR` and `VISUAL`).
+
+Additional environment variables:
+
+| Variable | Value |
+|---|---|
+| `EDITOR` | Helix (`hx`) |
+| `VISUAL` | Helix (`hx`) |
+| `MANPAGER` | bat-based man page viewer |
+| `MANROFFOPT` | `-c` |
+
+Fish also includes custom abbreviations and functions for everyday commands, NixOS maintenance, Git, dotfiles, Docker, Windows VM management and phone mounting.
+
+### Shell Abbreviations
+
+**General**
+- `btop` — launches btop with forced UTF-8.
+- `mf`, `sf`, `tf` — launch Fastfetch with different configurations.
+- `c` — clear terminal.
+
+**bat / eza**
+- `cat` — bat without paging.
+- `bathelp` — display help output using bat.
+- `ls`, `ll`, `la`, `lt` — eza shortcuts.
+
+**NixOS**
+- `nixadd` — stage all repository changes.
+- `nixcommit` — commit with a supplied message.
+- `nixpush` — push to GitHub.
+- `nixpull` — pull from GitHub.
+- `nixstatus` — check repository status.
+- `nixrebuild` — rebuild and switch using nh.
+- `nixupdate` — update selected custom packages.
+- `nixclean` — clean old system and user generations.
+- `nixflake` — update selected flake inputs.
+
+**Dotfiles**
+- `dot` — navigate to `~/.dotfiles`.
+- `dotstatus` — check Git status.
+- `dotdiff` — inspect changes.
+- `dotadd` — stage all changes.
+- `dotpush` — push changes.
+- `dotlog` — display formatted Git history.
+- `dotremote` — show configured remotes.
+- `dotrestore` — copy dotfiles into `~/.config`.
+
+**Docker**
+- `docker-start` — start Docker service.
+- `docker-stop` — stop Docker service.
+
+**Windows VM**
+- `win` — connect to the Windows VM through FreeRDP.
+- `win-start` — start Docker and the Windows container.
+- `win-stop` — stop the Windows container and Docker.
+
+**Phone**
+- `mount-phone` — mount Android internal storage through SSHFS.
+- `umount-phone` — unmount phone storage.
+
+### Custom Fish Functions
+
+- `tv-cd` — select a directory using Television and navigate to it (`Alt+T`).
+- `help` — display command help using bat.
+- `dotcommit` — interactively stage and commit dotfiles changes.
+- `nixfrost` — execute the complete NixOS maintenance workflow.
+
+---
+
+## NixOS Git & Config Workflow
+
+All repository and system maintenance operations are managed using dedicated Fish abbreviations and functions.
+
+### Git Operations
+
+```bash
+# Stage changes
+nixadd
+
+# Commit changes
+nixcommit "commit message"
+
+# Push to GitHub
+nixpush
+
+# Pull remote changes
+nixpull
+
+# Check repository status
+nixstatus
+```
 
 ### Package & Flake Updates
 
-* **Update custom packages:** `nixupdate`
+**Update custom packages:**
 
-  * Updates `superseedr`
-  * Updates `ghosttime`
+```bash
+nixupdate
+```
 
-* **Remove the Nix `result` symlink:** `rm result`
+Updates:
+- Superseedr
+- Strata
 
-* **Update flake inputs:** `nixflake`
+Also removes the `result` symlink after updating.
+
+**Update selected flake inputs:**
+
+```bash
+nixflake
+```
+
+Updates:
+- nixpkgs
+- noctalia
+- helium-flake
+- winapps
+- umbriel
+- sonora
 
 ### System Maintenance
 
-* **Rebuild and switch:** `nixrebuild`
-* **Clean old generations:** `nixclean`
+```bash
+# Rebuild and switch using nh
+nixrebuild
 
-### Complete One-Shot Sync (`nixfrost`)
+# Clean old system and user generations
+nixclean
+```
 
-Runs the complete maintenance workflow in sequence:
+---
 
-1. Updates custom packages with `nixupdate`
-2. Removes the `result` symlink
-3. Updates all flake inputs with `nixflake`
-4. Stages configuration changes with `nixadd`
-5. Rebuilds and switches the NixOS system with `nixrebuild`
-6. Commits the changes with an automatic timestamped message
-7. Pushes the commit to GitHub with `nixpush`
-8. Cleans old Nix generations with `nixclean`
+## Complete One-Shot Sync (`nixfrost`)
+
+`nixfrost` runs the complete maintenance workflow in sequence:
+
+1. Updates Superseedr using `nix-update`.
+2. Updates Ghosttime using `nix-update`.
+3. Removes the `result` symlink.
+4. Updates selected flake inputs.
+5. Stages all configuration changes.
+6. Rebuilds and switches the NixOS system using `nh`.
+7. Commits the changes with an automatic timestamped message.
+8. Pushes the commit to GitHub.
+9. Cleans old system and user generations.
 
 ```bash
 nixfrost
@@ -95,52 +211,69 @@ The generated commit message follows this format:
 ran nixfrost at 9 Sep, 2026 at 15:30
 ```
 
+The workflow uses sequential execution with `and`, so subsequent operations stop if an earlier operation fails.
+
 ---
 
 ## Custom Packages
 
-The configuration maintains a small set of packages that are not being consumed directly from nixpkgs:
-
-* **Superseedr** — built from its upstream Rust source using Nix's `buildRustPackage`
-* **Ghosttime** — packaged from its upstream npm release
-
-The custom packages are consolidated under:
+The configuration maintains custom package update workflows under:
 
 ```text
-modules/packages/custom.nix
+modules/packages/
 ```
 
-Individual package definitions remain in:
+The packages updated through the shell helpers are:
 
-```text
-modules/packages/custom/
-├── superseedr.nix
-└── ghosttime.nix
-```
+- **Superseedr** — updated using `nix-update`.
+- **Strata** — updated using `nix-update`.
+- **Ghosttime** — updated using `nix-update` during `nixfrost`.
+
+Package definitions are maintained separately from the system package list.
+
+---
+
+## Additional Integrations
+
+The user environment also includes:
+
+- **Git** — declarative configuration imported through `git.nix`.
+- **nh** — NixOS helper for rebuilding and switching configurations.
+- **fd** — installed as a system package.
+- **Television** — terminal fuzzy finder.
+- **Zoxide** — directory navigation.
+- **Atuin** — shell history management.
+- **Starship** — customizable shell prompt.
 
 ---
 
 ## Useful Commands
 
 ```bash
-# Check repository state
+# Repository
 nixstatus
+nixadd
+nixcommit "message"
+nixpush
+nixpull
 
-# Update custom packages
+# Custom packages
 nixupdate
 
-# Remove the result symlink
-rm result
-
-# Update flake inputs
+# Flake inputs
 nixflake
 
-# Rebuild the system
+# System maintenance
 nixrebuild
-
-# Clean old generations
 nixclean
 
-# Full maintenance workflow
+# Complete maintenance workflow
 nixfrost
+
+# Dotfiles
+dotstatus
+dotdiff
+dotadd
+dotcommit
+dotpush
 ```
