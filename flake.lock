@@ -114,22 +114,6 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1785967620,
-        "narHash": "sha256-IItrdb7Puk05RqOBWZYFC5X6Wl1sJmCfh5MWVHw5iMM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b7c2ada94fe99c15b0dbcf4d11fd7850b957a436",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
         "lastModified": 1793341285,
         "narHash": "sha256-LOv16TsMYV2/8BUYnhSxHkOASe7es2ORbqMeLlZJ8Hc=",
         "rev": "1c89083e451e891152365b799595cf7790a43325",
@@ -166,10 +150,8 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "sonora": "sonora",
-        "surge": "surge",
         "umbriel": "umbriel",
-        "winapps": "winapps",
-        "zapfast": "zapfast"
+        "winapps": "winapps"
       }
     },
     "rust-overlay": {
@@ -185,27 +167,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "228ecefb6329d5a531b77b46b581a2f0c26ee056",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_2": {
-      "inputs": {
-        "nixpkgs": [
-          "zapfast",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789977098,
-        "narHash": "sha256-fKY4BedarKx4aR0+UOHk65hhDW8pxFytFkaUi0VYDYk=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "2776e42828203ec89511699c8dcdedec69ab98e1",
         "type": "github"
       },
       "original": {
@@ -233,25 +194,6 @@
         "type": "github"
       }
     },
-    "surge": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_4"
-      },
-      "locked": {
-        "lastModified": 1787587589,
-        "narHash": "sha256-hEpjJmeWS5842DkpvXLBSjjAYi2+6hhdI2XAANTQzRM=",
-        "owner": "SurgeDM",
-        "repo": "Surge",
-        "rev": "08d09d11199acf6082a89c4da0d19a04749de997",
-        "type": "github"
-      },
-      "original": {
-        "owner": "SurgeDM",
-        "repo": "Surge",
-        "rev": "08d09d11199acf6082a89c4da0d19a04749de997",
-        "type": "github"
-      }
-    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -269,7 +211,7 @@
     },
     "umbriel": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
@@ -328,27 +270,6 @@
       "original": {
         "owner": "noctalia-dev",
         "repo": "xdg-desktop-portal-umbriel",
-        "type": "github"
-      }
-    },
-    "zapfast": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay_2"
-      },
-      "locked": {
-        "lastModified": 1793711550,
-        "narHash": "sha256-UGKe/0Tp6tsG/g3MNs9XiNKxmjcZmaOAUPxgq0IAak0=",
-        "owner": "crmne",
-        "repo": "zapfast",
-        "rev": "159c0342be8e3cb809f76e8d71e472e9f939b7f6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "crmne",
-        "repo": "zapfast",
         "type": "github"
       }
     }
