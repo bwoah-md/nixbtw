@@ -13,8 +13,6 @@ nixos/
 └── users/icy/          # User environment, Fish shell, aliases & git
 ```
 
----
-
 ## Fresh Machine Setup
 
 ### 1. Clone the repository
@@ -42,8 +40,6 @@ Restart your session to ensure all system services, user configurations and shel
 reboot
 ```
 
----
-
 ## Shell Environment
 
 The user environment is declaratively managed through NixOS.
@@ -61,7 +57,7 @@ Fish is enabled through `programs.fish`, with the following configuration:
 Additional environment variables:
 
 | Variable | Value |
-|---|---|
+|||
 | `EDITOR` | Helix (`hx`) |
 | `VISUAL` | Helix (`hx`) |
 | `MANPAGER` | bat-based man page viewer |
@@ -121,8 +117,6 @@ Fish also includes custom abbreviations and functions for everyday commands, Nix
 - `help` — display command help using bat.
 - `dotcommit` — interactively stage and commit dotfiles changes.
 - `nixfrost` — execute the complete NixOS maintenance workflow.
-
----
 
 ## NixOS Git & Config Workflow
 
@@ -185,8 +179,6 @@ nixrebuild
 nixclean
 ```
 
----
-
 ## Complete One-Shot Sync (`nixfrost`)
 
 `nixfrost` runs the complete maintenance workflow in sequence:
@@ -213,8 +205,6 @@ ran nixfrost at 9 Sep, 2026 at 15:30
 
 The workflow uses sequential execution with `and`, so subsequent operations stop if an earlier operation fails.
 
----
-
 ## Custom Packages
 
 The configuration maintains custom package update workflows under:
@@ -231,8 +221,6 @@ The packages updated through the shell helpers are:
 
 Package definitions are maintained separately from the system package list.
 
----
-
 ## Additional Integrations
 
 The user environment also includes:
@@ -244,8 +232,6 @@ The user environment also includes:
 - **Zoxide** — directory navigation.
 - **Atuin** — shell history management.
 - **Starship** — customizable shell prompt.
-
----
 
 ## Useful Commands
 
