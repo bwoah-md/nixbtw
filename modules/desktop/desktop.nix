@@ -93,7 +93,7 @@ in
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "GoMono Nerd Font"
+          "Annotation Mono"
         ];
         sansSerif = [
           "Google Sans Flex"
