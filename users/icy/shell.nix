@@ -72,7 +72,7 @@
       nixrebuild = "nh os switch -H nix";
       nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && nix-update strata --flake --build && rm -f result";
       nixclean = "doas nix-collect-garbage -d && nix-collect-garbage -d";
-      nixflake = "nix flake update nixpkgs noctalia helium-flake surge winapps umbriel sonora zapfast --flake ~/.config/nixos";
+      nixflake = "nix flake update nixpkgs noctalia helium-flake winapps umbriel sonora --flake ~/.config/nixos";
 
       # Dotfiles
       dot = "cd ~/.dotfiles";
@@ -153,7 +153,7 @@
           and nix-update superseedr --flake --build
           and nix-update ghosttime --flake --build
           and rm -f result
-          and nix flake update nixpkgs noctalia helium-flake surge winapps sonora umbriel zapfast --flake "$repo"
+          and nix flake update nixpkgs noctalia helium-flake winapps sonora umbriel --flake "$repo"
           and git -C "$repo" add -A
           and nh os switch "$repo" -H nix
           and git -C "$repo" commit -m "ran nixfrost at $timestamp"
