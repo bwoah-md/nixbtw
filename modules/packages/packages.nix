@@ -41,6 +41,7 @@ in
 
     # CLI
     btop
+    surge-downloader
     fastfetch
     yazi
     ripgrep
@@ -181,11 +182,11 @@ in
     klassy
     # pcmanfm-qt
     # lxqt.lxqt-archiver
+    zapfast
 
     # ─────────────────────────────────────────────────
     # Apps from Cachix
     # ─────────────────────────────────────────────────
-    inputs.zapfast.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-bin
   ];
 }
