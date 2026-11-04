@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  # Docker service configured for manual, on-demand start (no boot overhead)
+  # Docker service configured for manual start
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
