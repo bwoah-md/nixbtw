@@ -144,6 +144,11 @@
         set -l repo "$HOME/.config/nixos"
         set -l timestamp (date '+%-d %b, %Y at %H:%M')
 
+        doas true; or return 1
+
+        fish -c 'for i in (seq 120); doas -n true; sleep 60; end' &
+        set -l keepalive $last_pid
+
         begin
           cd "$repo"
           and nix-update superseedr --flake --build
@@ -157,8 +162,10 @@
           and doas nix-collect-garbage -d
           and nix-collect-garbage -d
         end
+        set -l result $status
 
-        return $status
+        kill $keepalive 2>/dev/null
+        return $result
       end
     '';
 
