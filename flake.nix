@@ -31,7 +31,7 @@
         config.allowUnfree = true;
       };
 
-      customPackages = import ./modules/packages/custom.nix {
+      customPackages = import ./modules/packages/main/custom.nix {
         inherit pkgs;
         lib = pkgs.lib;
       };
@@ -46,7 +46,8 @@
 
         modules = [
           ./hosts/nix/imports.nix
-          ./modules/packages/cachix.nix
+          ./modules/packages/main/packages.nix
+          ./modules/packages/options/integrations.nix
           inputs.noctalia.nixosModules.default
           inputs.umbriel.nixosModules.default
           inputs.helium-flake.nixosModules.default
