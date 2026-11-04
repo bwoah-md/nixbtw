@@ -62,7 +62,7 @@ reboot
 ### Core
 
 | Area | Details |
-|||
+|---|---|
 | Bootloader | systemd-boot, limited to 2 generations |
 | Kernel | `linuxPackages_latest` |
 | Filesystem | Btrfs with `/nix` and `/home` subvolumes |
@@ -121,7 +121,7 @@ Fish is enabled through `programs.fish`, with the following integrations:
 Environment variables set in Fish:
 
 | Variable | Value |
-|||
+|---|---|
 | `EDITOR` | Helix (`hx`) |
 | `VISUAL` | Helix (`hx`) |
 | `MANPAGER` | bat-based man page viewer |
@@ -260,7 +260,7 @@ System packages are grouped by category in `modules/packages/main/packages.nix` 
 **Default apps and fonts** (`modules/packages/options/defaults.nix`):
 
 | Role | Value |
-|||
+|---|---|
 | Browser | LibreWolf |
 | File manager | Strata |
 | Monospace | Annotation Mono |
@@ -278,7 +278,7 @@ System packages are grouped by category in `modules/packages/main/packages.nix` 
 ## Flake Inputs
 
 | Input | Purpose |
-|||
+|---|---|
 | `nixpkgs` | `nixos-unstable` |
 | `noctalia` | Shell and greeter modules |
 | `umbriel` | Compositor module |
