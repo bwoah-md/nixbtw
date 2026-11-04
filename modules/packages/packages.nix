@@ -70,7 +70,7 @@ in
     # nil
     # nixd
     # nixfmt
-    # nix-update
+    nix-update
     nix-output-monitor
 
     # nodejs
