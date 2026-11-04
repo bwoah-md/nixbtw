@@ -142,14 +142,14 @@ in
     # Theming
     # ─────────────────────────────────────────────────
     adw-gtk3
-    nwg-look
-    klassy
-    papirus-icon-theme
-    adwaita-icon-theme
-    libsForQt5.qt5ct
     kdePackages.qt6ct
-    kdePackages.kcolorscheme
-    kdePackages.qtsvg
+    libsForQt5.qt5ct
+    # kdePackages.kcolorscheme
+    # klassy
+    # kdePackages.qtsvg
+    # nwg-look
+    # papirus-icon-theme
+    # adwaita-icon-theme
 
     # ─────────────────────────────────────────────────
     # Development
