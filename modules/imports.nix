@@ -17,7 +17,7 @@
 
     # ────── Compositors ──────
     ./desktop/compositors/umbriel.nix
-    ./desktop/compositors/labwc.nix
+    # ./desktop/compositors/labwc.nix
 
     # ────── Environment ──────
     ./desktop/environment/integration.nix
@@ -39,7 +39,7 @@
     # Hardware
     # ─────────────────────────────────────────────────
     ./hardware/audio.nix
-    ./hardware/bluetooth.nix
+    # ./hardware/bluetooth.nix
     ./hardware/intel.nix
 
     # ─────────────────────────────────────────────────
