@@ -8,9 +8,23 @@ Declarative NixOS flake configuration for `icy@nix`, located directly in `~/.con
 nixos/
 ├── flake.nix
 ├── flake.lock
-├── hosts/nix/          # Hardware config & system entrypoint
-├── modules/            # Modular system configurations & custom packages
-└── users/icy/          # User environment, Fish shell, aliases & git
+├── hosts/nix/                  # Hardware config & system entrypoint
+└── modules/
+    ├── imports.nix             # Master import list
+    ├── core/                   # Boot, locale, networking, security, nix settings
+    ├── desktop/
+    │   ├── compositors/        # Umbriel, labwc, XDG portals
+    │   ├── environment/        # Session variables, dconf, gvfs
+    │   ├── git/                # System-wide git config
+    │   ├── greeters/           # Noctalia greeter
+    │   ├── shells/             # Noctalia shell
+    │   └── terminals/          # User, Fish shell, abbreviations & functions
+    ├── hardware/               # Audio, Bluetooth, Intel graphics & power
+    ├── packages/
+    │   ├── fonts/              # Font list & custom font packages
+    │   ├── main/               # System packages & custom packages
+    │   └── options/            # Default apps, fonts & integrations
+    └── services/               # Arkenfox updater, Docker
 ```
 
 ## Fresh Machine Setup
@@ -32,29 +46,79 @@ doas nixos-generate-config --show-hardware-config \
 doas nixos-rebuild switch --flake ~/.config/nixos#nix
 ```
 
+> `doas` is only available once this config has been applied. On a bare
+> installer or first boot, use `sudo` for this initial step.
+
 ### 3. Reboot / Re-log in
 
-Restart your session to ensure all system services, user configurations and shell integrations start correctly.
+Restart your session so all system services, user configuration and shell integrations start correctly.
 
 ```bash
 reboot
 ```
 
+## System Overview
+
+### Core
+
+| Area | Details |
+|||
+| Bootloader | systemd-boot, limited to 2 generations |
+| Kernel | `linuxPackages_latest` |
+| Filesystem | Btrfs with `/nix` and `/home` subvolumes |
+| Locale | `en_US.UTF-8`, timezone `Asia/Kolkata` |
+| Networking | NetworkManager with static Cloudflare DNS (IPv4 & IPv6), firewall enabled |
+| Privilege escalation | `doas` (persist enabled), `sudo` disabled |
+| Nix | `nix-command` and `flakes` enabled |
+| State version | `26.05` |
+
+### Desktop
+
+- **Compositors** — Umbriel (greeter default session) and labwc.
+- **Shell** — Noctalia, with its Cachix substituter configured.
+- **Greeter** — `noctalia-greeter` autologging into the `umbriel` session for `icy`, using Capitaine cursors.
+- **Portals** — GTK default, with ScreenCast and Screenshot routed to `wlr` (labwc) or `umbriel`.
+- **Keyring** — GNOME Keyring, unlocked through greetd PAM.
+- **Session variables** — Wayland/Ozone enabled, Qt platform theme set to `qt6ct`, `BROWSER=librewolf`, unfree packages allowed.
+
+### Hardware
+
+- **Graphics** — Intel Iris Xe with VA-API, Vulkan and OpenCL support.
+- **Audio** — PipeWire (ALSA, PulseAudio compat) with rtkit; forced standard HDA driver for the Realtek ALC236.
+- **Bluetooth** — enabled and powered on at boot.
+- **Power** — thermald, power-profiles-daemon, upower, and zstd zram swap (50% of RAM).
+- **Firmware** — redistributable firmware and Intel microcode updates.
+
+### Services
+
+- **Docker** — enabled but **not started on boot** (`docker-start` / `docker-stop`), with auto-prune.
+- **Arkenfox** — weekly user timer that updates the Arkenfox `user.js` for the Firefox profile.
+
+### Git
+
+System-wide Git is configured declaratively in `modules/desktop/git/git.nix`:
+
+- Default branch `main`, `pull.rebase = true`, `push.autoSetupRemote = true`
+- Helix as the commit editor
+- `credential.helper = store`
+- `/etc/nixos` marked as a safe directory
+
 ## Shell Environment
 
-The user environment is declaratively managed through NixOS.
+The `icy` user and Fish shell are defined in `modules/desktop/terminals/fish.nix`.
 
 ### Fish Shell
 
-Fish is enabled through `programs.fish`, with the following configuration:
+Fish is enabled through `programs.fish`, with the following integrations:
 
 - **Starship** — shell prompt.
 - **Television** — fuzzy finder with Fish integration.
 - **Zoxide** — smarter directory navigation.
-- **Atuin** — shell history with fuzzy search.
-- **Helix** — default editor (`EDITOR` and `VISUAL`).
+- **Atuin** — shell history with fuzzy search (sync disabled).
+- **nh** — NixOS helper, pointed at `~/.config/nixos`.
+- **Helix** — default editor.
 
-Additional environment variables:
+Environment variables set in Fish:
 
 | Variable | Value |
 |||
@@ -62,14 +126,13 @@ Additional environment variables:
 | `VISUAL` | Helix (`hx`) |
 | `MANPAGER` | bat-based man page viewer |
 | `MANROFFOPT` | `-c` |
-
-Fish also includes custom abbreviations and functions for everyday commands, NixOS maintenance, Git, dotfiles, Docker, Windows VM management and phone mounting.
+| `PATH` | `~/.local/bin` prepended |
 
 ### Shell Abbreviations
 
 **General**
 - `btop` — launches btop with forced UTF-8.
-- `mf`, `sf`, `tf` — launch Fastfetch with different configurations.
+- `mf`, `sf`, `tf` — Fastfetch (micro / small / tiny configs).
 - `c` — clear terminal.
 
 **bat / eza**
@@ -84,7 +147,7 @@ Fish also includes custom abbreviations and functions for everyday commands, Nix
 - `nixpull` — pull from GitHub.
 - `nixstatus` — check repository status.
 - `nixrebuild` — rebuild and switch using nh.
-- `nixupdate` — update selected custom packages.
+- `nixupdate` — update custom packages (Superseedr, Strata).
 - `nixclean` — clean old system and user generations.
 - `nixflake` — update selected flake inputs.
 
@@ -94,13 +157,13 @@ Fish also includes custom abbreviations and functions for everyday commands, Nix
 - `dotdiff` — inspect changes.
 - `dotadd` — stage all changes.
 - `dotpush` — push changes.
-- `dotlog` — display formatted Git history.
+- `dotlog` — formatted Git history.
 - `dotremote` — show configured remotes.
 - `dotrestore` — copy dotfiles into `~/.config`.
 
 **Docker**
-- `docker-start` — start Docker service.
-- `docker-stop` — stop Docker service.
+- `docker-start` — start the Docker service.
+- `docker-stop` — stop the Docker service.
 
 **Windows VM**
 - `win` — connect to the Windows VM through FreeRDP.
@@ -113,32 +176,19 @@ Fish also includes custom abbreviations and functions for everyday commands, Nix
 
 ### Custom Fish Functions
 
-- `tv-cd` — select a directory using Television and navigate to it (`Alt+T`).
+- `tv-cd` — select a directory using Television and `cd` into it (`Alt+T`).
 - `help` — display command help using bat.
 - `dotcommit` — interactively stage and commit dotfiles changes.
-- `nixfrost` — execute the complete NixOS maintenance workflow.
+- `nixfrost` — run the complete NixOS maintenance workflow.
 
 ## NixOS Git & Config Workflow
 
-All repository and system maintenance operations are managed using dedicated Fish abbreviations and functions.
-
-### Git Operations
-
 ```bash
-# Stage changes
-nixadd
-
-# Commit changes
-nixcommit "commit message"
-
-# Push to GitHub
-nixpush
-
-# Pull remote changes
-nixpull
-
-# Check repository status
-nixstatus
+nixadd                      # Stage changes
+nixcommit "commit message"  # Commit changes
+nixpush                     # Push to GitHub
+nixpull                     # Pull remote changes
+nixstatus                   # Check repository status
 ```
 
 ### Package & Flake Updates
@@ -149,11 +199,7 @@ nixstatus
 nixupdate
 ```
 
-Updates:
-- Superseedr
-- Strata
-
-Also removes the `result` symlink after updating.
+Updates **Superseedr** and **Strata** with `nix-update`, then removes the `result` symlink.
 
 **Update selected flake inputs:**
 
@@ -161,22 +207,13 @@ Also removes the `result` symlink after updating.
 nixflake
 ```
 
-Updates:
-- nixpkgs
-- noctalia
-- helium-flake
-- winapps
-- umbriel
-- sonora
+Updates: `nixpkgs`, `noctalia`, `helium-flake`, `winapps`, `umbriel`, `sonora`.
 
 ### System Maintenance
 
 ```bash
-# Rebuild and switch using nh
-nixrebuild
-
-# Clean old system and user generations
-nixclean
+nixrebuild   # nh os switch -H nix
+nixclean     # doas nix-collect-garbage -d && nix-collect-garbage -d
 ```
 
 ## Complete One-Shot Sync (`nixfrost`)
@@ -184,11 +221,11 @@ nixclean
 `nixfrost` runs the complete maintenance workflow in sequence:
 
 1. Updates Superseedr using `nix-update`.
-2. Updates Ghosttime using `nix-update`.
+2. Updates Strata using `nix-update`.
 3. Removes the `result` symlink.
 4. Updates selected flake inputs.
 5. Stages all configuration changes.
-6. Rebuilds and switches the NixOS system using `nh`.
+6. Rebuilds and switches the system using `nh`.
 7. Commits the changes with an automatic timestamped message.
 8. Pushes the commit to GitHub.
 9. Cleans old system and user generations.
@@ -203,35 +240,51 @@ The generated commit message follows this format:
 ran nixfrost at 9 Sep, 2026 at 15:30
 ```
 
-The workflow uses sequential execution with `and`, so subsequent operations stop if an earlier operation fails.
+Steps are chained with `and`, so everything stops if an earlier step fails.
 
 ## Custom Packages
 
-The configuration maintains custom package update workflows under:
+Custom package definitions live in `modules/packages/main/custom.nix` and are exposed both as flake `packages.x86_64-linux.*` (so `nix-update --flake` works) and as system packages:
 
-```text
-modules/packages/
-```
+- **Superseedr** — Rust build from source, updated with `nix-update`.
+- **Strata** — prebuilt GTK4 file manager (set as the default for `inode/directory`), updated with `nix-update`.
 
-The packages updated through the shell helpers are:
+Custom fonts live separately in `modules/packages/fonts/custom.nix`:
 
-- **Superseedr** — updated using `nix-update`.
-- **Strata** — updated using `nix-update`.
-- **Ghosttime** — updated using `nix-update` during `nixfrost`.
+- **Google Sans Flex** — default sans-serif font.
 
-Package definitions are maintained separately from the system package list.
+## Packages & Defaults
 
-## Additional Integrations
+System packages are grouped by category in `modules/packages/main/packages.nix` (shell tools, editors, browsers, media, theming, development, etc.), with unused packages kept as comments for quick toggling.
 
-The user environment also includes:
+**Default apps and fonts** (`modules/packages/options/defaults.nix`):
 
-- **Git** — declarative configuration imported through `git.nix`.
-- **nh** — NixOS helper for rebuilding and switching configurations.
-- **fd** — installed as a system package.
-- **Television** — terminal fuzzy finder.
-- **Zoxide** — directory navigation.
-- **Atuin** — shell history management.
-- **Starship** — customizable shell prompt.
+| Role | Value |
+|||
+| Browser | LibreWolf |
+| File manager | Strata |
+| Monospace | Annotation Mono |
+| Sans-serif | Google Sans Flex |
+| Serif | IBM Plex Serif |
+| Emoji | Noto Color Emoji |
+
+**Integrations** (`modules/packages/options/integrations.nix`):
+
+- **OBS Studio** — virtual camera plus wlrobs, VAAPI, vkcapture and PipeWire audio capture plugins.
+- **LocalSend** — firewall opened, wrapped for Wayland with a hidden title bar.
+- **KDE Connect**, **nix-ld**, **GNOME Keyring**.
+- **Helium browser** — Ozone auto-detection and touchpad overscroll navigation.
+
+## Flake Inputs
+
+| Input | Purpose |
+|||
+| `nixpkgs` | `nixos-unstable` |
+| `noctalia` | Shell and greeter modules |
+| `umbriel` | Compositor module |
+| `helium-flake` | Helium browser (follows `nixpkgs`) |
+| `sonora` | Sonora app (`sonora-bin`) |
+| `winapps` | WinApps (follows `nixpkgs`) |
 
 ## Useful Commands
 
