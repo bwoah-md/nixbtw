@@ -151,7 +151,7 @@
         begin
           cd "$repo"
           and nix-update superseedr --flake --build
-          and nix-update ghosttime --flake --build
+          and nix-update strata --flake --build
           and rm -f result
           and nix flake update nixpkgs noctalia helium-flake winapps sonora umbriel --flake "$repo"
           and git -C "$repo" add -A
