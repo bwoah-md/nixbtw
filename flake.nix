@@ -2,23 +2,33 @@
   description = "NixOS Flake Configuration for icy@nix";
 
   inputs = {
+    # ────── NixPackages ──────
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # ────── Noctalia ──────
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
+    # ────── Umbriel ──────
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
+
+    # ────── Helium Browser ──────
     helium-flake = {
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # ────── Music Client ──────
     sonora.url = "github:sonorahq/sonora";
 
+    # ────── Discord Client ──────
+    # cressida.url = "github:Ly-sec/Cressida";
+
+    # ────── WinApps - Run Windows on Linux ──────
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    umbriel.url = "github:noctalia-dev/umbriel/cachix";
   };
 
   outputs =
