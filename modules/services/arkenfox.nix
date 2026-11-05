@@ -7,7 +7,8 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "update-arkenfox" ''
-        FF_DIR="$HOME/.config/mozilla/firefox/okskq1om.betabtw"
+        # Target Directory for ArkenFox goes here
+        FF_DIR="$HOME/.config/mozilla/firefox/<your_target-profile_here>"
 
         if [ -d "$FF_DIR" ]; then
           cd "$FF_DIR"
