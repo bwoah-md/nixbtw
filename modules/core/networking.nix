@@ -6,7 +6,7 @@
 
     networkmanager = {
       enable = true;
-      # Prevent NetworkManager DHCP from overriding static Cloudflare nameservers
+      # prevent NetworkManager DHCP from overriding static Cloudflare nameservers
       dns = "none";
     };
 
