@@ -1,5 +1,7 @@
 # icy@nix
 
+> *⚠️ I have used AI to write some files and generate this README, I have had tough time to configure shell functions (in `modules/desktop/terminals/fish.nix`), custom packages (in `modules/packages/main/custom.nix`), and also ArkenFox (in `modules/services/arkenfox.nix`).
+
 Declarative NixOS flake configuration for `icy@nix`, located directly in `~/.config/nixos`.
 
 ## Structure
@@ -8,9 +10,11 @@ Declarative NixOS flake configuration for `icy@nix`, located directly in `~/.con
 nixos/
 ├── flake.nix
 ├── flake.lock
-├── hosts/nix/                  # Hardware config & system entrypoint
+├── hosts/
+│   └── nix/                    # Hardware config & system entrypoint
+│       ├── hardware-configuration.nix
+│       └── imports.nix         # Master import list
 └── modules/
-    ├── imports.nix             # Master import list
     ├── core/                   # Boot, locale, networking, security, nix settings
     ├── desktop/
     │   ├── compositors/        # Umbriel, labwc, XDG portals
