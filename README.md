@@ -185,7 +185,6 @@ Environment variables set in Fish:
 - `tv-cd` — select a directory using Television and `cd` into it (`Alt+T`).
 - `help` — display command help using bat.
 - `dotcommit` — interactively stage and commit dotfiles changes.
-- `nixfrost` — run the complete NixOS maintenance workflow.
 
 ## NixOS Git & Config Workflow
 
@@ -221,32 +220,6 @@ Updates: `nixpkgs`, `noctalia`, `helium-flake`, `winapps`, `umbriel`, `sonora`.
 nixrebuild   # nh os switch -H nix
 nixclean     # doas nix-collect-garbage -d && nix-collect-garbage -d
 ```
-
-## Complete One-Shot Sync (`nixfrost`)
-
-`nixfrost` runs the complete maintenance workflow in sequence:
-
-1. Updates Superseedr using `nix-update`.
-2. Updates Strata using `nix-update`.
-3. Removes the `result` symlink.
-4. Updates selected flake inputs.
-5. Stages all configuration changes.
-6. Rebuilds and switches the system using `nh`.
-7. Commits the changes with an automatic timestamped message.
-8. Pushes the commit to GitHub.
-9. Cleans old system and user generations.
-
-```bash
-nixfrost
-```
-
-The generated commit message follows this format:
-
-```text
-ran nixfrost at 9 Sep, 2026 at 15:30
-```
-
-Steps are chained with `and`, so everything stops if an earlier step fails.
 
 ## Custom Packages
 
@@ -311,9 +284,6 @@ nixflake
 # System maintenance
 nixrebuild
 nixclean
-
-# Complete maintenance workflow
-nixfrost
 
 # Dotfiles
 dotstatus
