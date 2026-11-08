@@ -24,7 +24,7 @@ in
     # inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # ─────────────────────────────────────────────────
-    # Custom Packages
+    # Custom Packages (from modules/packages/main/custom.nix)
     # ─────────────────────────────────────────────────
     customPackages.superseedr
     customPackages.strata
