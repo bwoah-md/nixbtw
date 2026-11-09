@@ -61,16 +61,18 @@
           ./modules/packages/main/packages.nix
           ./modules/packages/options/integrations.nix
 
-          # ────── Cressida Binary Cache ──────
+          # ────── Binary Caches ──────
           ({ ... }: {
             nix.settings = {
               trusted-users = [ "root" "icy" ];
               extra-substituters = [
                 "https://cressida.cachix.org"
+                "https://misterdownloadmanager.cachix.org"
               ];
 
               extra-trusted-public-keys = [
                 "cressida.cachix.org-1:yhfhTmhFIGnn+vdwFXxS7L9OrQJQ33+DkuTiZcQ4LgA="
+                "misterdownloadmanager.cachix.org-1:CZkwhLDHdo/WBrr4OrYsYXPwVxC1VYDFQQA75h+Axv8="
               ];
             };
           })
