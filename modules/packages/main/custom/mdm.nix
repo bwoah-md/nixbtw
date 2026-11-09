@@ -3,13 +3,13 @@
 {
   package = pkgs.rustPlatform.buildRustPackage rec {
     pname = "misterdownloadmanager";
-    version = "0.5.1";
+    version = "0.5.2";
 
     src = pkgs.fetchFromGitHub {
       owner = "anefzaoui";
       repo = "misterdownloadmanager";
       rev = "v${version}";
-      hash = "sha256-dLRGv1mq0pMZDkuYoRYHqAD0y+zmRyxau+3r+HlMY8M=";
+      hash = "sha256-WRBG1npj6+//0YjWooMmw03ngVRkDx1WyhvwOL2+7sc=";
     };
 
     cargoHash = "sha256-oyW4LWSzENHNIbQgZVH3BGVDeCZlZlLX5Noe33I5K6k=";
