@@ -134,7 +134,7 @@ in
     obsidian
     readest
     sioyek
-    zapfast
+    # zapfast
     # nautilus
     # pcmanfm-qt
     # lxqt.lxqt-archiver
@@ -162,10 +162,10 @@ in
     # nixd
     # nixfmt
 
-    bubblewrap
     (python3.withPackages (ps: [
       ps.pygobject3
     ]))
+    # bubblewrap
     # nodejs
     # jq
     # sshfs
