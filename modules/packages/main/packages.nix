@@ -134,6 +134,11 @@ in
     obsidian
     readest
     sioyek
+    # (zathura.override {
+    #   plugins = [
+    #     zathuraPkgs.zathura_pdf_mupdf
+    #   ];
+    # })
     # zapfast
     # nautilus
     # pcmanfm-qt
@@ -165,7 +170,7 @@ in
     (python3.withPackages (ps: [
       ps.pygobject3
     ]))
-    # bubblewrap
+    bubblewrap
     # nodejs
     # jq
     # sshfs
