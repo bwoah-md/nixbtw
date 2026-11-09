@@ -8,25 +8,41 @@ in
 
   environment.systemPackages = [ strata ];
 
-  services.dbus.packages = [ strata.fileManagerService ];
+  # FileManager1 D-Bus integration
+  services.dbus.packages = [
+    strata.fileManagerService
+  ];
+
+  # Disk management and encrypted volumes
+  services.udisks2.enable = true;
 
   xdg.portal = {
     enable = true;
 
     extraPortals = [
       strata.fileChooserPortal
+      pkgs.xdg-desktop-portal-gtk
     ];
 
-    config.umbriel = {
-      default = [ "gtk" ];
-
-      "org.freedesktop.impl.portal.FileChooser" = [
+    config = {
+      # System-wide file chooser preference
+      common."org.freedesktop.impl.portal.FileChooser" = [
         "strata"
         "gtk"
       ];
 
-      "org.freedesktop.impl.portal.ScreenCast" = [ "umbriel" ];
-      "org.freedesktop.impl.portal.Screenshot" = [ "umbriel" ];
+      # Umbriel-specific portal configuration
+      umbriel = {
+        default = [ "gtk" ];
+
+        "org.freedesktop.impl.portal.ScreenCast" = [
+          "umbriel"
+        ];
+
+        "org.freedesktop.impl.portal.Screenshot" = [
+          "umbriel"
+        ];
+      };
     };
   };
 
