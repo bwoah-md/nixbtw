@@ -1,8 +1,9 @@
+
 name: stratafiles
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
       - flake.lock
   workflow_dispatch:
@@ -11,36 +12,60 @@ concurrency:
   group: stratafiles
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Did the strata revision change?
+      - name: Check Strata revision
         id: check
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
         run: |
-          NEW=$(jq -r '.nodes.strata.locked.rev' flake.lock)
-          OLD=$(git show "${{ github.event.before }}:flake.lock" 2>/dev/null | jq -r '.nodes.strata.locked.rev' 2>/dev/null || echo none)
-          echo "old=$OLD new=$NEW"
+          set -euo pipefail
+
+          NEW=$(jq -er '.nodes.strata.locked.rev' flake.lock)
+          OLD="none"
+
+          if [[ "$EVENT_NAME" == "push" && -n "$BEFORE_SHA" && "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            OLD=$(git show "$BEFORE_SHA:flake.lock" 2>/dev/null | jq -r '.nodes.strata.locked.rev // "none"' || echo none)
+          fi
+
+          echo "Previous revision: $OLD"
+          echo "Current revision:  $NEW"
+
           echo "rev=$NEW" >> "$GITHUB_OUTPUT"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$OLD" != "$NEW" ]; then
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" || "$OLD" != "$NEW" ]]; then
             echo "build=true" >> "$GITHUB_OUTPUT"
           else
             echo "build=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: cachix/install-nix-action@v31
+      - name: Install Nix
         if: steps.check.outputs.build == 'true'
+        uses: cachix/install-nix-action@v31
 
-      - uses: cachix/cachix-action@v17
+      - name: Configure Cachix
         if: steps.check.outputs.build == 'true'
+        uses: cachix/cachix-action@v17
         with:
           name: stratafiles
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Build Strata
         if: steps.check.outputs.build == 'true'
-        run: nix build "github:lgse/strata/${{ steps.check.outputs.rev }}" -L
+        run: |
+          nix build \
+            --no-link \
+            -L \
+            "github:lgse/strata/${{ steps.check.outputs.rev }}"
