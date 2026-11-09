@@ -165,6 +165,7 @@ in
     # nil
     # nixd
     # nixfmt
+    # gh
 
     (python3.withPackages (ps: [
       ps.pygobject3
