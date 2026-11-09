@@ -1,0 +1,21 @@
+name: stratafiles
+
+on:
+  workflow_dispatch:
+
+env:
+  STRATA_REF: v1.2.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cachix/install-nix-action@v31
+
+      - uses: cachix/cachix-action@v17
+        with:
+          name: stratafiles
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Build Strata
+        run: nix build "github:lgse/strata?ref=${STRATA_REF}" -L
