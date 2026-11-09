@@ -5,7 +5,6 @@ on:
     branches: [ main ]
     paths:
       - flake.lock
-      - modules/packages/main/**
       - .github/workflows/misterdownloadmanager.yml
 
   workflow_dispatch:
