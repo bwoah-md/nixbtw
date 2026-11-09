@@ -1,5 +1,4 @@
-
-name: Build Cressida
+name: Cressida
 
 on:
   push:
