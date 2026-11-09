@@ -12,7 +12,7 @@
       hash = "sha256-WRBG1npj6+//0YjWooMmw03ngVRkDx1WyhvwOL2+7sc=";
     };
 
-    cargoHash = "sha256-oyW4LWSzENHNIbQgZVH3BGVDeCZlZlLX5Noe33I5K6k=";
+    cargoHash = "sha256-+l1+VATWsXyAD/JRq8tIfED7lIRsfJK95bWhVR6NSGE=";
 
     cargoBuildFlags = [
       "--workspace"
