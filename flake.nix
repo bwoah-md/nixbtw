@@ -21,7 +21,7 @@
     sonora.url = "github:sonorahq/sonora";
 
     # ────── Discord Client ──────
-    # cressida.url = "github:Ly-sec/Cressida";
+    cressida.url = "github:Ly-sec/Cressida";
 
     # ────── Strata - File Manager ──────
     strata.url = "github:lgse/strata/9fb7a36ad4352337f3ada0d43710dc6d4ae838b9";
@@ -60,13 +60,29 @@
           ./hosts/nix/imports.nix
           ./modules/packages/main/packages.nix
           ./modules/packages/options/integrations.nix
+
+          # ────── Cressida Binary Cache ──────
+          ({ ... }: {
+            nix.settings = {
+              extra-substituters = [
+                "https://cressida.cachix.org"
+              ];
+
+              extra-trusted-public-keys = [
+                "cressida.cachix.org-1:yhfhTmhFIGnn+vdwFXxS7L9OrQJQ33+DkuTiZcQ4LgA="
+              ];
+            };
+          })
+
           inputs.noctalia.nixosModules.default
           inputs.umbriel.nixosModules.default
           inputs.helium-flake.nixosModules.default
         ];
       };
 
-      # Custom Packages
-      packages.${system} = customPackages;
+      # Custom and External Packages
+      packages.${system} = customPackages // {
+        cressida = inputs.cressida.packages.${system}.default;
+      };
     };
 }
