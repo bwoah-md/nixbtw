@@ -51,6 +51,10 @@
 
     doCheck = false;
 
+    preBuild = ''
+      unset AWS_LC_SYS_USE_SYSTEM
+    '';
+
     nativeBuildInputs = [
       pkgs.pkg-config
       pkgs.makeWrapper
