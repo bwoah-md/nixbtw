@@ -39,7 +39,7 @@
       owner = "anefzaoui";
       repo = "misterdownloadmanager";
       rev = "949e55e84d36df81b3631d71846056bc2d571d81";
-      hash = "sha256-2zRfd+lj1b7zz+ktPkJbhurRDlwTBVqDuIMLZ0+BeC="
+      hash = "sha256-2zRfd+lj1b7zz+ktPkJbhurRDlwTBVqDuIMLZ0+BeC=";
     };
 
     cargoHash = lib.fakeHash;
