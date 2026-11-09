@@ -38,12 +38,11 @@
     src = pkgs.fetchFromGitHub {
       owner = "anefzaoui";
       repo = "misterdownloadmanager";
-      rev = "949e55e84d36df81b3631d71846056bc2d571d81";
+      rev = "v${version}";
       hash = "sha256-2zRfd+lij1b7Zz+ktPkJbhurRDlwTBVqDuIMLZ0+Bec=";
     };
 
     cargoHash = "sha256-pTg4nXiskJWbIasqEys6fNqI4jXWnuztXCiqEm/s4n8=";
-
     cargoBuildFlags = [
       "--workspace"
       "--bins"
@@ -80,15 +79,16 @@
 
       install -Dm644 /dev/stdin \
         $out/share/applications/misterdownloadmanager.desktop <<EOF
-      [Desktop Entry]
-      Name=Mister Download Manager
-      Comment=Download manager
-      Exec=misterdownloadmanager
-      Icon=misterdownloadmanager
-      Terminal=false
-      Type=Application
-      Categories=Network;FileTransfer;
-      EOF
+
+    [Desktop Entry]
+    Name=Mister Download Manager
+    Comment=Download manager
+    Exec=misterdownloadmanager
+    Icon=misterdownloadmanager
+    Terminal=false
+    Type=Application
+    Categories=Network;FileTransfer;
+    EOF
     '';
 
     meta = {
@@ -97,6 +97,18 @@
       license = lib.licenses.gpl3Plus;
       platforms = [ "x86_64-linux" ];
       mainProgram = "misterdownloadmanager";
+    };
+  };
+
+  # ────── Binary Cache ──────
+  nixosModule = {
+    nix.settings = {
+      extra-substituters = [
+        "https://misterdownloadmanager.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "misterdownloadmanager.cachix.org-1:CZkwhLDHdo/WBrr4OrYsYXPwVxC1VYDFQQA75h+Axv8="
+      ];
     };
   };
 }
