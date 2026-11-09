@@ -153,9 +153,10 @@ Environment variables set in Fish:
 - `nixpull` — pull from GitHub.
 - `nixstatus` — check repository status.
 - `nixrebuild` — rebuild and switch using nh.
-- `nixupdate` — update custom packages (Superseedr, Strata).
+- `nixupdate` — update custom packages (Superseedr).
 - `nixclean` — clean old system and user generations.
 - `nixflake` — update selected flake inputs.
+- `nixcachix` — update Cachix-backed flake inputs (Nixpkgs, Strata and Cressida).
 
 **Dotfiles**
 - `dot` — navigate to `~/.dotfiles`.
@@ -204,9 +205,17 @@ nixstatus                   # Check repository status
 nixupdate
 ```
 
-Updates **Superseedr** and **Strata** with `nix-update`, then removes the `result` symlink.
+Updates **Superseedr** with `nix-update`, then removes the `result` symlink.
 
-**Update selected flake inputs:**
+**Update Cachix-backed flake inputs:**
+
+```bash
+nixcachix
+```
+
+Updates `nixpkgs`, `strata` and `cressida`.
+
+**Update other selected flake inputs:**
 
 ```bash
 nixflake
@@ -226,7 +235,6 @@ nixclean     # doas nix-collect-garbage -d && nix-collect-garbage -d
 Custom package definitions live in `modules/packages/main/custom.nix` and are exposed both as flake `packages.x86_64-linux.*` (so `nix-update --flake` works) and as system packages:
 
 - **Superseedr** — Rust build from source, updated with `nix-update`.
-- **Strata** — prebuilt GTK4 file manager (set as the default for `inode/directory`), updated with `nix-update`.
 
 Custom fonts live separately in `modules/packages/fonts/custom.nix`:
 
@@ -264,6 +272,8 @@ System packages are grouped by category in `modules/packages/main/packages.nix` 
 | `helium-flake` | Helium browser (follows `nixpkgs`) |
 | `sonora` | Sonora app (`sonora-bin`) |
 | `winapps` | WinApps (follows `nixpkgs`) |
+| `strata` | Strata file manager and file chooser portal |
+| `cressida` | Cressida application |
 
 ## Useful Commands
 
@@ -280,6 +290,7 @@ nixupdate
 
 # Flake inputs
 nixflake
+nixcachix
 
 # System maintenance
 nixrebuild
