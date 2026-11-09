@@ -32,12 +32,11 @@ in
     # ─────────────────────────────────────────────────
     # Shell & Terminal
     # ─────────────────────────────────────────────────
-    zellij
     foot
     # kitty
     # ghostty
 
-    # CLI
+    # --- CLI ---
     btop
     surge-downloader
     fastfetch
@@ -48,7 +47,7 @@ in
     # diskbloom               # ncdu replacement
     # cliamp
 
-    # Terminal Toys
+    # --- Terminal Toys ---
     cbonsai
     unimatrix
     cava
@@ -59,6 +58,7 @@ in
     zed-editor
     helix
     tuios
+    zellij
     # fresh-editor
     # neovim
 
