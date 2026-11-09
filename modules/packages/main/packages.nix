@@ -21,7 +21,8 @@ in
     # Apps from Cachix
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-bin
-    inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
+    customPackages.misterdownloadmanager
 
     # ─────────────────────────────────────────────────
     # Custom Packages (from modules/packages/main/custom.nix)

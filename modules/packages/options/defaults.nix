@@ -8,7 +8,7 @@
 
   # default --- Fonts
   fonts.fontconfig.defaultFonts = {
-    monospace = [ "Annotation Mono" ];
+    monospace = [ "Maple Mono NF CN" ];
     sansSerif = [ "Google Sans Flex" ];
     serif = [ "IBM Plex Serif" ];
     emoji = [ "Noto Color Emoji" ];

@@ -1,0 +1,39 @@
+name: Mister Download Manager
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - flake.lock
+      - modules/packages/main/**
+      - .github/workflows/misterdownloadmanager.yml
+
+  workflow_dispatch:
+
+concurrency:
+  group: misterdownloadmanager
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build MDM (x86_64-linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Configure Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: misterdownloadmanager
+          authToken: '${{ secrets.MISTERDOWNLOADMANAGER_AUTH_TOKEN }}'
+
+      - name: Build Mister Download Manager from source
+        run: nix build --no-link -L .#misterdownloadmanager
