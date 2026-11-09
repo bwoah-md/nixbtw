@@ -62,6 +62,22 @@
     EOF
     '';
 
+    postFixup = ''
+      wrapProgram $out/bin/misterdownloadmanager \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [
+          pkgs.libxkbcommon
+          pkgs.wayland
+          pkgs.gtk3
+          pkgs.libGL
+          pkgs.vulkan-loader
+          pkgs.libX11
+          pkgs.libXcursor
+          pkgs.libXrandr
+          pkgs.libXi
+          pkgs.libxcb
+        ]}
+    '';
+
     meta = {
       description = "Free and open-source download manager";
       homepage = "https://github.com/anefzaoui/misterdownloadmanager";
