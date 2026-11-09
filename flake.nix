@@ -64,6 +64,7 @@
           # ────── Cressida Binary Cache ──────
           ({ ... }: {
             nix.settings = {
+              trusted-users = [ "root" "icy" ];
               extra-substituters = [
                 "https://cressida.cachix.org"
               ];
