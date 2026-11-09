@@ -49,12 +49,12 @@ in
   nix.settings = {
     extra-substituters = [
       "https://umbriel.cachix.org"
-      "https://stratafiles.cachix.org"
+      "https://strata.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "umbriel.cachix.org-1:JfNq/2yg2S6D6z4Z2dVSZrZlDPQTKtexB6GAVLD98nw="
-      "stratafiles.cachix.org-1:1027HWSwpIo9qBk4myf9yuCkFuvq3h8aAeLPHWrEslM="
+      "strata.cachix.org-1:EFflsiJKJ9Zlsj11+oW9d4ib/KOUTf2oxilH/p2JJNo="
     ];
   };
 }

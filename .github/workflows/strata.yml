@@ -6,7 +6,7 @@ on:
     paths:
       - flake.lock
       - flake.nix
-      - .github/workflows/stratafiles.yml
+      - .github/workflows/strata.yml
 
   workflow_dispatch:
 
@@ -34,7 +34,7 @@ jobs:
         uses: cachix/cachix-action@v17
         with:
           name: stratafiles
-          authToken: '${{ secrets.STRATAFILES_AUTH_TOKEN }}'
+          authToken: '${{ secrets.STRATA_AUTH_TOKEN }}'
 
       - name: Build Strata
         run: |
