@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - flake.lock
+      - modules/packages/main/custom/mdm.nix
       - .github/workflows/misterdownloadmanager.yml
 
   workflow_dispatch:

@@ -1,10 +1,5 @@
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs, customPackages, ... }:
 
-let
-  customPackages = import ./custom.nix {
-    inherit pkgs lib;
-  };
-in
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -21,11 +16,11 @@ in
     # Apps from Cachix
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-bin
-    customPackages.misterdownloadmanager
+    # customPackages.misterdownloadmanager
     # inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # ─────────────────────────────────────────────────
-    # Custom Packages (from modules/packages/main/custom.nix)
+    # Custom Packages (from modules/packages/main/custom/)
     # ─────────────────────────────────────────────────
     customPackages.superseedr
 

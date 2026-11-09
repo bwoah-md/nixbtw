@@ -43,7 +43,16 @@
         config.allowUnfree = true;
       };
 
-      customPackages = import ./modules/packages/main/custom.nix {
+      # ────── Custom Packages ──────
+      customPackages = {
+        superseedr = import ./modules/packages/main/custom/superseedr.nix {
+          inherit pkgs;
+        };
+
+        misterdownloadmanager = mdm.package;
+      };
+
+      mdm = import ./modules/packages/main/custom/mdm.nix {
         inherit pkgs;
         lib = pkgs.lib;
       };
@@ -53,7 +62,7 @@
         inherit system;
 
         specialArgs = {
-          inherit inputs;
+          inherit inputs customPackages;
         };
 
         modules = [
@@ -61,7 +70,8 @@
           ./modules/packages/main/packages.nix
           ./modules/packages/options/integrations.nix
 
-          customPackages.nixosModule
+          # MDM Binary Cache
+          mdm.nixosModule
 
           # ────── Binary Caches ──────
           ({ ... }: {
