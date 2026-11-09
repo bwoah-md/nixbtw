@@ -27,7 +27,6 @@ in
     # Custom Packages (from modules/packages/main/custom.nix)
     # ─────────────────────────────────────────────────
     customPackages.superseedr
-    # customPackages.strata
 
     # ─────────────────────────────────────────────────
     # Shell & Terminal
