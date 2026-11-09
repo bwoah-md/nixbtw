@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: stratafiles
+  group: strata
   cancel-in-progress: true
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
       - name: Configure Cachix
         uses: cachix/cachix-action@v17
         with:
-          name: stratafiles
+          name: strata
           authToken: '${{ secrets.STRATA_AUTH_TOKEN }}'
 
       - name: Build Strata
