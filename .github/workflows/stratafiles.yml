@@ -1,21 +1,46 @@
 name: stratafiles
 
 on:
+  push:
+    branches: [ main ]
+    paths:
+      - flake.lock
   workflow_dispatch:
 
-env:
-  STRATA_REF: 9fb7a36ad4352337f3ada0d43710dc6d4ae838b9
+concurrency:
+  group: stratafiles
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Did the strata revision change?
+        id: check
+        run: |
+          NEW=$(jq -r '.nodes.strata.locked.rev' flake.lock)
+          OLD=$(git show "${{ github.event.before }}:flake.lock" 2>/dev/null | jq -r '.nodes.strata.locked.rev' 2>/dev/null || echo none)
+          echo "old=$OLD new=$NEW"
+          echo "rev=$NEW" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$OLD" != "$NEW" ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: cachix/install-nix-action@v31
+        if: steps.check.outputs.build == 'true'
 
       - uses: cachix/cachix-action@v17
+        if: steps.check.outputs.build == 'true'
         with:
           name: stratafiles
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Build Strata
-        run: nix build "github:lgse/strata/${STRATA_REF}" -L
+        if: steps.check.outputs.build == 'true'
+        run: nix build "github:lgse/strata/${{ steps.check.outputs.rev }}" -L
