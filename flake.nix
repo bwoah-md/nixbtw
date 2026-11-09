@@ -61,6 +61,8 @@
           ./modules/packages/main/packages.nix
           ./modules/packages/options/integrations.nix
 
+          customPackages.nixosModule
+
           # ────── Binary Caches ──────
           ({ ... }: {
             nix.settings = {
