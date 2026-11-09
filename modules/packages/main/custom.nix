@@ -21,6 +21,10 @@
     nativeBuildInputs = [ pkgs.pkg-config ];
     buildInputs = [ pkgs.openssl ];
 
+    preBuild = ''
+      unset AWS_LC_SYS_USE_SYSTEM
+    '';
+
     meta.mainProgram = "superseedr";
   };
 
@@ -63,7 +67,6 @@
     ];
 
     dontBuild = true;
-
 
     installPhase = ''
       runHook preInstall
