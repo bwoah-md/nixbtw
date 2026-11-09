@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   localsend-wrapped = pkgs.symlinkJoin {
@@ -10,6 +10,7 @@ let
       wrapProgram $out/bin/localsend_app \
         --set GDK_BACKEND wayland \
         --set GTK_CSD 0 \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.zlib ]}" \
         --add-flags "--hidden-title-bar"
     '';
   };
