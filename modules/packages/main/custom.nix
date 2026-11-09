@@ -42,7 +42,7 @@
       hash = "sha256-2zRfd+lij1b7Zz+ktPkJbhurRDlwTBVqDuIMLZ0+Bec=";
     };
 
-    cargoHash = lib.fakeHash;
+    cargoHash = "sha256-pTg4nXiskJWbIasqEys6fNqI4jXWnuztXCiqEm/s4n8=";
 
     cargoBuildFlags = [
       "--workspace"
