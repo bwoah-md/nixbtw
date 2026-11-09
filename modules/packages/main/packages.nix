@@ -134,12 +134,12 @@ in
     obsidian
     readest
     sioyek
+    # zapfast
     # (zathura.override {
     #   plugins = [
     #     zathuraPkgs.zathura_pdf_mupdf
     #   ];
     # })
-    # zapfast
     # nautilus
     # pcmanfm-qt
     # lxqt.lxqt-archiver
