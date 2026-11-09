@@ -167,10 +167,10 @@ in
     # nixfmt
     # gh
 
-    (python3.withPackages (ps: [
-      ps.pygobject3
-    ]))
-    bubblewrap
+    # (python3.withPackages (ps: [
+    #   ps.pygobject3
+    # ]))
+    # bubblewrap
     # nodejs
     # jq
     # sshfs
