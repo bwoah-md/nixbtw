@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1794229866,
-        "narHash": "sha256-MffVX8//7waRuvC6sfUbkQmf7WYzaz8x8KBIUHK0154=",
+        "lastModified": 1794243527,
+        "narHash": "sha256-LmMUV3t7u7SbPO4kC+dtHtpnO6+SIu64qhBcw7rZJaQ=",
         "owner": "Ly-sec",
         "repo": "Cressida",
-        "rev": "3b4c61905ea126b7987cebd67714aa2113c3ce1f",
+        "rev": "f65e3e7f3e64421520cc173a2cca3feb981be0a1",
         "type": "github"
       },
       "original": {
