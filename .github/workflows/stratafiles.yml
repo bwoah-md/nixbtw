@@ -6,7 +6,7 @@ on:
     paths:
       - flake.lock
       - flake.nix
-      - .github/workflows/strata.yml
+      - .github/workflows/stratafiles.yml
 
   workflow_dispatch:
 
