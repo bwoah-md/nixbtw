@@ -34,7 +34,7 @@ jobs:
         uses: cachix/cachix-action@v15
         with:
           name: cressida
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          authToken: '${{ secrets.CRESSIDA_AUTH_TOKEN }}'
 
       - name: Build Cressida
         run: nix build .#cressida --print-build-logs
