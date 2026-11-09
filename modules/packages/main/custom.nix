@@ -42,7 +42,7 @@
       hash = "sha256-dLRGv1mq0pMZDkuYoRYHqAD0y+zmRyxau+3r+HlMY8M=";
     };
 
-    cargoHash = "sha256-pTg4nXiskJWbIasqEys6fNqI4jXWnuztXCiqEm/s4n8=";
+    cargoHash = "sha256-oyW4LWSzENHNIbQgZVH3BGVDeCZlZlLX5Noe33I5K6k=";
     cargoBuildFlags = [
       "--workspace"
       "--bins"
