@@ -1,18 +1,20 @@
-{ pkgs, lib, ... }:
+{ inputs, pkgs, ... }:
 
 let
-  customPackages = import ../../packages/main/custom.nix {
-    inherit pkgs lib;
-  };
+  strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   programs.umbriel.enable = true;
+
+  environment.systemPackages = [ strata ];
+
+  services.dbus.packages = [ strata.fileManagerService ];
 
   xdg.portal = {
     enable = true;
 
     extraPortals = [
-      customPackages.strata
+      strata.fileChooserPortal
     ];
 
     config.umbriel = {
@@ -31,10 +33,12 @@ in
   nix.settings = {
     extra-substituters = [
       "https://umbriel.cachix.org"
+      "https://stratafiles.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "umbriel.cachix.org-1:JfNq/2yg2S6D6z4Z2dVSZrZlDPQTKtexB6GAVLD98nw="
+      "stratafiles.cachix.org-1:1027HWSwpIo9qBk4myf9yuCkFuvq3h8aAeLPHWrEslM="
     ];
   };
 }

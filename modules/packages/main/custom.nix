@@ -31,12 +31,6 @@
   # ─────────────────────────────────────────────────
   # Strata
   # ─────────────────────────────────────────────────
-  nix.settings = {
-    substituters = [ "https://stratafiles.cachix.org" ];
-    trusted-public-keys = [
-      "stratafiles.cachix.org-1:1027HWSwpIo9qBk4myf9yuCkFuvq3h8aAeLPHWrEslM="
-    ];
-  };
   # strata = pkgs.stdenv.mkDerivation (finalAttrs: {
   #   pname = "strata";
   #   version = "1.2.0";

@@ -23,6 +23,9 @@
     # ────── Discord Client ──────
     # cressida.url = "github:Ly-sec/Cressida";
 
+    # ────── Strata - File Manager ──────
+    strata.url = "github:lgse/strata/9fb7a36ad4352337f3ada0d43710dc6d4ae838b9";
+
     # ────── WinApps - Run Windows on Linux ──────
     winapps = {
       url = "github:winapps-org/winapps";

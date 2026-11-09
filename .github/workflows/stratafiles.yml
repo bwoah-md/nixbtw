@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  STRATA_REF: v1.2.0
+  STRATA_REF: 9fb7a36ad4352337f3ada0d43710dc6d4ae838b9
 
 jobs:
   build:
@@ -18,4 +18,4 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Build Strata
-        run: nix build "github:lgse/strata?ref=${STRATA_REF}" -L
+        run: nix build "github:lgse/strata/${STRATA_REF}" -L

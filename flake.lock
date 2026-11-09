@@ -114,6 +114,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1791956154,
+        "narHash": "sha256-jBYGPi4udQ9uo4KQp9m2J0546nJVQitG15gvZSaVVAs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1793876309,
         "narHash": "sha256-Q62pssAT9r01POiSyXW0IPXBWhntiKqMhzlsp3bsl5I=",
         "rev": "f9a75f41be3a74eab55d3a7679d34ad6cc0da977",
@@ -150,6 +166,7 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "sonora": "sonora",
+        "strata": "strata",
         "umbriel": "umbriel",
         "winapps": "winapps"
       }
@@ -194,6 +211,25 @@
         "type": "github"
       }
     },
+    "strata": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1794096061,
+        "narHash": "sha256-Wd9/ANXICK6hxbfsJJ0yb6I8gE9Nk/GRNRDvzpMtHLU=",
+        "owner": "lgse",
+        "repo": "strata",
+        "rev": "9fb7a36ad4352337f3ada0d43710dc6d4ae838b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lgse",
+        "repo": "strata",
+        "rev": "9fb7a36ad4352337f3ada0d43710dc6d4ae838b9",
+        "type": "github"
+      }
+    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -211,7 +247,7 @@
     },
     "umbriel": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
