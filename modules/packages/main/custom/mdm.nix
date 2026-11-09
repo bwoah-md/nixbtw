@@ -48,16 +48,18 @@
         crates/app/assets/icons/app/mdm-256.png \
         $out/share/icons/hicolor/256x256/apps/misterdownloadmanager.png
 
+      install -d $out/share/applications
+
       cat > $out/share/applications/misterdownloadmanager.desktop <<EOF
-      [Desktop Entry]
-      Name=Mister Download Manager
-      Comment=Download manager
-      Exec=misterdownloadmanager
-      Icon=misterdownloadmanager
-      Terminal=false
-      Type=Application
-      Categories=Network;FileTransfer;
-      EOF
+    [Desktop Entry]
+    Name=Mister Download Manager
+    Comment=Download manager
+    Exec=misterdownloadmanager
+    Icon=misterdownloadmanager
+    Terminal=false
+    Type=Application
+    Categories=Network;FileTransfer;
+    EOF
     '';
 
     meta = {
