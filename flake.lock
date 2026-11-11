@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1794243527,
-        "narHash": "sha256-LmMUV3t7u7SbPO4kC+dtHtpnO6+SIu64qhBcw7rZJaQ=",
+        "lastModified": 1794340415,
+        "narHash": "sha256-dsrr7+ycgpaQcueTrzvxJOsxjqSLEs+LO0Iw5hhUrk4=",
         "owner": "Ly-sec",
         "repo": "Cressida",
-        "rev": "f65e3e7f3e64421520cc173a2cca3feb981be0a1",
+        "rev": "fb2ce02254fe7dda2e3786c563e81f01be9ad552",
         "type": "github"
       },
       "original": {
@@ -248,17 +248,16 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1794096061,
-        "narHash": "sha256-Wd9/ANXICK6hxbfsJJ0yb6I8gE9Nk/GRNRDvzpMtHLU=",
+        "lastModified": 1794289180,
+        "narHash": "sha256-pK8XAf3fjSVBUWz73iWHnCvqyBgSfWScLig2R5o95yk=",
         "owner": "lgse",
         "repo": "strata",
-        "rev": "9fb7a36ad4352337f3ada0d43710dc6d4ae838b9",
+        "rev": "491e6ba9735e821f9f49910ffd2582076196865c",
         "type": "github"
       },
       "original": {
         "owner": "lgse",
         "repo": "strata",
-        "rev": "9fb7a36ad4352337f3ada0d43710dc6d4ae838b9",
         "type": "github"
       }
     },
