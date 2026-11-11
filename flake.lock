@@ -57,11 +57,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793894983,
-        "narHash": "sha256-Edf2dXsfHch4YEjzSdBY5+CEmBTBWa5psnlDWExBKWk=",
+        "lastModified": 1794326795,
+        "narHash": "sha256-u/bFiTT2reDPGKDeOWEJMBd7iNYFkbdcIsrymwCF8OU=",
         "owner": "oxcl",
         "repo": "nix-flake-helium-browser",
-        "rev": "9fe3f8f48c8c25b0d245d13d6c91d4cf77adc729",
+        "rev": "ee8c73c6432d7337216775ccbe726c3004af6542",
         "type": "github"
       },
       "original": {
@@ -172,32 +172,16 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
-    "nixpkgs_7": {
-      "locked": {
-        "lastModified": 1789785513,
-        "narHash": "sha256-B44WL6h0XoLjJ41bUPJk0X5SDinLCII//6EcBLXKiJ0=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "20b1ddd1aa5ace70c9468305030aa4f9ef79671b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "noctalia": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1794231370,
-        "narHash": "sha256-Vf0aFsgS8WOtDk4/YXHLU7J5FGubCfB7NcLzKe5M92c=",
+        "lastModified": 1794400433,
+        "narHash": "sha256-eXrRtc3JmF6wT6bC34LTZXQ8In36NNR94xUWoW2dT9c=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "abd21e85bc354c7d1e3d624ed064b6c729ed4846",
+        "rev": "750418a7d58825a90b077bce0efe5410f217ace8",
         "type": "github"
       },
       "original": {
@@ -216,8 +200,7 @@
         "sonora": "sonora",
         "strata": "strata",
         "umbriel": "umbriel",
-        "winapps": "winapps",
-        "zapfast": "zapfast"
+        "winapps": "winapps"
       }
     },
     "rust-overlay": {
@@ -241,38 +224,17 @@
         "type": "github"
       }
     },
-    "rust-overlay_2": {
-      "inputs": {
-        "nixpkgs": [
-          "zapfast",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789977098,
-        "narHash": "sha256-fKY4BedarKx4aR0+UOHk65hhDW8pxFytFkaUi0VYDYk=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "2776e42828203ec89511699c8dcdedec69ab98e1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
     "sonora": {
       "inputs": {
         "nixpkgs": "nixpkgs_4",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1794222496,
-        "narHash": "sha256-gBFr/qdIK3GUz135vOjQb7be1bybWZSrrxuUkNqK860=",
+        "lastModified": 1794400710,
+        "narHash": "sha256-rOX/3pe6oZ/wGpXwf7Ka0auS74VUjGWeli9XKX+g8rk=",
         "owner": "sonorahq",
         "repo": "sonora",
-        "rev": "ace5ea21771adc2d1b93ab9fc409a44b270e97a3",
+        "rev": "272e387f6e25ffa8439592bc1180f9a9120ee1fd",
         "type": "github"
       },
       "original": {
@@ -320,11 +282,11 @@
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
-        "lastModified": 1794235787,
-        "narHash": "sha256-r2gk56nlrvI1j7ypEoIZiggYsBuK5nxegWbtsQ2oSxI=",
+        "lastModified": 1794392787,
+        "narHash": "sha256-Kikh8qX/gg+iONFPZSFNE1UE4mKcKsyRXdsxSk8gpkk=",
         "owner": "noctalia-dev",
         "repo": "umbriel",
-        "rev": "0a22bd2431b8d735ffc6dbb47e29b5b1fdcd5b02",
+        "rev": "d3c85928dc05d7913a5aaaa094dec9db30c2f6f4",
         "type": "github"
       },
       "original": {
@@ -375,25 +337,6 @@
       "original": {
         "owner": "noctalia-dev",
         "repo": "xdg-desktop-portal-umbriel",
-        "type": "github"
-      }
-    },
-    "zapfast": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_7",
-        "rust-overlay": "rust-overlay_2"
-      },
-      "locked": {
-        "lastModified": 1794206108,
-        "narHash": "sha256-7lFJa24qfSgx6YSu73SnolTFpLB4GQ3qZJwNx24z/z8=",
-        "owner": "crmne",
-        "repo": "zapfast",
-        "rev": "4497f08cee368235dedb4848990916bb40bfc88e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "crmne",
-        "repo": "zapfast",
         "type": "github"
       }
     }
