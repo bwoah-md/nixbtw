@@ -33,7 +33,7 @@ in
 
       # Umbriel-specific portal configuration
       umbriel = {
-        default = [ "gtk" ];
+        default = [ "strata" ];
 
         "org.freedesktop.impl.portal.ScreenCast" = [
           "umbriel"
