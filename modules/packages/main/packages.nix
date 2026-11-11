@@ -130,6 +130,7 @@
     obsidian
     readest
     sioyek
+    kdePackages.partitionmanager
     # zapfast
     # (zathura.override {
     #   plugins = [
