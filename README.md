@@ -1,6 +1,6 @@
 # icy@nix
 
-###### ⚠️ I have used AI to write some files and to generate this README, and also used it to configure shell functions (in `modules/desktop/terminals/fish.nix`), custom packages (in `modules/packages/main/custom.nix`), and also ArkenFox (in `modules/services/arkenfox.nix`) as I was having tough time and I am still learning.
+###### ⚠️ I have used AI to write some files and to generate this README, and also used it to configure shell functions (in `modules/desktop/terminals/fish.nix`), and also ArkenFox (in `modules/services/arkenfox.nix`) as I was having tough time and I am still learning.
 
 ---
 
