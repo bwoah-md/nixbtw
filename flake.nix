@@ -79,10 +79,12 @@
               trusted-users = [ "root" "icy" ];
               extra-substituters = [
                 "https://cressida.cachix.org"
+                "https://rayburst.cachix.org"
               ];
 
               extra-trusted-public-keys = [
                 "cressida.cachix.org-1:yhfhTmhFIGnn+vdwFXxS7L9OrQJQ33+DkuTiZcQ4LgA="
+                "rayburst.cachix.org-1:/g74/cQithzAXxw5uCfhYNH5pC3r2OSoXb/i1NZ23zU="
               ];
             };
           })
@@ -96,6 +98,7 @@
       # Custom and External Packages
       packages.${system} = customPackages // {
         cressida = inputs.cressida.packages.${system}.default;
+        rayburst = pkgs.rayburst;
       };
     };
 }
