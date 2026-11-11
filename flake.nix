@@ -49,8 +49,6 @@
           inherit pkgs;
         };
 
-        misterdownloadmanager = mdm.package;
-
         rayburst = pkgs.rayburst.overrideAttrs (oldAttrs: {
           buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
             pkgs.sqlite
@@ -58,10 +56,6 @@
         });
       };
 
-      mdm = import ./modules/packages/main/custom/mdm.nix {
-        inherit pkgs;
-        lib = pkgs.lib;
-      };
     in
     {
       nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
@@ -75,9 +69,6 @@
           ./hosts/nix/imports.nix
           ./modules/packages/main/packages.nix
           ./modules/packages/options/integrations.nix
-
-          # MDM Binary Cache
-          mdm.nixosModule
 
           # ────── Binary Caches ──────
           ({ ... }: {
