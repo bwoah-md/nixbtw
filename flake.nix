@@ -50,6 +50,12 @@
         };
 
         misterdownloadmanager = mdm.package;
+
+        rayburst = pkgs.rayburst.overrideAttrs (oldAttrs: {
+          buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
+            pkgs.sqlite
+          ];
+        });
       };
 
       mdm = import ./modules/packages/main/custom/mdm.nix {
@@ -98,7 +104,6 @@
       # Custom and External Packages
       packages.${system} = customPackages // {
         cressida = inputs.cressida.packages.${system}.default;
-        rayburst = pkgs.rayburst;
       };
     };
 }

@@ -16,6 +16,7 @@
     # Apps from Cachix
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-bin
+    customPackages.rayburst
     # customPackages.misterdownloadmanager
     # inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -129,7 +130,6 @@
     obsidian
     readest
     sioyek
-    rayburst
     # zapfast
     # (zathura.override {
     #   plugins = [
