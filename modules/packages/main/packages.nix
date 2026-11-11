@@ -16,6 +16,7 @@
     # Apps from Cachix
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.sonora-bin
+    inputs.zapfast.packages.${pkgs.system}.default
     customPackages.misterdownloadmanager
     # inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
 

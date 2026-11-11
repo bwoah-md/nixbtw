@@ -172,6 +172,22 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
+    "nixpkgs_7": {
+      "locked": {
+        "lastModified": 1789785513,
+        "narHash": "sha256-B44WL6h0XoLjJ41bUPJk0X5SDinLCII//6EcBLXKiJ0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "20b1ddd1aa5ace70c9468305030aa4f9ef79671b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "noctalia": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
@@ -200,7 +216,8 @@
         "sonora": "sonora",
         "strata": "strata",
         "umbriel": "umbriel",
-        "winapps": "winapps"
+        "winapps": "winapps",
+        "zapfast": "zapfast"
       }
     },
     "rust-overlay": {
@@ -216,6 +233,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "228ecefb6329d5a531b77b46b581a2f0c26ee056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "zapfast",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789977098,
+        "narHash": "sha256-fKY4BedarKx4aR0+UOHk65hhDW8pxFytFkaUi0VYDYk=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "2776e42828203ec89511699c8dcdedec69ab98e1",
         "type": "github"
       },
       "original": {
@@ -337,6 +375,25 @@
       "original": {
         "owner": "noctalia-dev",
         "repo": "xdg-desktop-portal-umbriel",
+        "type": "github"
+      }
+    },
+    "zapfast": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_7",
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1794206108,
+        "narHash": "sha256-7lFJa24qfSgx6YSu73SnolTFpLB4GQ3qZJwNx24z/z8=",
+        "owner": "crmne",
+        "repo": "zapfast",
+        "rev": "4497f08cee368235dedb4848990916bb40bfc88e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crmne",
+        "repo": "zapfast",
         "type": "github"
       }
     }

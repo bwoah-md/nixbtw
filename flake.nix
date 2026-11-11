@@ -23,6 +23,9 @@
     # ────── Discord Client ──────
     cressida.url = "github:Ly-sec/Cressida";
 
+    # ────── Whatsapp Client ──────
+    zapfast.url = "github:crmne/zapfast";
+
     # ────── Strata - File Manager ──────
     strata.url = "github:lgse/strata";
 
