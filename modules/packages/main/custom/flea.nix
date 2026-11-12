@@ -1,3 +1,4 @@
+
 {
   lib,
   rustPlatform,
@@ -47,10 +48,9 @@
   ffmpeg,
   ffmpegthumbnailer,
   imagemagick,
-  libreoffice,
-  tailscale,
+  # libreoffice,
+  # tailscale,
   zoxide,
-  dropbox-cli ? null,
   fleaSrc,
   withHtmlPreview ? true,
   extraPackages ? [ ],
@@ -249,12 +249,10 @@ let
       ffmpeg
       ffmpegthumbnailer
       imagemagick
-      libreoffice
-      tailscale
+      # libreoffice
+      # tailscale
       zoxide
       ;
-  } // lib.optionalAttrs (dropbox-cli != null) {
-    dropbox = dropbox-cli;
   };
 
   flea-fhs = buildFHSEnv {
@@ -356,9 +354,6 @@ let
       qt6.qtdeclarative
       qt6.qtwebengine
       qml6Shim
-    ]
-    ++ lib.optionals (dropbox-cli != null) [
-      dropbox-cli
     ]
     ++ extraPackages;
   };
