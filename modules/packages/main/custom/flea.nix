@@ -217,17 +217,21 @@ let
     };
   };
 
+  # Preserve the Omarchy data path expected by Flea.
   omarchyLink = runCommand "flea-omarchy-link" { } ''
     mkdir -p "$out/share"
     ln -s ${lib.escapeShellArg omarchyPath} "$out/share/omarchy"
   '';
 
+  # Bubblewrap wrapper used by Flea's nested sandboxes.
+  # /host is exposed read-only by the outer FHS environment.
   bwrapShim = writeShellScriptBin "bwrap" ''
-    # Flea's Bubblewrap jails expect the host-style /etc layout.
     exec ${bubblewrap}/bin/bwrap \
       --ro-bind /nix/store /nix/store \
       --ro-bind ${glibc}/etc ${glibc}/etc \
       --ro-bind-try /.host-etc /.host-etc \
+      --dir /host \
+      --ro-bind-try /host /host \
       "$@"
   '';
 
@@ -243,6 +247,7 @@ let
     ln -s ${_7zz}/bin/7zz "$out/bin/7z"
   '';
 
+  # Optional tools that can be added to the FHS environment.
   optionalPackages = {
     sevenzip = sevenzip7z;
 
@@ -251,8 +256,6 @@ let
       ffmpeg
       ffmpegthumbnailer
       imagemagick
-      # libreoffice
-      # tailscale
       zoxide
       ;
   };
@@ -265,6 +268,13 @@ let
     '';
 
     dieWithParent = false;
+
+    # Make the host filesystem available read-only at /host.
+    # buildFHSEnv passes these lines directly to Bubblewrap.
+    extraBwrapArgs = [
+      "--dir /host"
+      "--ro-bind / /host"
+    ];
 
     profile = ''
       export GI_TYPELIB_PATH=/usr/lib/girepository-1.0
@@ -281,7 +291,9 @@ let
         exit 1
       }
 
-      tools="bat soffice libreoffice"
+      # bat is provided by this derivation. Other thumbnailer commands
+      # are collected from the installed thumbnailer definitions.
+      tools="bat"
 
       for f in "$out"/usr/share/thumbnailers/*.thumbnailer; do
         [ -e "$f" ] || continue
