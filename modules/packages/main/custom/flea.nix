@@ -90,7 +90,6 @@ let
 
     cargoBuildFlags = [
       "--frozen"
-      "--release"
       "--workspace"
       "--bins"
     ];
