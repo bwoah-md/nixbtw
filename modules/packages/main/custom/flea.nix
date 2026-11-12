@@ -104,8 +104,11 @@ let
       mkdir -p "$out"
 
       # Main executables
-      install -Dm755 target/release/flea "$out/bin/flea"
-      install -Dm755 target/release/flea-gui "$out/bin/flea-gui"
+      install -Dm755 target/x86_64-unknown-linux-gnu/release/flea \
+        "$out/bin/flea"
+
+      install -Dm755 target/x86_64-unknown-linux-gnu/release/flea-gui \
+        "$out/bin/flea-gui"
 
       # Runtime helper programs
       install -Dm755 tools/flea-gio-auth "$out/lib/flea/flea-gio-auth"
