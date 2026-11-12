@@ -23,6 +23,15 @@
     # ────── Discord Client ──────
     cressida.url = "github:Ly-sec/Cressida";
 
+    # ────── Rayburst Download Manager ──────
+    rayburst-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # ────── Flea - File Manager ──────
+    flea = {
+      url = "github:thisisgm/flea";
+      flake = false;
+    };
+
     # ────── Strata - File Manager ──────
     strata.url = "github:lgse/strata";
 
@@ -34,7 +43,7 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, rayburst-nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -49,7 +58,11 @@
           inherit pkgs;
         };
 
-        rayburst = pkgs.rayburst.overrideAttrs (oldAttrs: {
+        flea = pkgs.callPackage ./modules/packages/main/custom/flea.nix {
+          fleaSrc = inputs.flea;
+        };
+
+        rayburst = rayburst-nixpkgs.legacyPackages.${system}.rayburst.overrideAttrs (oldAttrs: {
           buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
             pkgs.sqlite
           ];
