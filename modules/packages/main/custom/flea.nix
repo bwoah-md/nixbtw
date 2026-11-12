@@ -67,8 +67,7 @@ let
     inherit version;
     src = fleaSrc;
 
-    # Replace with the hash reported by the first GitHub Actions build.
-    cargoHash = lib.fakeHash;
+    cargoHash = "sha256-z64BjWipyFhkrgtown7VTg3G1pcs5NV4adCPXLMrR0Q=";
 
     nativeBuildInputs = [
       pkg-config
