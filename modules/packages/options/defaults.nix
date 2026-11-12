@@ -3,7 +3,8 @@
 {
   # default --- File Explorer
   xdg.mime.defaultApplications = {
-    "inode/directory" = "io.github.lgse.Strata.desktop";
+    "inode/directory" = "nordend.desktop";
+    # "inode/directory" = "io.github.lgse.Strata.desktop";
   };
 
   # default --- Fonts

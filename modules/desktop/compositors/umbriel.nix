@@ -2,9 +2,12 @@
 
 let
   strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  bordend = inputs.bordend.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   programs.umbriel.enable = true;
+
+  programs.nordend.enable = true;
 
   environment.systemPackages = [
     strata
@@ -22,6 +25,7 @@ in
     enable = true;
 
     extraPortals = [
+      bordend
       strata.fileChooserPortal
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -29,14 +33,17 @@ in
     config = {
       # System-wide file chooser preference
       common."org.freedesktop.impl.portal.FileChooser" = [
+        "nordend"
         "strata"
         "gtk"
       ];
 
       # Umbriel-specific portal configuration
       umbriel = {
-        default = [
+        "org.freedesktop.impl.portal.FileChooser" = [
+          "nordend"
           "strata"
+          "gtk"
         ];
 
         "org.freedesktop.impl.portal.ScreenCast" = [

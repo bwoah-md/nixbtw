@@ -29,6 +29,12 @@
     # ────── Strata - File Manager ──────
     strata.url = "github:lgse/strata";
 
+    # ────── Bordend - File Manager ──────
+    bordend = {
+      url = "github:barrulus/bordend-fm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # ────── WinApps - Run Windows on Linux ──────
     winapps = {
       url = "github:winapps-org/winapps";
@@ -92,6 +98,7 @@
           inputs.noctalia.nixosModules.default
           inputs.umbriel.nixosModules.default
           inputs.helium-flake.nixosModules.default
+          inputs.bordend.nixosModules.default
         ];
       };
 
