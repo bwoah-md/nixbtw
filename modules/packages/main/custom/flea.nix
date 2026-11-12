@@ -174,7 +174,7 @@ let
 
       # Keep the packaged shelf version aligned with the Nix package version.
       sed -i \
-        "s/^  \\"version\\": \\"[^\\"]*\\",\$/  \\"version\\": \\"${version}-1\\",/" \
+        's/^  "version": "[^"]*",$/  "version": "${version}-1",/' \
         "$out/share/flea/shelf/manifest.json"
 
       grep -qF '  "version": "${version}-1",' \
