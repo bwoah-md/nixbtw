@@ -69,7 +69,7 @@
       nixupdate = "cd ~/.config/nixos && nix-update superseedr --flake --build && rm -f result";
       nixclean = "doas nix-collect-garbage -d && nix-collect-garbage -d";
       nixflake = "nix flake update nixpkgs noctalia helium-flake winapps umbriel sonora --flake ~/.config/nixos";
-      nixcachix = "nix flake update strata cressida flea rayburst-nixpkgs --flake ~/.config/nixos";
+      nixcachix = "nix flake update strata cressida rayburst-nixpkgs --flake ~/.config/nixos";
 
       # Dotfiles
       dot = "cd ~/.dotfiles";

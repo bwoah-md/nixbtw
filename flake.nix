@@ -26,12 +26,6 @@
     # ────── Rayburst Download Manager ──────
     rayburst-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # ────── Flea - File Manager ──────
-    flea = {
-      url = "github:thisisgm/flea";
-      flake = false;
-    };
-
     # ────── Strata - File Manager ──────
     strata.url = "github:lgse/strata";
 
@@ -56,10 +50,6 @@
       customPackages = {
         superseedr = import ./modules/packages/main/custom/superseedr.nix {
           inherit pkgs;
-        };
-
-        flea = pkgs.callPackage ./modules/packages/main/custom/flea.nix {
-          fleaSrc = inputs.flea;
         };
 
         rayburst = rayburst-nixpkgs.legacyPackages.${system}.rayburst.overrideAttrs (oldAttrs: {

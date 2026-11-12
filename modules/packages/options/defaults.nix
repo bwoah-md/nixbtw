@@ -3,8 +3,7 @@
 {
   # default --- File Explorer
   xdg.mime.defaultApplications = {
-    "inode/directory" = "com.thisisgm.flea.desktop";
-    # "inode/directory" = "io.github.lgse.Strata.desktop";
+    "inode/directory" = "io.github.lgse.Strata.desktop";
   };
 
   # default --- Fonts
