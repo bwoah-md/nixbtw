@@ -54,6 +54,6 @@ jobs:
           name: rummage
           authToken: '${{ secrets.RUMMAGE_AUTH_TOKEN }}'
 
-      - name: Build Rummage
+      - name: Build Rummage with Media Support
         if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         run: nix build .#rummage --print-build-logs
