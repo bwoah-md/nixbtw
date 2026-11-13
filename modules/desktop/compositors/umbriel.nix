@@ -2,7 +2,7 @@
 
 let
   strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  rummage = inputs.rummage.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  rummage = inputs.rummage.packages.${pkgs.stdenv.hostPlatform.system}.rummage-with-media;
 in
 {
   programs.umbriel.enable = true;
