@@ -86,11 +86,13 @@
               extra-substituters = [
                 "https://cressida.cachix.org"
                 "https://rayburst.cachix.org"
+                "https://bordend.cachix.org"
               ];
 
               extra-trusted-public-keys = [
                 "cressida.cachix.org-1:yhfhTmhFIGnn+vdwFXxS7L9OrQJQ33+DkuTiZcQ4LgA="
                 "rayburst.cachix.org-1:/g74/cQithzAXxw5uCfhYNH5pC3r2OSoXb/i1NZ23zU="
+                "bordend.cachix.org-1:JB6tn4DAzf6w2PmfS9No66/wC4ro9EW2Yh7l3dVGDgY="
               ];
             };
           })
@@ -105,6 +107,7 @@
       # Custom and External Packages
       packages.${system} = customPackages // {
         cressida = inputs.cressida.packages.${system}.default;
+        bordend = inputs.bordend.packages.${system}.default;
       };
     };
 }
