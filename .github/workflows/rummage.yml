@@ -1,4 +1,5 @@
-name: Bordend
+
+name: Rummage
 
 on:
   push:
@@ -9,7 +10,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: bordend
+  group: rummage
   cancel-in-progress: true
 
 permissions:
@@ -17,7 +18,7 @@ permissions:
 
 jobs:
   build:
-    name: Build Bordend (x86_64-linux)
+    name: Build Rummage (x86_64-linux)
     runs-on: ubuntu-latest
     timeout-minutes: 120
 
@@ -27,17 +28,17 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Check whether Bordend or nixpkgs changed
+      - name: Check whether Rummage or nixpkgs changed
         id: check
         shell: bash
         run: |
-          OLD_BORDEND_REV=$(git show HEAD^:flake.lock 2>/dev/null | jq -r '.nodes.bordend.locked.rev // empty' || true)
-          NEW_BORDEND_REV=$(jq -r '.nodes.bordend.locked.rev // empty' flake.lock)
+          OLD_RUMMAGE_REV=$(git show HEAD^:flake.lock 2>/dev/null | jq -r '.nodes.rummage.locked.rev // empty' || true)
+          NEW_RUMMAGE_REV=$(jq -r '.nodes.rummage.locked.rev // empty' flake.lock)
 
           OLD_NIXPKGS_REV=$(git show HEAD^:flake.lock 2>/dev/null | jq -r '.nodes.nixpkgs.locked.rev // empty' || true)
           NEW_NIXPKGS_REV=$(jq -r '.nodes.nixpkgs.locked.rev // empty' flake.lock)
 
-          if [ "$OLD_BORDEND_REV" != "$NEW_BORDEND_REV" ] || [ "$OLD_NIXPKGS_REV" != "$NEW_NIXPKGS_REV" ]; then
+          if [ "$OLD_RUMMAGE_REV" != "$NEW_RUMMAGE_REV" ] || [ "$OLD_NIXPKGS_REV" != "$NEW_NIXPKGS_REV" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -51,9 +52,9 @@ jobs:
         if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         uses: cachix/cachix-action@v17
         with:
-          name: bordend
-          authToken: '${{ secrets.BORDEND_AUTH_TOKEN }}'
+          name: rummage
+          authToken: '${{ secrets.RUMMAGE_AUTH_TOKEN }}'
 
-      - name: Build Bordend
+      - name: Build Rummage
         if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
-        run: nix build .#bordend --print-build-logs
+        run: nix build .#rummage --print-build-logs

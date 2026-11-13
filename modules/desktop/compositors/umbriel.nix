@@ -2,12 +2,12 @@
 
 let
   strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  bordend = inputs.bordend.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  rummage = inputs.rummage.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   programs.umbriel.enable = true;
 
-  programs.nordend.enable = true;
+  programs.rummage.enable = true;
 
   environment.systemPackages = [
     strata
@@ -25,7 +25,7 @@ in
     enable = true;
 
     extraPortals = [
-      bordend
+      rummage
       strata.fileChooserPortal
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -33,7 +33,7 @@ in
     config = {
       # System-wide file chooser preference
       common."org.freedesktop.impl.portal.FileChooser" = [
-        "nordend"
+        "rummage"
         "strata"
         "gtk"
       ];
@@ -41,7 +41,7 @@ in
       # Umbriel-specific portal configuration
       umbriel = {
         "org.freedesktop.impl.portal.FileChooser" = [
-          "nordend"
+          "rummage"
           "strata"
           "gtk"
         ];

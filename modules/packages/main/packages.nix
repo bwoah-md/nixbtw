@@ -85,7 +85,6 @@
     # Cursors and Icons
     # ─────────────────────────────────────────────────
     capitaine-cursors
-    fluent-icon-theme
 
     # ─────────────────────────────────────────────────
     # Wayland / Desktop Utilities
@@ -153,8 +152,8 @@
     # ─────────────────────────────────────────────────
     # Development
     # ─────────────────────────────────────────────────
-    nix-update
     fd
+    # nix-update
     # nix-output-monitor
     # nil
     # nixd

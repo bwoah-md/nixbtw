@@ -29,9 +29,9 @@
     # ────── Strata - File Manager ──────
     strata.url = "github:lgse/strata";
 
-    # ────── Bordend - File Manager ──────
-    bordend = {
-      url = "github:barrulus/bordend-fm";
+    # ────── Rummage - File Manager ──────
+    rummage = {
+      url = "github:barrulus/rummage";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -82,14 +82,14 @@
               extra-substituters = [
                 "https://cressida.cachix.org"
                 "https://rayburst.cachix.org"
-                "https://bordend.cachix.org"
+                "https://rummage.cachix.org"
                 "https://sonora.cachix.org"
               ];
 
               extra-trusted-public-keys = [
                 "cressida.cachix.org-1:yhfhTmhFIGnn+vdwFXxS7L9OrQJQ33+DkuTiZcQ4LgA="
                 "rayburst.cachix.org-1:/g74/cQithzAXxw5uCfhYNH5pC3r2OSoXb/i1NZ23zU="
-                "bordend.cachix.org-1:JB6tn4DAzf6w2PmfS9No66/wC4ro9EW2Yh7l3dVGDgY="
+                "rummage.cachix.org-1:pgnbXs5DeHMKuQtyPiEzna+iFRLSPDppYJpE/Y6bIxw="
                 "sonora.cachix.org-1:qbPeDsvZPbwUWHpQS5Oe0bjz5oHAVscHem+MCzwrc9Q="
               ];
             };
@@ -98,14 +98,14 @@
           inputs.noctalia.nixosModules.default
           inputs.umbriel.nixosModules.default
           inputs.helium-flake.nixosModules.default
-          inputs.bordend.nixosModules.default
+          inputs.rummage.nixosModules.default
         ];
       };
 
       # Custom and External Packages
       packages.${system} = customPackages // {
         cressida = inputs.cressida.packages.${system}.default;
-        bordend = inputs.bordend.packages.${system}.default;
+        rummage = inputs.rummage.packages.${system}.default;
       };
     };
 }

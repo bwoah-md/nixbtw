@@ -3,7 +3,7 @@
 {
   # default --- File Explorer
   xdg.mime.defaultApplications = {
-    "inode/directory" = "nordend.desktop";
+    "inode/directory" = "rummage.desktop";
     # "inode/directory" = "io.github.lgse.Strata.desktop";
   };
 

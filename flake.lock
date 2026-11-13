@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "bordend": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1794524648,
-        "narHash": "sha256-zYK7GrKmIRsniII2gFfRALeAwqcVQ/rPxYrv0ktLlCo=",
-        "owner": "barrulus",
-        "repo": "bordend-fm",
-        "rev": "f9f1315c7172fd325b651414bd133733088186f7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "barrulus",
-        "repo": "bordend-fm",
-        "type": "github"
-      }
-    },
     "cressida": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -229,16 +209,36 @@
     },
     "root": {
       "inputs": {
-        "bordend": "bordend",
         "cressida": "cressida",
         "helium-flake": "helium-flake",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
         "rayburst-nixpkgs": "rayburst-nixpkgs",
+        "rummage": "rummage",
         "sonora": "sonora",
         "strata": "strata",
         "umbriel": "umbriel",
         "winapps": "winapps"
+      }
+    },
+    "rummage": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794591145,
+        "narHash": "sha256-w5met7D/XqoOA7sA+6ygxsB+MbuV+TRjSfXqJ5XPcKk=",
+        "owner": "barrulus",
+        "repo": "rummage",
+        "rev": "6ace49240445f7e1d096c98f168a829200e13cbd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "barrulus",
+        "repo": "rummage",
+        "type": "github"
       }
     },
     "rust-overlay": {
