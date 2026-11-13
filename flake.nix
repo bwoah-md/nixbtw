@@ -18,7 +18,7 @@
     };
 
     # ────── Music Client ──────
-    sonora.url = "github:sonorahq/sonora";
+    sonora.url = "github:sonorahq/sonora/stable";
 
     # ────── Discord Client ──────
     cressida.url = "github:Ly-sec/Cressida";
@@ -58,6 +58,11 @@
           inherit pkgs;
         };
 
+        google-sans-flex = (import ./modules/packages/fonts/custom.nix {
+          inherit pkgs;
+          lib = pkgs.lib;
+        }).google-sans-flex;
+
         rayburst = rayburst-nixpkgs.legacyPackages.${system}.rayburst.overrideAttrs (oldAttrs: {
           buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
             pkgs.sqlite
@@ -87,12 +92,14 @@
                 "https://cressida.cachix.org"
                 "https://rayburst.cachix.org"
                 "https://bordend.cachix.org"
+                "https://sonora.cachix.org"
               ];
 
               extra-trusted-public-keys = [
                 "cressida.cachix.org-1:yhfhTmhFIGnn+vdwFXxS7L9OrQJQ33+DkuTiZcQ4LgA="
                 "rayburst.cachix.org-1:/g74/cQithzAXxw5uCfhYNH5pC3r2OSoXb/i1NZ23zU="
                 "bordend.cachix.org-1:JB6tn4DAzf6w2PmfS9No66/wC4ro9EW2Yh7l3dVGDgY="
+                "sonora.cachix.org-1:qbPeDsvZPbwUWHpQS5Oe0bjz5oHAVscHem+MCzwrc9Q="
               ];
             };
           })
