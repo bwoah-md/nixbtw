@@ -21,11 +21,6 @@
     # inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # ─────────────────────────────────────────────────
-    # Custom Packages (from modules/packages/main/custom/)
-    # ─────────────────────────────────────────────────
-    customPackages.superseedr
-
-    # ─────────────────────────────────────────────────
     # Shell & Terminal
     # ─────────────────────────────────────────────────
     foot

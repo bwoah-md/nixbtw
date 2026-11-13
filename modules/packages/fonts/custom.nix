@@ -2,11 +2,11 @@
 {
   google-sans-flex = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "google-sans-flex";
-    version = "4.007";
+    version = "5.000";
 
     src = pkgs.fetchurl {
       url = "https://github.com/googlefonts/googlesans-flex/releases/download/v${finalAttrs.version}/GoogleSansFlex-v${finalAttrs.version}.zip";
-      hash = "sha256-tzdRMb/8Xqrr62XGlSm6EOf3qZYrkTSI9u81xDLOGck=";
+      hash = "sha256-wgsAh43YAdG/wG13FzJEeUDHJVv5TPU4zgECx/sG+oU=";
     };
 
     nativeBuildInputs = [ pkgs.unzip ];

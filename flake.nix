@@ -54,10 +54,6 @@
 
       # ────── Custom Packages ──────
       customPackages = {
-        superseedr = import ./modules/packages/main/custom/superseedr.nix {
-          inherit pkgs;
-        };
-
         google-sans-flex = (import ./modules/packages/fonts/custom.nix {
           inherit pkgs;
           lib = pkgs.lib;
