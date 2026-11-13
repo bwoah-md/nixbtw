@@ -51,10 +51,8 @@
     # Packages
     # ─────────────────────────────────────────────────
 
-    # ────── Fonts ──────
-    ../../modules/packages/fonts/fonts.nix
-
     # ────── Main ──────
+    ../../modules/packages/main/fonts.nix
     ../../modules/packages/main/packages.nix
 
     # ────── Options ──────

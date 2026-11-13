@@ -54,11 +54,6 @@
 
       # ────── Custom Packages ──────
       customPackages = {
-        google-sans-flex = (import ./modules/packages/fonts/custom.nix {
-          inherit pkgs;
-          lib = pkgs.lib;
-        }).google-sans-flex;
-
         rayburst = rayburst-nixpkgs.legacyPackages.${system}.rayburst.overrideAttrs (oldAttrs: {
           buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
             pkgs.sqlite

@@ -1,17 +1,10 @@
-{ pkgs, lib, ... }:
-
-let
-  customPackages = import ./custom.nix {
-    inherit pkgs lib;
-  };
-in
+{ pkgs, ... }:
 {
   fonts = {
     enableDefaultPackages = true;
 
     packages = with pkgs; [
       ibm-plex
-      customPackages.google-sans-flex
       maple-mono.NF-CN
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka

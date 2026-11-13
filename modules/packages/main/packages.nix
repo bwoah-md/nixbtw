@@ -82,9 +82,10 @@
     rar
 
     # ─────────────────────────────────────────────────
-    # Cursors
+    # Cursors and Icons
     # ─────────────────────────────────────────────────
     capitaine-cursors
+    fluent-icon-theme
 
     # ─────────────────────────────────────────────────
     # Wayland / Desktop Utilities
