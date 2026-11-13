@@ -7,7 +7,10 @@ in
 {
   programs.umbriel.enable = true;
 
-  programs.rummage.enable = true;
+  programs.rummage = {
+    enable = true;
+    package = rummage;
+  };
 
   environment.systemPackages = [
     strata
