@@ -142,8 +142,8 @@
     adw-gtk3
     kdePackages.qt6ct
     libsForQt5.qt5ct
+    klassy
     # kdePackages.kcolorscheme
-    # klassy
     # kdePackages.qtsvg
     # nwg-look
     # papirus-icon-theme
