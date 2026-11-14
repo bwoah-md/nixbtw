@@ -82,9 +82,10 @@
     rar
 
     # ─────────────────────────────────────────────────
-    # Cursors and Icons
+    # Cursors, Themes and Icons
     # ─────────────────────────────────────────────────
     capitaine-cursors
+    # darkly
 
     # ─────────────────────────────────────────────────
     # Wayland / Desktop Utilities
