@@ -78,6 +78,11 @@
           # ────── Binary Caches ──────
           ({ ... }: {
             nix.settings = {
+
+              # Setting this removes local compiles, set to 4 and 3600 to enable it again
+              max-jobs = 0;
+              narinfo-cache-negative-ttl = 0;
+
               trusted-users = [ "root" "icy" ];
               extra-substituters = [
                 "https://cressida.cachix.org"
