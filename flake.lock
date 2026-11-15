@@ -228,11 +228,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794683244,
-        "narHash": "sha256-48JyU6QI4p/J3tOCivUFVRQgqGziWsDKJ5+vaC8de7g=",
+        "lastModified": 1794705508,
+        "narHash": "sha256-S1ra2qgKO+DRI7PDeB8wwyG6xptclhq30RUEFs26ibg=",
         "owner": "barrulus",
         "repo": "rummage",
-        "rev": "11ab783090060850f4c3d38224b3d872200f3885",
+        "rev": "e6a27dc954a7b0be225d3676a62e288dcf946c05",
         "type": "github"
       },
       "original": {
