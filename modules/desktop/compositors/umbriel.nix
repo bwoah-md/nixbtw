@@ -1,8 +1,8 @@
-{ inputs, pkgs, customPackages, ... }:
+{ inputs, lib, pkgs, customPackages, ... }:
 
 let
   strata = inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  rummage = inputs.rummage.packages.${pkgs.stdenv.hostPlatform.system}.rummage-with-media;
+  rummage = inputs.rummage.packages.${pkgs.stdenv.hostPlatform.system}.rummage-with-previews;
 in
 {
   programs.umbriel.enable = true;
@@ -10,6 +10,7 @@ in
   programs.rummage = {
     enable = true;
     package = rummage;
+    filePicker.enable = true;
   };
 
   environment.systemPackages = [
@@ -43,7 +44,7 @@ in
 
       # Umbriel-specific portal configuration
       umbriel = {
-        "org.freedesktop.impl.portal.FileChooser" = [
+        "org.freedesktop.impl.portal.FileChooser" = lib.mkForce [
           "rummage"
           "strata"
           "gtk"
@@ -64,11 +65,13 @@ in
     extra-substituters = [
       "https://umbriel.cachix.org"
       "https://strata.cachix.org"
+      "https://rummage.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "umbriel.cachix.org-1:JfNq/2yg2S6D6z4Z2dVSZrZlDPQTKtexB6GAVLD98nw="
       "strata.cachix.org-1:EFflsiJKJ9Zlsj11+oW9d4ib/KOUTf2oxilH/p2JJNo="
+      "rummage.cachix.org-1:pgnbXs5DeHMKuQtyPiEzna+iFRLSPDppYJpE/Y6bIxw="
     ];
   };
 }
