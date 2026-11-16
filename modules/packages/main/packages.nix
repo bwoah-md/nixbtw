@@ -14,7 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     # ─────────────────────────────────────────────────
-    # Apps from Cachix
+    # Custom Apps
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.default
     customPackages.rayburst
@@ -127,7 +127,7 @@
     readest
     sioyek
     kdePackages.partitionmanager
-    # zapfast
+    zapfast
     # (zathura.override {
     #   plugins = [
     #     zathuraPkgs.zathura_pdf_mupdf
