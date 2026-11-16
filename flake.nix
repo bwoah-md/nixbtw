@@ -103,7 +103,6 @@
       # Custom and External Packages
       packages.${system} = customPackages // {
         cressida = inputs.cressida.packages.${system}.default;
-        rummage = inputs.rummage.packages.${system}.rummage-with-previews;
       };
     };
 }
