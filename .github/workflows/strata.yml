@@ -1,11 +1,6 @@
 name: Strata
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - flake.lock
-
   workflow_dispatch:
 
 concurrency:
@@ -27,31 +22,16 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Check whether Strata changed
-        id: check
-        run: |
-          OLD_REV=$(git show HEAD^:flake.lock 2>/dev/null | jq -r '.nodes.strata.locked.rev // empty' || true)
-          NEW_REV=$(jq -r '.nodes.strata.locked.rev')
-
-          if [ "$OLD_REV" != "$NEW_REV" ]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Install Nix
-        if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix
-        if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         uses: cachix/cachix-action@v17
         with:
           name: strata
           authToken: '${{ secrets.STRATA_AUTH_TOKEN }}'
 
       - name: Build Strata
-        if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         run: |
           REV=$(jq -er '.nodes.strata.locked.rev' flake.lock)
           nix build --no-link -L "github:lgse/strata/$REV"
