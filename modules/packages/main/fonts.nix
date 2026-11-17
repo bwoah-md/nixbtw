@@ -5,8 +5,7 @@
 
     packages = with pkgs; [
       ibm-plex
-      cozette
-      # maple-mono.NF-CN
+      maple-mono.NF-CN
       # nerd-fonts.jetbrains-mono
       # nerd-fonts.iosevka
       noto-fonts-color-emoji
