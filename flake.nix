@@ -36,7 +36,10 @@
     };
 
     # ────── Luciole - File Manager ──────
-    luciole.url = "github:noctalia-dev/luciole";
+    luciole = {
+      url = "github:noctalia-dev/luciole";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # ────── WinApps - Run Windows on Linux ──────
     winapps = {
