@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
 
@@ -26,7 +26,7 @@ jobs:
         uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v17
         with:
           name: luciole
           authToken: '${{ secrets.LUCIOLE_AUTH_TOKEN }}'
