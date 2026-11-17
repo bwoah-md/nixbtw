@@ -2,10 +2,11 @@
 
 {
   # default --- File Explorer
-  xdg.mime.defaultApplications = {
-    "inode/directory" = "rummage.desktop";
-    # "inode/directory" = "io.github.lgse.Strata.desktop";
-  };
+  xdg.mime.defaultApplications."inode/directory" = [
+    "dev.noctalia.luciole.desktop"
+    "rummage.desktop"
+    "io.github.lgse.Strata.desktop"
+  ];
 
   # default --- Fonts
   fonts.fontconfig.defaultFonts = {

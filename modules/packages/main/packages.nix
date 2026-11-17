@@ -17,8 +17,9 @@
     # Custom Apps
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.default
-    customPackages.rayburst
     inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.luciole.packages.${pkgs.stdenv.hostPlatform.system}.default
+    customPackages.rayburst
 
     # ─────────────────────────────────────────────────
     # Shell & Terminal
@@ -42,6 +43,7 @@
     cbonsai
     unimatrix
     cava
+    dwt1-shell-color-scripts
 
     # ─────────────────────────────────────────────────
     # Editors

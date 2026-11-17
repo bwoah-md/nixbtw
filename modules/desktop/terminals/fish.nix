@@ -49,6 +49,7 @@
       mf = "clear && fastfetch -c micro";
       sf = "clear && fastfetch -c small";
       tf = "clear && fastfetch -c tiny";
+      panes = "clear && colorscript --exec panes";
       c = "clear";
 
       # bat / eza
@@ -68,7 +69,7 @@
       nixrebuild = "nh os switch -H nix";
       nixclean = "doas nix-collect-garbage -d && nix-collect-garbage -d";
       nixflake = "nix flake update nixpkgs noctalia rummage helium-flake winapps umbriel sonora --flake ~/.config/nixos";
-      nixcachix = "nix flake update strata cressida rayburst-nixpkgs --flake ~/.config/nixos";
+      nixcachix = "nix flake update strata cressida luciole rayburst-nixpkgs --flake ~/.config/nixos";
 
       # Dotfiles
       dot = "cd ~/.dotfiles";
