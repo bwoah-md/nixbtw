@@ -106,6 +106,7 @@
       # Custom and External Packages
       packages.${system} = customPackages // {
         cressida = inputs.cressida.packages.${system}.default;
+        luciole = inputs.luciole.packages.${system}.default;
       };
     };
 }
