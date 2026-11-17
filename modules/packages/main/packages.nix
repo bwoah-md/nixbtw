@@ -156,12 +156,12 @@
     # Development
     # ─────────────────────────────────────────────────
     fd
+    gh
     # nix-update
     # nix-output-monitor
     # nil
     # nixd
     # nixfmt
-    # gh
 
     # (python3.withPackages (ps: [
     #   ps.pygobject3
