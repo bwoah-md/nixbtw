@@ -1,11 +1,6 @@
 name: Luciole
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - flake.lock
-
   workflow_dispatch:
 
 concurrency:
@@ -27,29 +22,14 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Check whether Luciole changed
-        id: check
-        run: |
-          OLD_REV=$(git show HEAD^:flake.lock 2>/dev/null | jq -r '.nodes.luciole.locked.rev // empty' || true)
-          NEW_REV=$(jq -r '.nodes.luciole.locked.rev')
-
-          if [ "$OLD_REV" != "$NEW_REV" ]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Install Nix
-        if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix
-        if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         uses: cachix/cachix-action@v15
         with:
           name: luciole
           authToken: '${{ secrets.LUCIOLE_AUTH_TOKEN }}'
 
       - name: Build Luciole
-        if: github.event_name == 'workflow_dispatch' || steps.check.outputs.changed == 'true'
         run: nix build .#luciole --print-build-logs
