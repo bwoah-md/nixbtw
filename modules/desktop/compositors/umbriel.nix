@@ -30,7 +30,6 @@
     extraPortals = [
       inputs.luciole.packages.${pkgs.stdenv.hostPlatform.system}.default
       inputs.strata.packages.${pkgs.stdenv.hostPlatform.system}.default.fileChooserPortal
-      pkgs.xdg-desktop-portal-gtk
     ];
 
     config = {
@@ -39,7 +38,6 @@
         "luciole"
         "rummage"
         "strata"
-        "gtk"
       ];
 
       # Umbriel-specific portal configuration
@@ -48,7 +46,6 @@
           "luciole"
           "rummage"
           "strata"
-          "gtk"
         ];
 
         "org.freedesktop.impl.portal.ScreenCast" = [
