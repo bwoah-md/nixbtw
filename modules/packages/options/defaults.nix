@@ -10,7 +10,7 @@
 
   # default --- Fonts
   fonts.fontconfig.defaultFonts = {
-    monospace = [ "GoMono Nerd Font" ];
+    monospace = [ "JetBrainsMono Nerd Font" ];
     sansSerif = [ "IBM Plex Sans" ];
     serif = [ "IBM Plex Serif" ];
     emoji = [ "Noto Color Emoji" ];
