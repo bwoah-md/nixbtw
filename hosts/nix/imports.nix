@@ -38,6 +38,7 @@
     ../../modules/desktop/shells/noctalia.nix
 
     # ────── Terminals ──────
+    ../../modules/desktop/terminals/bash.nix
     ../../modules/desktop/terminals/fish.nix
 
     # ─────────────────────────────────────────────────
