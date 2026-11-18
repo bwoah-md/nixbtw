@@ -13,4 +13,6 @@
 
     kernelPackages = pkgs.linuxPackages_latest;
   };
+
+  services.bootvine.enable = true;
 }
