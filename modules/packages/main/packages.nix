@@ -18,7 +18,6 @@
     # ─────────────────────────────────────────────────
     inputs.sonora.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.cressida.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.luciole.packages.${pkgs.stdenv.hostPlatform.system}.default
     customPackages.rayburst
 
     # ─────────────────────────────────────────────────
