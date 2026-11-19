@@ -30,10 +30,7 @@
     strata.url = "github:lgse/strata";
 
     # ────── Rummage - File Manager ──────
-    rummage = {
-      url = "github:barrulus/rummage";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rummage.url = "github:barrulus/rummage";
 
     # ────── Luciole - File Manager ──────
     luciole = {
