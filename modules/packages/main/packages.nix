@@ -156,7 +156,6 @@
     # ─────────────────────────────────────────────────
     fd
     gh
-    cachix
     # nix-update
     # nix-output-monitor
     # nil
