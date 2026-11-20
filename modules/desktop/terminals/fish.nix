@@ -68,8 +68,8 @@
       nixstatus = "git -C ~/.config/nixos status";
       nixrebuild = "nh os switch -H nix --json";
       nixclean = "nh clean all";
-      nixflake = "nix flake update nixpkgs noctalia helium-flake winapps umbriel sonora --flake ~/.config/nixos";
-      nixcachix = "nix flake update strata cressida luciole rayburst-nixpkgs rummage luciole --flake ~/.config/nixos";
+      nixflake = "nix flake update nixpkgs noctalia helium-flake winapps umbriel sonora rummage --flake ~/.config/nixos";
+      nixcachix = "nix flake update strata cressida luciole rayburst-nixpkgs luciole --flake ~/.config/nixos";
 
       # Dotfiles
       dot = "cd ~/.dotfiles";
