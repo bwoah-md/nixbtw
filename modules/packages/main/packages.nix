@@ -108,9 +108,9 @@
     # ─────────────────────────────────────────────────
     # Editing
     # ─────────────────────────────────────────────────
-    krita
-    krita-plugin-gmic
-    kdePackages.kdenlive
+    # krita
+    # krita-plugin-gmic
+    # kdePackages.kdenlive
 
     # ─────────────────────────────────────────────────
     # Communication
