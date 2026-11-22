@@ -13,6 +13,9 @@
       # annotation-mono
       # nerd-fonts.terminess-ttf
       # nerd-fonts.go-mono
+      nerd-fonts.fantasque-sans-mono
     ];
+
+    fontconfig.allowBitmaps = true;
   };
 }
