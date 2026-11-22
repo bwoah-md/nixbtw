@@ -86,7 +86,6 @@
     # Cursors, Themes and Icons
     # ─────────────────────────────────────────────────
     capitaine-cursors
-    # darkly
 
     # ─────────────────────────────────────────────────
     # Wayland / Desktop Utilities
@@ -152,9 +151,9 @@
     kdePackages.qt6ct
     libsForQt5.qt5ct
     klassy
+    nwg-look
     # kdePackages.kcolorscheme
     # kdePackages.qtsvg
-    # nwg-look
     # papirus-icon-theme
     # adwaita-icon-theme
 
