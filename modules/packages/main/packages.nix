@@ -3,14 +3,13 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  # --- Currently Disabled because QtWebEngine still takes in eMudhra's compromised TLS certificate
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     qutebrowser = prev.qutebrowser.override {
-  #       enableWideVine = true;
-  #     };
-  #   })
-  # ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      qutebrowser = prev.qutebrowser.override {
+        enableWideVine = true;
+      };
+    })
+  ];
 
   environment.systemPackages = with pkgs; [
     # ─────────────────────────────────────────────────
@@ -58,7 +57,7 @@
     # Browsers
     # ─────────────────────────────────────────────────
     mullvad-browser
-    # qutebrowser
+    qutebrowser
     librewolf
     # tor-browser
 
