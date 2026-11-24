@@ -90,11 +90,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1795441999,
-        "narHash": "sha256-yESyM/boO56nORi58njonRM96jV1WzllkSUM6R7pOXY=",
+        "lastModified": 1795476942,
+        "narHash": "sha256-ht7gmeV6bbaC7nIbUUBvz/qq6Wl+n0SE7DdRPx9TQbs=",
         "owner": "noctalia-dev",
         "repo": "luciole",
-        "rev": "3f3eb80f5bba9084921c0b7951ced6247a9c3da2",
+        "rev": "4ba978e05b45a91b8a60847550430d93f06e2956",
         "type": "github"
       },
       "original": {
@@ -237,11 +237,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1795380300,
-        "narHash": "sha256-g6WR2tlbq29YFDSwLmrdubzqoJqvLn3/JaO6IyS8ieg=",
+        "lastModified": 1795492716,
+        "narHash": "sha256-+vTZs5YbbZfn7uiMzZ6lQONCO6jeBpA7AB1upRWIqao=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "30daf36c1e7729ac29fa787b48bc2af136689635",
+        "rev": "b912cad300073bc9bc49a5f9747a69896aa5101a",
         "type": "github"
       },
       "original": {
@@ -287,11 +287,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1795440716,
-        "narHash": "sha256-uRT8duTwLpOLd6yNkql+orQ+MfqgwiyhoFxWqWN90As=",
+        "lastModified": 1795478221,
+        "narHash": "sha256-u8LTC+FBPJCSr1WEYJVpDOTnKqzFbJ9xk6NorXmxVfs=",
         "owner": "barrulus",
         "repo": "rummage",
-        "rev": "b2a50ce78845dfcc1e9506bb0919c4d0870b2ea6",
+        "rev": "200a54c6929695ee5714504d77289db198451e7f",
         "type": "github"
       },
       "original": {
