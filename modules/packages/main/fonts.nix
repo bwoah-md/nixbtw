@@ -6,7 +6,7 @@
     packages = with pkgs; [
       ibm-plex
       # maple-mono.NF-CN
-      nerd-fonts.jetbrains-mono
+      # nerd-fonts.jetbrains-mono
       # nerd-fonts.iosevka
       noto-fonts-color-emoji
       undefined-medium
