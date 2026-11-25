@@ -105,8 +105,10 @@
     mpv
     ffmpeg
     yt-dlp
-    qview
+    swayimg
+    zenity # for swayimg's file chooser
     scrcpy
+    # qview
 
     # ─────────────────────────────────────────────────
     # Editing
